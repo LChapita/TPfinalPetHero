@@ -1,10 +1,10 @@
 <main class="d-flex align-items-center justify-content-center height-100" >
      <div class="content">
           <header class="text-center">
-               <h2>Segundo Parcial</h2>
+               <h2>Login</h2>
           </header>
 
-          <form action="<?php FRONT_ROOT."Home/Login" ?>" method="POST" class="login-form bg-dark-alpha p-5 bg-light">
+          <form action="<?php echo FRONT_ROOT."Home/Login" ?>" method="POST" class="login-form bg-dark-alpha p-5 bg-light">
                <div class="form-group">
                     <label for="">Email</label>
                     <input type="text" name="userName" class="form-control form-control-lg" placeholder="Ingresar usuario" required>
