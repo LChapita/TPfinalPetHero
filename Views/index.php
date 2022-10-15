@@ -4,14 +4,14 @@
                <h2>Segundo Parcial</h2>
           </header>
 
-          <form action="" method="" class="login-form bg-dark-alpha p-5 bg-light">
+          <form action="<?php FRONT_ROOT."Home/Login" ?>" method="POST" class="login-form bg-dark-alpha p-5 bg-light">
                <div class="form-group">
                     <label for="">Email</label>
-                    <input type="text" class="form-control form-control-lg" placeholder="Ingresar usuario" required>
+                    <input type="text" name="userName" class="form-control form-control-lg" placeholder="Ingresar usuario" required>
                </div>
                <div class="form-group">
                     <label for="">Contraseña</label>
-                    <input type="password" class="form-control form-control-lg" placeholder="Ingresar constraseña" required>
+                    <input type="password" name="password" class="form-control form-control-lg" placeholder="Ingresar constraseña" required>
                </div>
                <button class="btn btn-primary btn-block btn-lg" type="submit">Iniciar Sesión</button>
           </form>
