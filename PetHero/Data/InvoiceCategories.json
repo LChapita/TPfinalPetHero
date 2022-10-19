@@ -1,27 +1,27 @@
 [
     {
         "invoiceCategoryId": 1,
-        "description": "EDEA",
+        "description": "Carlos",
         "active": true
     },
     {
         "invoiceCategoryId": 2,
-        "description": "Luro Authogar",
+        "description": "Pedrito",
         "active": false
     },
     {
         "invoiceCategoryId": 3,
-        "description": "Movistar",
+        "description": "Luis",
         "active": false
     },
     {
         "invoiceCategoryId": 4,
-        "description": "CAMUZZI",
+        "description": "Alberto",
         "active": true
     },
     {
         "invoiceCategoryId": 5,
-        "description": "Claro",
+        "description": "Juana",
         "active": true
     }
 ]
