@@ -5,28 +5,21 @@ require_once('nav-new-user.php');
     <section id="listado" class="mb-5">
         <div class="container">
             <h2 class="mb-4">New User</h2>
-            <form class="bg-light-alpha p-5">
+            <form action="<?php echo FRONT_ROOT."User/NewUser" ?>" method="POST" class="bg-light-alpha p-5">
                 <div class="row">
                     <div class="col-lg-5">
                         <div class="form-group">
                             <label for="">Email</label>
-                            <input type="text" value="" class="form-control" require>
+                            <input type="text" name="email" class="form-control" required>
 
                             <label for="">Password</label>
-                            <input type="password" value="" class="form-control" require>
+                            <input type="password" name="password" class="form-control" required>
+                            
                             <a>Select User Type</a>
-                            <select name="TypeUser" class="form-control">
-                                <option value="Owner">Owner</option>
-                                <option value="Keeper">Keeper</option>
+                            <select name="typeuser" class="form-control">
+                                <option value="Owner" required>Owner</option>
+                                <option value="Keeper" required>Keeper</option>
                             </select>
-                            <label for="">Name</label>
-                            <input type="text" value="" class="form-control" require>
-
-                            <label for="">Surname</label>
-                            <input type="text" value="" class="form-control" require>
-
-                            <label for="">DNI</label>
-                            <input type="text" value="" class="form-control" require>
                         </div>
                     </div>
                 </div>

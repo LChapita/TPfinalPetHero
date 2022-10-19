@@ -3,10 +3,12 @@
 namespace Models;
 
 class Owner{
+
     private $petList=array();
     private $idOwner;
     private $name;
     private $surName;
+    private $dni;
     
     public function getIdOwner()
     {
@@ -34,6 +36,23 @@ class Owner{
     {
         $this->surName = $surName;
     }
+    
 
+    public function getDni()
+    {
+        return $this->dni;
+    }
+    public function setDni($dni)
+    {
+        $this->dni = $dni;
+    }
+    private function GetNextId()
+    {
+        $id = 0;
+        foreach ($this->invoiceList as $invoice) {
+            $id = ($invoice->getId() > $id) ? $invoice->getId() : $id;
+        }
+        return $id + 1;
+    }
 }
 ?>

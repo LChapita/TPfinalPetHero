@@ -4,10 +4,10 @@ namespace Models;
 
 class User{
     private $email;
-    private $id;
     private $password;
+    private $id;
     private $typeUser;
-    private $user;
+    //private $user;
 
     public function getEmail()
     {
@@ -43,13 +43,6 @@ class User{
     {
         $this->typeUser = $typeUser;
     }
-    public function getUser()
-    {
-        return $this->user;
-    }
-    public function setUser($user)
-    {
-        $this->user = $user;
-    }
+   
 }
 ?>
