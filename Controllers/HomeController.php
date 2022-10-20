@@ -22,7 +22,7 @@
         public function EnterUser($userName,$password){
             if($userName=="m" && $password == '123'){
                 $_SESSION["loggedUser"]=true;
-                require_once(VIEWS_PATH."user-add.php");
+                //require_once(VIEWS_PATH."user-add.php");
             } else
             $this->Index("Usuario y/o Contraseña incorrectos");
         }

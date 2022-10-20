@@ -1,5 +1,7 @@
 <?php
-
+///dependiendo de si el usuario es owner y tambien keeper tengo hasta este momento 2 opciones
+/// 1. reservar el ide de keeper para su posterior "uso"
+/// 2. borrar todo a la mrd y hacer todo de nuevo 
 namespace Models;
 
 class Keeper{

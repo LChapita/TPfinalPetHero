@@ -5,7 +5,8 @@ namespace DAO;
 use Models\User as User;
 
 interface IUserDAO{
-    function Add($user);
+    function AddOwner($user,$typeUser);
+    function AddKeeper($user, $typeUser);
     function GetAll();
 }
 

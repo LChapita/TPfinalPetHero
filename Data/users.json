@@ -1,0 +1,24 @@
+[
+    {
+        "email": "aaasdasda",
+        "password": "cccc",
+        "id": 1,
+        "typeuser": {
+            "id": "2",
+            "name": "2",
+            "surName": "2",
+            "dni": "2"
+        }
+    },
+    {
+        "email": "Chayane@gmail.com",
+        "password": "12345",
+        "id": 2,
+        "typeuser": {
+            "id": 2,
+            "name": "Chayane",
+            "surName": "Deuz",
+            "dni": "321123"
+        }
+    }
+]

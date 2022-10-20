@@ -3,28 +3,97 @@
 namespace DAO;
 
 use DAO\IUserDAO as IUserDAO;
+use Models\Owner;
 use Models\User as User;
 
 class UserDAO implements IUserDAO{
     private $fileName = ROOT . "Data/users.json";
     private $userList = array();
     
-    private function RetrieveData(){
+    private function RetrieveDataOwner()
+    {
+        $this->userList= array();
 
+        if(file_exists($this->fileName)){
+            $jsonToDecode = file_get_contents($this->fileName);
+
+            $contentArray = ($jsonToDecode) ? json_decode($jsonToDecode, true) : array();
+            foreach ($contentArray as $content)
+            {
+                $user= new User();
+                $user->setEmail($content["email"]);
+                $user->setPassword($content["password"]);
+                $user->setId($content["id"]);
+
+                
+                foreach($content["typeuser"] as $item){
+                    $owner = new Owner();
+                    $owner->setId($item["id"]);
+                    $owner->setName($item["name"]);
+                    $owner->setSurName($item["surname"]);
+                    $owner->setDni($item["dni"]);
+                }
+
+                $user->setTypeUserOwner($owner);
+                
+                array_push($this->userList,$user);
+            }
+        }
     }
-    private function SaveData()
+
+    private function SaveDataOwner()
     {
+        $arrayToEncode = array();
         
+        foreach($this->userList as $user){
+            $valuesArray=array();
+            $valuesArray["email"] = $user->getEmail();
+            $valuesArray["password"] = $user->getPassword();
+            $valuesArray["id"] = $user->getId();
+            
+            $valuesArray["typeuser"] = array(
+                "id" => $user->getTypeUserOwner()->getId(),
+                "name"=>$user->getTypeUserOwner()->getName(),
+                "surName" => $user->getTypeUserOwner()->getSurName(),
+                "dni" => $user->getTypeUserOwner()->getDni(),
+            );
+
+
+            array_push($arrayToEncode, $valuesArray);
+        }
+
+        $fileContent = json_encode($arrayToEncode, JSON_PRETTY_PRINT);
+
+        file_put_contents($this->fileName, $fileContent);
     }
-    public function Add($user)
+
+        
+    public function AddOwner($user,$typeUser)
     {
-        $this->RetrieveData();
+        $this->RetrieveDataOwner();
 
         $user->setId($this->GetNextId());
+        $typeUser->setId($user->getId());
+
+        $user->setTypeUserOwner($typeUser);
+        
+        array_push($this->userList, $user);
+
+        $this->SaveDataOwner();
+    }
+    
+    public function AddKeeper($user, $typeUser)
+    {
+        ///$this->RetrieveData();
+
+        $user->setId($this->GetNextId());
+        $typeUser->setId($user->getId());
+
+        $user->setTypeUserKeeper($typeUser);
 
         array_push($this->userList, $user);
 
-        $this->SaveData();
+        //$this->SaveData();
     }
     public function GetAll()
     {
@@ -35,8 +104,8 @@ class UserDAO implements IUserDAO{
     private function GetNextId()
     {
         $id = 0;
-        foreach ($this->invoiceList as $invoice) {
-            $id = ($invoice->getId() > $id) ? $invoice->getId() : $id;
+        foreach ($this->userList as $user) {
+            $id = ($user->getId() > $id) ? $user->getId() : $id;
         }
         return $id + 1;
     }
