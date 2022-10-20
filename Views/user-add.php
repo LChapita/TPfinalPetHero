@@ -5,7 +5,7 @@ require_once('nav-new-user.php');
     <section id="listado" class="mb-5">
         <div class="container">
             <h2 class="mb-4">New User</h2>
-            <form action="<?php echo FRONT_ROOT."User/NewUser" ?>" method="POST" class="bg-light-alpha p-5">
+            <form action="<?php echo FRONT_ROOT . "User/NewUser" ?>" method="POST" class="bg-light-alpha p-5">
                 <div class="row">
                     <div class="col-lg-5">
                         <div class="form-group">
@@ -14,7 +14,7 @@ require_once('nav-new-user.php');
 
                             <label for="">Password</label>
                             <input type="password" name="password" class="form-control" required>
-                            
+
                             <a>Select User Type</a>
                             <select name="typeuser" class="form-control">
                                 <option value="Owner" required>Owner</option>
@@ -28,3 +28,6 @@ require_once('nav-new-user.php');
         </div>
     </section>
 </main>
+<?php
+require_once(VIEWS_PATH . "footer.php");
+?>
