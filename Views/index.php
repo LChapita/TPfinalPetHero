@@ -3,7 +3,6 @@
           <header class="text-center">
                <h2>Login</h2>
           </header>
-
           <form action="<?php echo FRONT_ROOT. "Home/EnterUser" ?>" method="POST" class="login-form bg-dark-alpha p-5 bg-light">
                <div class="form-group">
                     <label for="">Email</label>

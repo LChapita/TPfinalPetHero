@@ -10,6 +10,8 @@ class UserDAO implements IUserDAO{
     private $fileName = ROOT . "Data/users.json";
     private $userList = array();
 
+    
+
     private function RetrieveDataOwner()
     {
         $this->userList = array();
@@ -104,6 +106,23 @@ class UserDAO implements IUserDAO{
             $id = ($user->getId() > $id) ? $user->getId() : $id;
         }
         return $id + 1;
+    }
+
+    public function getByEmail($email)
+    {
+        $user = null;
+
+        $this->RetrieveDataOwner();
+
+        $users = array_filter($this->userList, 
+        function ($user) use ($email) 
+        {
+            return $user->getEmail() == $email;
+        });
+
+        $users = array_values($users); //Reordering array indexes
+
+        return (count($users) > 0) ? $users[0] : null;
     }
 }
 
