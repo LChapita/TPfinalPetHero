@@ -9,34 +9,30 @@ use Models\User as User;
 class UserDAO implements IUserDAO{
     private $fileName = ROOT . "Data/users.json";
     private $userList = array();
-    
+
     private function RetrieveDataOwner()
     {
-        $this->userList= array();
+        $this->userList = array();
 
-        if(file_exists($this->fileName)){
+        if (file_exists($this->fileName)) {
             $jsonToDecode = file_get_contents($this->fileName);
 
             $contentArray = ($jsonToDecode) ? json_decode($jsonToDecode, true) : array();
-            foreach ($contentArray as $content)
-            {
-                $user= new User();
+            foreach ($contentArray as $content) {
+                $user = new User();
                 $user->setEmail($content["email"]);
                 $user->setPassword($content["password"]);
                 $user->setId($content["id"]);
 
-                
-                foreach($content["typeuser"] as $item){
-                    $owner = new Owner();
-                    $owner->setId($item["id"]);
-                    $owner->setName($item["name"]);
-                    $owner->setSurName($item["surname"]);
-                    $owner->setDni($item["dni"]);
-                }
+                $owner = new Owner();
+                $owner->setId($content["typeuser"]["id"]);
+                $owner->setName($content["typeuser"]["name"]);
+                $owner->setSurName($content["typeuser"]["surName"]);
+                $owner->setDni($content["typeuser"]["dni"]);
 
                 $user->setTypeUserOwner($owner);
-                
-                array_push($this->userList,$user);
+
+                array_push($this->userList, $user);
             }
         }
     }

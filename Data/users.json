@@ -1,24 +1,24 @@
 [
     {
-        "email": "aaasdasda",
-        "password": "cccc",
+        "email": "Chayane@gmail.com",
+        "password": "12345",
         "id": 1,
         "typeuser": {
-            "id": "2",
-            "name": "2",
-            "surName": "2",
-            "dni": "2"
+            "id": 1,
+            "name": "Chayane",
+            "surName": "Dios",
+            "dni": "321123"
         }
     },
     {
-        "email": "Chayane@gmail.com",
-        "password": "12345",
+        "email": "macaco@gmail.com",
+        "password": "456",
         "id": 2,
         "typeuser": {
             "id": 2,
-            "name": "Chayane",
-            "surName": "Deuz",
-            "dni": "321123"
+            "name": "macaco",
+            "surName": "do fabela",
+            "dni": "789456"
         }
     }
 ]
