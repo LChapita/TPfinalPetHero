@@ -5,6 +5,8 @@
     class Owner {
         private $id;
         private $name;
+        private $surname;
+        private $dni;
         private $active;
 
         /**
@@ -46,7 +48,38 @@
 
                 return $this;
         }
+        public function getSurname()
+        {
+                return $this->surname;
+        }
 
+        /**
+         * Set the value of dname
+         *
+         * @return  self
+         */ 
+        public function setSurname($surname)
+        {
+                $this->surname = $surname;
+
+                return $this;
+        }
+        public function getDnie()
+        {
+                return $this->dni;
+        }
+
+        /**
+         * Set the value of dname
+         *
+         * @return  self
+         */ 
+        public function setDni($dni)
+        {
+                $this->dni= $dni;
+
+                return $this;
+        }
         /**
          * Get the value of active
          */ 
