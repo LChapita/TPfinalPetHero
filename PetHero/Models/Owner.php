@@ -3,6 +3,7 @@
     namespace Models;
 
     class Owner {
+        private $petList=array();
         private $id;
         private $name;
         private $surname;
