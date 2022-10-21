@@ -2,12 +2,12 @@
 
     namespace Models;
 
-    class Invoice {
+    class Pet {
         private $id;
-        private $invoiceCategoryId;
-        private $number;
-        private $amount;
-        private $dueDate;
+        private $ownerID;
+        private $raza;
+        private $tamaño;
+        private $observaciones;
         private $payed;
 
         /**
@@ -31,11 +31,11 @@
         }
 
         /**
-         * Get the value of invoiceCategoryId
+         * Get the value of OwnerID
          */ 
-        public function getInvoiceCategoryId()
+        public function getOwnerID()
         {
-                return $this->invoiceCategoryId;
+                return $this->ownerID;
         }
 
         /**
@@ -43,9 +43,9 @@
          *
          * @return  self
          */ 
-        public function setInvoiceCategoryId($invoiceCategoryId)
+        public function setOwnerID($ownerID)
         {
-                $this->invoiceCategoryId = $invoiceCategoryId;
+                $this->ownerID = $ownerID;
 
                 return $this;
         }
@@ -53,9 +53,9 @@
         /**
          * Get the value of number
          */ 
-        public function getNumber()
+        public function getRaza()
         {
-                return $this->number;
+                return $this->raza;
         }
 
         /**
@@ -63,9 +63,9 @@
          *
          * @return  self
          */ 
-        public function setNumber($number)
+        public function setRaza($raza)
         {
-                $this->number = $number;
+                $this->raza = $raza;
 
                 return $this;
         }
@@ -73,9 +73,9 @@
         /**
          * Get the value of amount
          */ 
-        public function getAmount()
+        public function getTamaño()
         {
-                return $this->amount;
+                return $this->tamaño;
         }
 
         /**
@@ -83,8 +83,8 @@
          *
          * @return  self
          */ 
-       public function setAmount($amount){
-             $this->amount=$amount;
+       public function setTamaño($tamaño){
+             $this->tamaño=$tamaño;
              return $this;
  
 
@@ -93,9 +93,9 @@
         /**
          * Get the value of dueDate
          */ 
-        public function getDueDate()
+        public function getObservations()
         {
-                return $this->dueDate;
+                return $this->observaciones;
         }
 
         /**
@@ -103,9 +103,9 @@
          *
          * @return  self
          */ 
-        public function setDueDate($dueDate)
+        public function setObservations($observaciones)
         {
-                $this->dueDate = $dueDate;
+                $this->observaciones = $observaciones ;
 
                 return $this;
         }

@@ -2,9 +2,11 @@
 
     namespace Models;
 
-    class InvoiceCategory {
+    class Owner {
         private $id;
-        private $description;
+        private $name;
+        private $surname;
+        private $dni;
         private $active;
 
         /**
@@ -28,25 +30,56 @@
         }
 
         /**
-         * Get the value of description
+         * Get the value of name
          */ 
-        public function getDescription()
+        public function getName()
         {
-                return $this->description;
+                return $this->name;
         }
 
         /**
-         * Set the value of description
+         * Set the value of dname
          *
          * @return  self
          */ 
-        public function setDescription($description)
+        public function setName($name)
         {
-                $this->description = $description;
+                $this->name = $name;
 
                 return $this;
         }
+        public function getSurname()
+        {
+                return $this->surname;
+        }
 
+        /**
+         * Set the value of dname
+         *
+         * @return  self
+         */ 
+        public function setSurname($surname)
+        {
+                $this->surname = $surname;
+
+                return $this;
+        }
+        public function getDnie()
+        {
+                return $this->dni;
+        }
+
+        /**
+         * Set the value of dname
+         *
+         * @return  self
+         */ 
+        public function setDni($dni)
+        {
+                $this->dni= $dni;
+
+                return $this;
+        }
         /**
          * Get the value of active
          */ 
