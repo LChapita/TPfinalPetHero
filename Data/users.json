@@ -22,5 +22,17 @@
             "surName": "manito",
             "dni": "556699"
         }
+    },
+    {
+        "email": "agustin@gmail.com",
+        "password": "123",
+        "id": 4,
+        "typeuser": {
+            "type": "Owner",
+            "id": 4,
+            "name": "Lucas",
+            "surName": "Chapa",
+            "dni": "78978945"
+        }
     }
 ]

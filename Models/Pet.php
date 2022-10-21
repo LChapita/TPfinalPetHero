@@ -1,6 +1,6 @@
 <?php
 namespace Models;
-
+use Models\Owner as Owner;
 class Pet{
 
 	private $foto;
@@ -10,15 +10,7 @@ class Pet{
 	private $raza;
 	private $video;
 
-	public function __construct($foto, $id, $name, $vaccinationSchedule, $raza, $video)
-	{
-		$this->foto=$foto;
-		$this->id=$id;
-		$this->name=$name;
-		$this->vaccinationSchedule= $vaccinationSchedule;
-		$this->raza=$raza;
-		$this->video=$video;
-	}
+	private $dueño;
 
 	public function setFoto($foto){
 		$this->foto=$foto;
@@ -57,5 +49,13 @@ class Pet{
 	public function getVideo(){
 		return $this->video;
 	}
+
+	public function getDueño(){
+		return $this->dueño;
+	}
+	public function setDueño(Owner $owner){
+		$this->dueño=$owner;
+	}
+
 }
 ?> 

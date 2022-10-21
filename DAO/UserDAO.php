@@ -94,6 +94,8 @@ class UserDAO implements IUserDAO{
 
         //$this->SaveData();
     }
+
+    
     public function GetAll()
     {
         

@@ -1,13 +1,10 @@
 <html>
 	<head><title>mainmascota.php</title></head>
 	<body>
-		<form action="" method="POST">
-
-			<label for="foto" name="cargarfoto">cargar foto</label>
-			<input type="text" name="cargarfoto" value="foto"/><br/>
-			
-			<label for="id" name="id">id</label>
-			<input type="text" name="id" value="id"/><br/>
+		<form action="<?php echo FRONT_ROOT."" ?>" method="POST">
+			<?php echo var_dump($user) ?>
+			<label for="foto" name="foto">cargar foto</label>
+			<input type="text" name="foto" value="foto"/><br/>
 			
 			<label for="name" name="name">name</label>
 			<input type="text" name="name" value="name"><br/>
@@ -21,7 +18,7 @@
 			<label for="video" name="video"></label>
 			<input type="text" name="video" value="video"/><br/>
 
-			<button type="submit" name="button">agregar mascota</button>
+			<button type="submit">agregar mascota</button>
 		</form>
 	</body>
 </html>

@@ -11,10 +11,14 @@
         private $userDAO;
         private $aux;
 
+        private $owner;
+        private $keeper;
+
         public function __construct()
         {
             $this->userDAO=new UserDAO();
             $this->aux= new User();
+            
         }
         
         public function NewUser($email,$password){
@@ -22,8 +26,6 @@
                 $this->aux->setEmail($email);
                 $this->aux->setPassword($password);
                 $this->NewUserOwner($email);
-                
-            }else{
                 
             }
         }
@@ -45,7 +47,6 @@
             $owner->setSurName($lastname);
             $owner->setDni($dni);
 
-            
             $this->userDAO->AddOwner($user,$owner);
 
 
