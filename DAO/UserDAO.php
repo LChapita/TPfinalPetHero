@@ -98,6 +98,14 @@ class UserDAO implements IUserDAO{
         
     }
 
+    private function RetrieveDataKeeper(){
+
+    }
+    private function SaveDataKeeper()
+    {
+        
+    }
+
 
     private function GetNextId()
     {
