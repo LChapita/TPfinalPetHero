@@ -2,15 +2,15 @@
 
     namespace Controllers;
 
-    use DAO\InvoiceDAO;
-    use DAO\InvoiceCategoryDAO;
-    use models\Invoice as Invoice;
-    use models\InvoiceCategory;
-    class InvoiceController {
-        private $InvoiceDAO;
+    use DAO\petDAO ;
+    use DAO\ownerDAO ;
+    use models\Pet as Pet;
+    use models\Owner;
+    class invoiceController {
+        private $petDAO ;
         
         public function __construct() {
-            $this->invoiceDAO = new invoiceDAO();
+            $this->petDAO  = new petDAO ();
         }
 
 
@@ -18,19 +18,19 @@
 
         public function ShowListView($message = "") {
             require_once(VIEWS_PATH . "validate-session.php");
-            $invoiceDAO = new InvoiceDAO();
-            $invoiceList = $invoiceDAO->GetAll();
-            require_once(VIEWS_PATH . "invoice-list.php");
+            $petDAO  = new petDAO ();
+            $petList = $petDAO->GetAll();
+            require_once(VIEWS_PATH . "pet-list.php");
         }
      
         public function Remove($id) {
             require_once(VIEWS_PATH . "validate-session.php");
-            $invoiceDAO = new InvoiceDAO();
+            $petDAO = new petDAO();
 
             if($id != null) {
-                $invoice = $invoiceDAO->GetById($id);
-                if($invoice->getPayed()) {
-                    $invoiceDAO->Remove($id);
+                $Pet = $petDAO ->GetById($id);
+                if($Pet->getPayed()) {
+                    $petDAO ->Remove($id);
 
                     $this->ShowListView();
               
@@ -41,26 +41,26 @@
         }
 
             
-        public function Add($id,$invoiceCategoryId,$number,$amount,$dueDate,$payed) {
+        public function Add($id,$ownerID,$raza,$tamaño,$observaciones,$payed) {
             require_once(VIEWS_PATH . "validate-session.php");
            
-                $invoiceCategoryDAO = new InvoiceCategoryDAO();
-            $type = $invoiceCategoryDAO->Exist(intval($invoiceCategoryId));
+                $ownerDAO = new ownerDAO();
+            $type = $ownerDAO->Exist(intval($ownerID));
             if($type) {
-            $invoice = new Invoice();
-                $invoice->setId($id);
-                $invoice->setInvoiceCategoryId($invoiceCategoryId);
-                $invoice->setNumber($number);
-                $invoice->setAmount($amount);
-                $invoice->setDueDate($dueDate);
-                $invoice->setPayed($payed);
+            $Pet = new Pet();
+            $Pet->setId($id);
+            $Pet->setOwnerId($ownerID);
+            $Pet->setRaza($raza);
+            $Pet->setTamaño($tamaño);
+            $Pet->setObservations($observaciones);
+            $Pet->setPayed($payed);
 
        
-                $this->invoiceDAO->Add($invoice);
+                $this->petDAO ->Add($Pet);
                 $this->ShowListView();
             
         }else {
-            $this->ShowListView("El tipo de cerveza ingresado no existe");
+            $this->ShowListView("El owner  ingresado no existe");
         }
         }
 
