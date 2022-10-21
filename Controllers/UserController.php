@@ -23,6 +23,8 @@
                 $this->aux->setPassword($password);
                 $this->NewUserOwner($email);
                 
+            }else{
+                
             }
         }
         public function NewUserOwner($email)
@@ -38,7 +40,7 @@
             $user->setPassword($password);
 
             $owner=new Owner();
-            
+            $owner->setOwner("Owner");
             $owner->setName($name);
             $owner->setSurName($lastname);
             $owner->setDni($dni);

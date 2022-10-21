@@ -27,11 +27,11 @@ class UserDAO implements IUserDAO{
                 $user->setId($content["id"]);
 
                 $owner = new Owner();
+                $owner->setOwner($content["typeuser"]["type"]);
                 $owner->setId($content["typeuser"]["id"]);
                 $owner->setName($content["typeuser"]["name"]);
                 $owner->setSurName($content["typeuser"]["surName"]);
                 $owner->setDni($content["typeuser"]["dni"]);
-
                 $user->setTypeUserOwner($owner);
 
                 array_push($this->userList, $user);
@@ -50,6 +50,7 @@ class UserDAO implements IUserDAO{
             $valuesArray["id"] = $user->getId();
             
             $valuesArray["typeuser"] = array(
+                "type"=>$user->getTypeUserOwner()->getOwner(),
                 "id" => $user->getTypeUserOwner()->getId(),
                 "name"=>$user->getTypeUserOwner()->getName(),
                 "surName" => $user->getTypeUserOwner()->getSurName(),

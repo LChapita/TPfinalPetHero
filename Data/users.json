@@ -2,23 +2,25 @@
     {
         "email": "Chayane@gmail.com",
         "password": "12345",
-        "id": 1,
+        "id": 2,
         "typeuser": {
-            "id": 1,
-            "name": "Chayane",
+            "type": "Owner",
+            "id": 2,
+            "name": "Chayan",
             "surName": "Dios",
             "dni": "321123"
         }
     },
     {
         "email": "macaco@gmail.com",
-        "password": "456",
-        "id": 2,
+        "password": "2233",
+        "id": 3,
         "typeuser": {
-            "id": 2,
+            "type": "Owner",
+            "id": 3,
             "name": "macaco",
-            "surName": "do fabela",
-            "dni": "789456"
+            "surName": "manito",
+            "dni": "556699"
         }
     }
 ]
