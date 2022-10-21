@@ -1,0 +1,27 @@
+[
+    {
+        "invoiceCategoryId": 1,
+        "description": "Carlos",
+        "active": true
+    },
+    {
+        "invoiceCategoryId": 2,
+        "description": "Pedrito",
+        "active": false
+    },
+    {
+        "invoiceCategoryId": 3,
+        "description": "Luis",
+        "active": false
+    },
+    {
+        "invoiceCategoryId": 4,
+        "description": "Alberto",
+        "active": true
+    },
+    {
+        "invoiceCategoryId": 5,
+        "description": "Juana",
+        "active": true
+    }
+]

@@ -1,0 +1,10 @@
+[
+    {
+        "invoiceId": 1,
+        "invoiceCategoryId": "1",
+        "number": "Golden ",
+        "amount": "Mediano",
+        "dueDate": "Perro Sano",
+        "payed": "on"
+    }
+]
