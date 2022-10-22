@@ -1,7 +1,7 @@
 <?php
     namespace Controllers;
 
-    use DAO\InvoiceDAO;
+    use DAO\petDAO;
 
     class HomeController
     {
@@ -11,9 +11,9 @@
 
         public function ShowListView($message = "") {
             require_once(VIEWS_PATH . "validate-session.php");
-            $invoiceDAO = new InvoiceDAO();
-            $invoiceList = $invoiceDAO->GetAll();
-            require_once(VIEWS_PATH . "invoice-list.php");
+            $petDAO= new petDAO();
+            $petList = $petDAO->GetAll();
+            require_once(VIEWS_PATH . "pet-list.php");
         }
 
         public function Login($email, $password) {
