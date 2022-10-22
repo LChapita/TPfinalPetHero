@@ -2,25 +2,25 @@
 
 require_once(VIEWS_PATH . "validate-session.php");
 
-use DAO\InvoiceCategoryDAO;
-use Models\Invoice;
-use Models\InvoiceCategory;
+use DAO\ownerDAO;
+use Models\Pet;
+use Models\Owner;
 
     require_once('nav.php');
 ?>
 <main class="py-5">
     
-     <section id="agregar" class="mb-7">
-     <form action="<?php echo FRONT_ROOT . "Invoice/Add"?>" method="post"  style="background-color: #EAEDED;padding: 2rem !important;">
+<form action="<?php echo FRONT_ROOT . "Invoice/Add"?>" method="post"  style="background-color: #EAEDED;padding: 2rem !important;">
           <table> 
             <thead>
               <tr>      
-                <th>Id   </th>
-                <th>invoiceCategoryId     </th>
-                <th>number     </th>
-                <th>amount     </th>
-                <th>dueDate   </th>
-                <th>payed    </th>
+              <th>  </th>
+                <th>---Pet Id  </th>
+                <th>Owner id    </th>
+                <th>Raza  </th>
+                <th>Tamaño  </th>
+                <th>Observaciones</th>
+                <th>Vacunado  </th>
               </tr>
             </thead>
             <tbody>
@@ -30,29 +30,33 @@ use Models\InvoiceCategory;
                   <input type="number" name="id" required>
                 </td>  
                  <td>
-                  <input type="number" name="invoiceCategoryId" required>
+                  <input type="number" name="ownerID" required>
                 </td>
                 <td>
-                  <input type="text" name="number" required>
+                  <input type="text" name="raza" required>
                 </td>
                 <td>
-                  <input type="text" name="amount" required>
+                  <input type="text" name="tamaño" required>
                 </td>
                 <td>
-                  <input type="text" name="dueDate" required>
+                  <input type="text" name="observaciones" required>
                   <td>
-                  <input type="radio" name="payed" boolval="true" checked>Pago
-                  <input type="radio" name="payed" boolval="false"> Impago.
+                  <input type="radio" name="payed" boolval=true checked>Vacunado
+                  <input type="radio" name="payed" boolval=false> No vacunado
                 </td>  
              
               </tr>
               </tbody>
           </table>       <div>
-            <input type="submit" class="btn" value="Agregar" style="background-color:#DC8E47;color:white;"/>
+            <input type="submit" class="btn" value="Agregar mascota" style="background-color:#DC8E47;color:white;"/>
           </div>
           <div>
             <?php
-              
+                if($message != "") {
+                  echo "<div>
+                    <p>". $message ."</p>
+                  </div>";
+                }
             ?>
           </div>
         </form>
