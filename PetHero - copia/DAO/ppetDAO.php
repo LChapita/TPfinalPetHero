@@ -1,10 +1,10 @@
 <?php
     namespace DAO;
 
-    use Models\Invoice as Invoice;
+    use Models\Pet as Pet;
 
-    interface IInvoiceDAO {
-        function Add( $invoice);
+    interface ppetDAO {
+        function Add( $Pet);
         function Remove($id);
         function GetById($id);
         function GetAll();
