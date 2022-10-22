@@ -1,23 +1,19 @@
-<?php
- 
-	ini_set('display_errors', 1);
-	ini_set('display_startup_errors', 1);
-	error_reporting(E_ALL);
-	
-	require "Config/Autoload.php";
-	require "Config/Config.php";
+<main class="d-flex align-items-center justify-content-center height-100" >
+     <div class="content">
+          <header class="text-center">
+               <h2>TP FINAL - PET HERO</h2>
+          </header>
 
-	use Config\Autoload as Autoload;
-	use Config\Router 	as Router;
-	use Config\Request 	as Request;
-		
-	Autoload::start();
-
-	session_start();
-
-	require_once(VIEWS_PATH."header.php");
-
-	Router::Route(new Request());
-
-	require_once(VIEWS_PATH."footer.php");
-?>
+          <form action="<?php echo FRONT_ROOT . "Home/Login" ?>" method="post" class="login-form bg-dark-alpha p-5 bg-light">
+               <div class="form-group">
+                    <label for="user_email">Email</label>
+                    <input type="email" id="user_email" name="email" class="form-control form-control-lg" placeholder="Ingresar usuario" required>
+               </div>
+               <div class="form-group">
+                    <label for="user_password">Contraseña</label>
+                    <input type="password" id="user_password" name="password" class="form-control form-control-lg" placeholder="Ingresar constraseña" required>
+               </div>
+               <button class="btn btn-primary btn-block btn-lg" type="submit">Iniciar Sesión</button>
+          </form>
+     </div>
+</main>
