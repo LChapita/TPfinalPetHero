@@ -2,6 +2,8 @@
 
 namespace Controllers;
 
+use Controllers\PetController as PetController;
+
 use Models\Owner as Owner;
 use Models\Keeper as Keeper;
 use Models\Pet as Pet;
@@ -17,14 +19,22 @@ class OwnerController{
     public function MenuOwner()
     {
         require_once(VIEWS_PATH . "validate-session.php");
-        $petDAO = new PetDAO();
-        $petList = $petDAO->GetAllPets();
+        //$petDAO = new PetDAO();
+        //$petList = $petDAO->GetAllPets();
+
+        $petControl=new PetController();
+
         $dueño = new Owner();
         $dueño = $this->getDueñoOwner();
-        require_once(VIEWS_PATH."formmascota.php");
+        
+        $petControl->setDueñoPet($dueño);
+        var_dump($dueño);
+
+        require_once(VIEWS_PATH.'nav.php');
+        //require_once(VIEWS_PATH."formmascota.php");
         //require_once(VIEWS_PATH . "pet-list.php");
     }
-
+    
     public function getDueñoOwner()
     {
         return $this->owner;

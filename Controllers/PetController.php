@@ -2,37 +2,73 @@
     namespace Controllers;
 
     use DAO\PetDAO as PetDAO;
-    use Models\User as User;
     use Models\Owner as Owner;
-use Models\Pet;
+    use Models\Pet;
+    use Models\User as User;
 
-    class HomeController
+    class PetController
     {
         private $petDAO;
-        private $owner;
+        private $dueñoPet;
 
         public function __construct()
         {
             $this->petDAO = new PetDAO();
+            $this->dueñoPet=new Owner();
         }
-        public function RegisterPet($user,$foto,$name, $vaccinationschendle,$raza,$video)
+
+        
+        public function newPet(){
+            
+            $userArr=new User();
+
+            $userArr=$_SESSION;
+            
+            foreach($userArr as $user){
+                $this->setDueñoPet($user->getTypeUserOwner());
+            }
+            //var_dump($this->getDueñoPet());
+            require_once(VIEWS_PATH . "formmascota.php");
+        }
+
+        public function RegisterPet($foto,$name, $vaccinationschendle,$raza,$video)
         {   
+
             $pet=new Pet();
             $pet->setFoto($foto);
             $pet->setName($name);
             $pet->setVaccinationSchedule($vaccinationschendle);    
             $pet->setRaza($raza);
             $pet->setVideo($video);
-
-            $owner= new Owner();
-            $owner->setOwner($user->getTypeUserOwner()->getOwner());
-            $owner->setId($user->getTypeUserOwner()->getId());
-            $owner->setName($user->getTypeUserOwner()->getName());
-            $owner->setSurName($user->getTypeUserOwner()->getSurName());
-            $owner->setDni($user->getTypeUserOwner()->getDni());
             
-            $this->petDAO->AddPet($pet,$owner);
+            $dueño= new Owner();
+            /*
+            $dueño->setOwner($this->dueñoPet->getOwner());
+            $dueño->setId($this->dueñoPet->getId());
+            $dueño->setName($this->dueñoPet->getName());
+            $dueño->setSurName($this->dueñoPet->getSurName());
+            $dueño->setDni($this->dueñoPet->getDni());
+            */
+            
+            $this->petDAO->AddPet($pet, $dueño);
+            
+            $this->newPet();
+        }
 
+        public function getDueñoPet()
+        {
+                return $this->dueñoPet;
+        }
+        public function setDueñoPet(Owner $dueñoPet)
+        {
+                $this->dueñoPet = $dueñoPet;
+        }
+        public function getOwnerSession($user){
+
+            foreach($user as $content){
+                $owner= new Owner();
+
+            }
         }
     }
 

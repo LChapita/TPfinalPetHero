@@ -1,0 +1,62 @@
+[
+    {
+        "foto": "6",
+        "id": null,
+        "name": null,
+        "vaccinationSchedule": null,
+        "raza": null,
+        "video": null,
+        "due\u00f1o": {
+            "type": null,
+            "id": null,
+            "name": null,
+            "surName": null,
+            "dni": null
+        }
+    },
+    {
+        "foto": "6",
+        "id": null,
+        "name": null,
+        "vaccinationSchedule": null,
+        "raza": null,
+        "video": null,
+        "due\u00f1o": {
+            "type": null,
+            "id": null,
+            "name": null,
+            "surName": null,
+            "dni": null
+        }
+    },
+    {
+        "foto": "5",
+        "id": null,
+        "name": null,
+        "vaccinationSchedule": null,
+        "raza": null,
+        "video": null,
+        "due\u00f1o": {
+            "type": null,
+            "id": null,
+            "name": null,
+            "surName": null,
+            "dni": null
+        }
+    },
+    {
+        "foto": "s",
+        "id": null,
+        "name": null,
+        "vaccinationSchedule": null,
+        "raza": null,
+        "video": null,
+        "due\u00f1o": {
+            "type": null,
+            "id": null,
+            "name": null,
+            "surName": null,
+            "dni": null
+        }
+    }
+]

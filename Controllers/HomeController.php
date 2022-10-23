@@ -53,7 +53,7 @@
             $dueño->setDueñoOwner($owner);
             $dueño->MenuOwner();
         }
-        
+                    
         //botones de registro o login
         public function LogIn(){
             require_once(VIEWS_PATH."index.php");
