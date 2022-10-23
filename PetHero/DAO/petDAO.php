@@ -48,14 +48,15 @@
         private function SaveData() {
             sort($this->petList);
             $arrayEncode = array();
-
+            
             foreach($this->petList as $Pet) {
+                $value["foto"] = $Pet->getFoto();
                 $value["invoiceId"] = $Pet->getId();
                 $value["ownerID"] =$Pet->getOwnerID();
                 $value["raza"] = $Pet->getRaza();
-                $value["tamaño"] = $Pet->getTamaño();
-                $value["observaciones"] = $Pet->getObservations();
-                $value["payed"] = $Pet->getPayed();
+                $value["name"] = $Pet->getName();
+                $value["vaccinationSchedule"] = $Pet->getVaccinationSchedule();
+                $value["video"] = $Pet->getVideo();
 
                 array_push($arrayEncode, $value);
             }
@@ -74,12 +75,13 @@
                  
                  foreach($arrayDecode as $value) {
                     $Pet = new Pet();
+                    $Pet->setFoto($value["foto"]);
                     $Pet->setId($value["invoiceId"]);
                     $Pet->setOwnerID($value["ownerID"]);
                     $Pet->setRaza($value["raza"]);
-                    $Pet->setTamaño($value["tamaño"]);
-                    $Pet->setObservations($value["observaciones"]);
-                    $Pet->setPayed($value["payed"]);
+                    $Pet->setName($value["name"]);
+                    $Pet->setVaccinationSchedule($value["vaccinationSchedule"]);
+                    $Pet->setVideo($value["video"]);
 
                     array_push($this->petList, $Pet);
                  }

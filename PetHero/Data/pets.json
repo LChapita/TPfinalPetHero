@@ -1,42 +1,20 @@
 [
     {
+        "foto": "Link",
+        "invoiceId": 2,
+        "ownerID": "2",
+        "raza": "Pinscher",
+        "name": "Lauren",
+        "vaccinationSchedule": "1 vacuna",
+        "video": "on"
+    },
+    {
+        "foto": "Link foto",
         "invoiceId": 1,
         "ownerID": "1",
-        "raza": "1",
-        "tama\u00f1o": "1",
-        "observaciones": "1",
-        "payed": "on"
-    },
-    {
-        "invoiceId": 2,
-        "ownerID": "1",
-        "raza": "1",
-        "tama\u00f1o": "1",
-        "observaciones": "1",
-        "payed": "on"
-    },
-    {
-        "invoiceId": 3,
-        "ownerID": "2",
-        "raza": "pequines",
-        "tama\u00f1o": "chico",
-        "observaciones": "perro sano",
-        "payed": "on"
-    },
-    {
-        "invoiceId": 4,
-        "ownerID": "5",
-        "raza": "5",
-        "tama\u00f1o": "5",
-        "observaciones": "5",
-        "payed": "on"
-    },
-    {
-        "invoiceId": 5,
-        "ownerID": "2",
-        "raza": "2",
-        "tama\u00f1o": "2",
-        "observaciones": "2",
-        "payed": "on"
+        "raza": "Labrador",
+        "name": "pupe",
+        "vaccinationSchedule": "2 Vacunas",
+        "video": "on"
     }
 ]

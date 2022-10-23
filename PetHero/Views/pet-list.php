@@ -18,9 +18,10 @@ use Models\Owner;
                          <th>Owner Id</th>
                          <th>Dueño</th>
                          <th>Raza</th>
-                         <th>Tamaño</th>
-                         <th>Observaciones</th>
-                         <th>Vacunado</th>
+                         <th>Nombre mascota</th>
+                         <th>Vacunaciones</th>
+                         <th>Foto</th>
+                         <th>Videos</th>
                     </thead>
                     <tbody>
                     <?php
@@ -34,17 +35,20 @@ use Models\Owner;
                               
                     ?>
                     <tr>
+                         
+                        
                          <td><?php echo $Pet->getId() ?></td>
                          <td><?php echo $Pet->getOwnerId() ?></td>
                          <td><?php echo $Owner->getName() ?></td>
                          <td><?php echo $Pet->getRaza() ?></td>
-                         <td><?php echo $Pet->getTamaño() ?></td>
-                         <td><?php echo $Pet->getObservations() ?></td>
+                         <td><?php echo $Pet->getName() ?></td>
+                         <td><?php echo $Pet->getVaccinationSchedule() ?></td>
+                         <td><?php echo $Pet->getFoto() ?></td>
                          <td><?php
-                              if($Pet->getPayed()) {
-                                   echo "Vacunado";
+                              if($Pet->getVideo()) {
+                                   echo "Link Video";
                               } else {
-                                    echo "No vacunado";
+                                    echo "No tiene video";
                               }?></td>
                     </tr>
 
@@ -91,12 +95,14 @@ use Models\Owner;
             <thead>
               <tr>      
               <th>  </th>
-                <th>---Pet Id  </th>
-                <th>Owner id    </th>
-                <th>Raza  </th>
-                <th>Tamaño  </th>
-                <th>Observaciones</th>
-                <th>Vacunado  </th>
+       
+              <th>Pet id</th>
+                         <th>Owner Id</th>
+                         <th>Raza</th>
+                         <th>Nombre mascota</th>
+                         <th>Vacunaciones</th>
+                         <th>Link de Fotos</th>
+                         <th> Videos</th>
               </tr>
             </thead>
             <tbody>
@@ -112,13 +118,18 @@ use Models\Owner;
                   <input type="text" name="raza" required>
                 </td>
                 <td>
-                  <input type="text" name="tamaño" required>
+                  <input type="text" name="Pet Name" required>
                 </td>
                 <td>
-                  <input type="text" name="observaciones" required>
-                  <td>
-                  <input type="radio" name="payed" boolval=true checked>Vacunado
-                  <input type="radio" name="payed" boolval=false> No vacunado
+                  <input type="text" name="Vacunaciones" required>
+               </td>
+               <td>
+                  <input type="text" name="Fotos" required>
+               </td>
+               <td>
+              
+                  <input type="radio" name="payed" boolval=true checked>Tiene video
+                  <input type="radio" name="payed" boolval=false> No Tiene video
                 </td>  
              
               </tr>
