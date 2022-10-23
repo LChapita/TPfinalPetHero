@@ -1,6 +1,7 @@
 <?php
 namespace Models;
 use Models\Owner as Owner;
+
 class Pet{
 
 	private $foto;

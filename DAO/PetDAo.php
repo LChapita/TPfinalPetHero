@@ -25,7 +25,9 @@ class PetDAO implements IPetDAO
     }
     public function GetAllPets()
     {
-        
+        $this->RetrieveDataPet();
+        return $this->petList;
+    
     }
     private function RetrieveDataPet()
     {

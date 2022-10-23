@@ -25,10 +25,15 @@ use Models\Pet;
             $pet->setVideo($video);
 
             $owner= new Owner();
-            $owner->setName($user->getTypeUserOwner()->getName());
             $owner->setOwner($user->getTypeUserOwner()->getOwner());
+            $owner->setId($user->getTypeUserOwner()->getId());
+            $owner->setName($user->getTypeUserOwner()->getName());
+            $owner->setSurName($user->getTypeUserOwner()->getSurName());
+            $owner->setDni($user->getTypeUserOwner()->getDni());
             
             $this->petDAO->AddPet($pet,$owner);
 
         }
     }
+
+?>

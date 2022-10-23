@@ -50,13 +50,12 @@
             $this->userDAO->AddOwner($user,$owner);
 
 
-            $this->ShowAddView();
+            $this->GoHome();
         }
 
-        public function ShowAddView()
+        public function GoHome()
         {
-            require_once(VIEWS_PATH."validate-session.php");
-            require_once(VIEWS_PATH."home.php");
+            header('Location:'.FRONT_ROOT. 'Home/GoFirstPage');
         }
         
     }

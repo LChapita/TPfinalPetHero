@@ -1,8 +1,12 @@
-<html>
+<?php
+require_once('nav.php');
+
+?>
+<main>
 	<head><title>mainmascota.php</title></head>
 	<body>
 		<form action="<?php echo FRONT_ROOT."" ?>" method="POST">
-			<?php echo var_dump($user) ?>
+			<?php  var_dump($this->owner); ?>
 			<label for="foto" name="foto">cargar foto</label>
 			<input type="text" name="foto" value="foto"/><br/>
 			
@@ -21,4 +25,4 @@
 			<button type="submit">agregar mascota</button>
 		</form>
 	</body>
-</html>
+</main>
