@@ -41,21 +41,23 @@
         }
 
             
-        public function Add($id,$ownerID,$raza,$tamaño,$observaciones,$payed) {
+        public function Add($id,$ownerID,$raza,$name,$vaccinationSchedule,$foto,$video) {
             require_once(VIEWS_PATH . "validate-session.php");
            
                 $ownerDAO = new ownerDAO();
             $type = $ownerDAO->Exist(intval($ownerID));
             if($type) {
             $Pet = new Pet();
+       
             $Pet->setId($id);
             $Pet->setOwnerId($ownerID);
             $Pet->setRaza($raza);
-            $Pet->setTamaño($tamaño);
-            $Pet->setObservations($observaciones);
-            $Pet->setPayed($payed);
+            $Pet->setName($name);
+            $Pet->setVaccinationSchedule($vaccinationSchedule);
+            $Pet->setFoto($foto);
+            $Pet->setVideo($video);
 
-       
+           
                 $this->petDAO ->Add($Pet);
                 $this->ShowListView();
             

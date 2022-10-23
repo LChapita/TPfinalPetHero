@@ -3,12 +3,30 @@
     namespace Models;
 
     class Pet {
+        private $foto;
         private $id;
         private $ownerID;
+        private $name;
+        private $vaccinationSchedule;
         private $raza;
-        private $tamaño;
-        private $observaciones;
-        private $payed;
+        private $video;
+
+        public function getFoto()
+        {
+                return $this->foto;
+        }
+
+        /**
+         * Set the value of id
+         *
+         * @return  self
+         */ 
+        public function setFoto($foto)
+        {
+                $this->foto = $foto;
+
+                return $this;
+        }
 
         /**
          * Get the value of id
@@ -73,9 +91,9 @@
         /**
          * Get the value of amount
          */ 
-        public function getTamaño()
+        public function getName()
         {
-                return $this->tamaño;
+                return $this->name;
         }
 
         /**
@@ -83,8 +101,8 @@
          *
          * @return  self
          */ 
-       public function setTamaño($tamaño){
-             $this->tamaño=$tamaño;
+       public function setName($name){
+             $this->name=$name;
              return $this;
  
 
@@ -93,9 +111,9 @@
         /**
          * Get the value of dueDate
          */ 
-        public function getObservations()
+        public function getVaccinationSchedule()
         {
-                return $this->observaciones;
+                return $this->vaccinationSchedule;
         }
 
         /**
@@ -103,9 +121,9 @@
          *
          * @return  self
          */ 
-        public function setObservations($observaciones)
+        public function setVaccinationSchedule($vaccinationSchedule)
         {
-                $this->observaciones = $observaciones ;
+                $this->vaccinationSchedule = $vaccinationSchedule ;
 
                 return $this;
         }
@@ -113,9 +131,9 @@
         /**
          * Get the value of payed
          */ 
-        public function getPayed()
+        public function getVideo()
         {
-                return $this->payed;
+                return $this->video;
         }
 
         /**
@@ -123,9 +141,9 @@
          *
          * @return  self
          */ 
-        public function setPayed($payed)
+        public function setVideo($video)
         {
-                $this->payed = $payed;
+                $this->video = $video;
 
                 return $this;
         }
