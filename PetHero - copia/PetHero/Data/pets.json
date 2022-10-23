@@ -1,20 +1,11 @@
 [
     {
         "foto": "Link",
-        "invoiceId": 2,
-        "ownerID": "2",
-        "raza": "Pinscher",
-        "name": "Lauren",
-        "vaccinationSchedule": "1 vacuna",
-        "video": "on"
-    },
-    {
-        "foto": "Link foto",
         "invoiceId": 1,
-        "ownerID": "1",
-        "raza": "Labrador",
-        "name": "pupe",
-        "vaccinationSchedule": "2 Vacunas",
+        "ownerID": "2",
+        "raza": "Chihuahua",
+        "name": "pedrito",
+        "vaccinationSchedule": "2 VACUNACINES",
         "video": "on"
     }
 ]

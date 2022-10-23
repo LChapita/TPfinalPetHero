@@ -29,13 +29,13 @@
 
             if($id != null) {
                 $Pet = $petDAO ->GetById($id);
-                if($Pet->getPayed()) {
+                if($Pet->getVideo()) {
                     $petDAO ->Remove($id);
 
                     $this->ShowListView();
               
                 } else {
-                    $this->ShowListView("La factura que intenta eliminar aun no esta paga");
+                    $this->ShowListView("El id no existe");
                 }
             }
         }
