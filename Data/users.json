@@ -1,62 +1,14 @@
 [
     {
-        "email": "Chayane@gmail.com",
-        "password": "12345",
-        "id": 2,
+        "email": "1",
+        "password": "1",
+        "id": 1,
         "typeuser": {
             "type": "Owner",
-            "id": 2,
-            "name": "Chayan",
-            "surName": "Dios",
-            "dni": "321123"
-        }
-    },
-    {
-        "email": "macaco@gmail.com",
-        "password": "2233",
-        "id": 3,
-        "typeuser": {
-            "type": "Owner",
-            "id": 3,
-            "name": "macaco",
-            "surName": "manito",
-            "dni": "556699"
-        }
-    },
-    {
-        "email": "agustin@gmail.com",
-        "password": "123",
-        "id": 4,
-        "typeuser": {
-            "type": "Owner",
-            "id": 4,
-            "name": "Lucas",
-            "surName": "Chapa",
-            "dni": "78978945"
-        }
-    },
-    {
-        "email": "ddd",
-        "password": "123",
-        "id": 5,
-        "typeuser": {
-            "type": "Owner",
-            "id": 5,
-            "name": "eee",
-            "surName": "rrr",
-            "dni": "4444"
-        }
-    },
-    {
-        "email": "ds",
-        "password": "142",
-        "id": 6,
-        "typeuser": {
-            "type": "Owner",
-            "id": 6,
-            "name": "rr",
-            "surName": "eee",
-            "dni": "333"
+            "id": 1,
+            "name": "1",
+            "surName": "1",
+            "dni": "1"
         }
     }
 ]

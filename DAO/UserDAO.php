@@ -5,13 +5,21 @@ namespace DAO;
 use DAO\IUserDAO as IUserDAO;
 use Models\Owner;
 use Models\User as User;
+use Models\Keeper as Keeper;
 
 class UserDAO implements IUserDAO{
-    private $fileName = ROOT . "Data/users.json";
-    private $userList = array();
-
     
+    private $fileName = ROOT . "Data/users.json";
+    private $fileKeeper = ROOT . "Data/keepers.json";
+    private $userList = array();
+    private $keeperList=array();
 
+    public function GetAll()
+    {
+        
+    }
+    
+    //Owners
     private function RetrieveDataOwner()
     {
         $this->userList = array();
@@ -81,30 +89,100 @@ class UserDAO implements IUserDAO{
         $this->SaveDataOwner();
     }
     
+    public function GetAllOwner()
+    {
+        
+    }
+    
+    //Keepers
     public function AddKeeper($user, $typeUser)
     {
-        ///$this->RetrieveData();
+        $this->RetrieveDataKeeper();
 
         $user->setId($this->GetNextId());
         $typeUser->setId($user->getId());
 
         $user->setTypeUserKeeper($typeUser);
 
-        array_push($this->userList, $user);
+        array_push($this->keeperList, $user);
 
-        //$this->SaveData();
+        $this->SaveDataKeeper();
     }
 
     
-    public function GetAll()
+
+    private function RetrieveDataKeeper()
     {
-        
+        $this->userList = array();
+
+        if (file_exists($this->fileKeeper)) {
+            $jsonToDecode = file_get_contents($this->fileKeeper);
+
+            $contentArray = ($jsonToDecode) ? json_decode($jsonToDecode, true) : array();
+
+            foreach ($contentArray as $content) {
+
+                $user = new User();
+                $user->setEmail($content["email"]);
+                $user->setPassword($content["password"]);
+                $user->setId($content["id"]);
+
+
+                $keeper = new Keeper();
+                $keeper->setKeeper($content["typeuser"]["type"]);
+                $keeper->setId($content["typeuser"]["id"]);
+                $keeper->setName($content["typeuser"]["name"]);
+                $keeper->setLastname($content["typeuser"]["lastname"]);
+                $keeper->setPhoto($content["typeuser"]["photo"]);
+                $keeper->setDni($content["typeuser"]["dni"]);
+                $keeper->setTuition($content["typeuser"]["tuition"]);
+                $keeper->setSex($content["typeuser"]["sex"]);
+                $keeper->setAge($content["typeuser"]["age"]);
+
+                $user->setTypeUserKeeper($keeper);
+
+
+                array_push($this->keeperList, $user);
+            }
+        }
     }
 
-    private function RetrieveDataKeeper(){
-
-    }
+    
     private function SaveDataKeeper()
+    {
+        $arrayToEncode = array();
+        
+        foreach($this->keeperList as $user){
+
+            $valuesArray=array();
+            $valuesArray["email"] = $user->getEmail();
+            $valuesArray["password"] = $user->getPassword();
+            $valuesArray["id"] = $user->getId();
+            
+            $valuesArray["typeuser"] = array(
+                "type" => $user->getTypeUserOwner()->getKeeper(),
+                "id" => $user->getTypeUserOwner()->getId(),
+
+                "name"=> $user->getTypeUserKeeper()->getName(),
+                "lastname"=>$user->getTypeUserKeeper()->getLastname(),
+                "photo" => $user->getTypeUserKeeper()->getPhoto(),
+                "dni" => $user->getTypeUserKeeper()->getDni(),
+                "tuition" => $user->getTypeUserKeeper()->getTuition(),
+                "sex"=>$user->getTypeUserKeeper()->getSex(),
+                "age" => $user->getTypeUserKeeper()->getAge(),
+                
+            );
+
+
+            array_push($arrayToEncode, $valuesArray);
+        }
+
+        $fileContent = json_encode($arrayToEncode, JSON_PRETTY_PRINT);
+
+        file_put_contents($this->fileKeeper, $fileContent);
+    }
+
+    public function GetAllKeeper()
     {
         
     }
@@ -119,13 +197,30 @@ class UserDAO implements IUserDAO{
         return $id + 1;
     }
 
-    public function getByEmail($email)
+    public function getByEmail($email)///owner
     {
         $user = null;
 
         $this->RetrieveDataOwner();
 
         $users = array_filter($this->userList, 
+        function ($user) use ($email) 
+        {
+            return $user->getEmail() == $email;
+        });
+
+        $users = array_values($users); //Reordering array indexes
+
+        return (count($users) > 0) ? $users[0] : null;
+    }
+    
+    public function getByEmail2($email)///keepers
+    {
+        $user = null;
+
+        $this->RetrieveDataKeeper();
+
+        $users = array_filter($this->keeperList, 
         function ($user) use ($email) 
         {
             return $user->getEmail() == $email;

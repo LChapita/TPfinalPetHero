@@ -28,7 +28,7 @@ class OwnerController{
         $dueño = $this->getDueñoOwner();
         
         $petControl->setDueñoPet($dueño);
-        var_dump($dueño);
+        //var_dump($dueño);
 
         require_once(VIEWS_PATH.'nav.php');
         //require_once(VIEWS_PATH."formmascota.php");

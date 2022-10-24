@@ -5,42 +5,86 @@
 namespace Models;
 
 class Keeper{
-    private $id;
+    
     private $name;
-    private $lastName;
-    private $dni;
+	private $lastname;
+	private $photo;
+	private $DNI;
+	private $tuition;
+	private $sex;
+	private $age;
+    private $id;
+    
+    private $keeper;
 
-    public function getId()
-    {
-        return $this->id;
-    }
-    public function setId($id)
-    {
-        $this->id = $id;
-    }
-    public function getName()
-    {
-        return $this->name;
-    }
     public function setName($name)
     {
         $this->name = $name;
     }
-    public function getLastName()
+    public function setLastname($lastname)
     {
-        return $this->lastName;
+        $this->lastname = $lastname;
     }
-    public function setLastName($lastName)
+    public function setPhoto($photo)
     {
-        $this->lastName = $lastName;
+        $this->photo = $photo;
     }
-    public function getDni()
+    public function setDNI($DNI)
     {
-        return $this->dni;
+        $this->DNI = $DNI;
     }
-    public function setDni($dni)
+    public function setTuition($tuition)
     {
-        $this->dni = $dni;
+        $this->tuition = $tuition;
+    }
+    public function setSex($sex)
+    {
+        $this->sex = $sex;
+    }
+    public function setAge($age)
+    {
+        $this->age = $age;
+    }
+    public function setId($id){
+        $this->id=$id;
+    }
+    public function setKeeper($keeper){
+        $this->keeper=$keeper;
+    }
+
+    public function getName()
+    {
+        return $this->name;
+    }
+    public function getLastname()
+    {
+        return $this->lastname;
+    }
+    public function getPhoto()
+    {
+        return $this->photo;
+    }
+    public function getDNI()
+    {
+        return $this->DNI;
+    }
+    public function getTuition()
+    {
+        return $this->tuition;
+    }
+    public function getSex()
+    {
+        return $this->sex;
+    }
+    public function getAge()
+    {
+        return $this->age;
+    }
+    public function getId(){
+        return $this->id;
+    }
+    public function getKeeper(){
+        return $this->keeper;
     }
 }
 
