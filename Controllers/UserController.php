@@ -101,6 +101,10 @@
             $this->GoHome();
         }
 
+        public function ShowAllKeepers($message = "")
+        {
+            require_once(VIEWS_PATH . "keeper-list.php");
+        }
         
 
         public function GoHome()
