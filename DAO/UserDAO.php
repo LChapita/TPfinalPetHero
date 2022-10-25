@@ -99,7 +99,7 @@ class UserDAO implements IUserDAO{
     {
         $this->RetrieveDataKeeper();
 
-        $user->setId($this->GetNextId());
+        $user->setId($this->GetNextIdKeeper());
         $typeUser->setId($user->getId());
 
         $user->setTypeUserKeeper($typeUser);
@@ -138,6 +138,8 @@ class UserDAO implements IUserDAO{
                 $keeper->setTuition($content["typeuser"]["tuition"]);
                 $keeper->setSex($content["typeuser"]["sex"]);
                 $keeper->setAge($content["typeuser"]["age"]);
+                $keeper->setDateStart($content["typeuser"]["dateStart"]);
+                $keeper->setDateFinish($content["typeuser"]["dateFinish"]);
 
                 $user->setTypeUserKeeper($keeper);
 
@@ -170,6 +172,8 @@ class UserDAO implements IUserDAO{
                 "tuition" => $user->getTypeUserKeeper()->getTuition(),
                 "sex"=>$user->getTypeUserKeeper()->getSex(),
                 "age" => $user->getTypeUserKeeper()->getAge(),
+                "dateStart"=>$user->getTypeUserKeeper()->getDateStart(),
+                "dateFinish"=>$user->getTypeUserKeeper()->getDateFinish()
                 
             );
 
@@ -184,14 +188,49 @@ class UserDAO implements IUserDAO{
 
     public function GetAllKeeper()
     {
-        
+        $this->RetrieveDataKeeper();
+        return $this->keeperList;
     }
+    /// modify keeper
 
+    public function AddStays($userIn, $keeper)
+    {
+        $this->RetrieveDataKeeper();
 
+        //$user->setId($this->GetNextIdKeeper());
+        //$typeUser->setId($user->getId());
+
+        $this->Remove($userIn->getId());
+
+        $userIn->setTypeUserKeeper($keeper);
+
+        array_push($this->keeperList, $userIn);
+
+        $this->SaveDataKeeper();
+    }
+    public function Remove($id)
+    {
+        //$this->RetrieveDataKeeper();
+
+        $this->keeperList = array_filter($this->keeperList, function ($keeper) use ($id) {
+            return $keeper->getId() != $id;
+        });
+
+        $this->SaveDataKeeper();
+    }
+    ///
     private function GetNextId()
     {
         $id = 0;
         foreach ($this->userList as $user) {
+            $id = ($user->getId() > $id) ? $user->getId() : $id;
+        }
+        return $id + 1;
+    }
+    private function GetNextIdKeeper()
+    {
+        $id = 0;
+        foreach ($this->keeperList as $user) {
             $id = ($user->getId() > $id) ? $user->getId() : $id;
         }
         return $id + 1;
