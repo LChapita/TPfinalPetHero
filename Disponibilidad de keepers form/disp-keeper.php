@@ -10,7 +10,7 @@ use Models\Keeper;
 <main class="py-5">
      <section id="listado" class="mb-5">
           <div class="container">
-               <h2 class="mb-4">Listado de Keepers Disponibles </h2>
+               <h2 class="mb-4">Listado de Keepers Disponibles entre esas fechas </h2>
                <table class="table bg-light text-center">
                     <thead class="bg-dark text-white">
                          <th>Name</th>
@@ -31,7 +31,7 @@ use Models\Keeper;
                          private $start; /* Se ingresa primer fecha por teclado*/
                          private $finish;  /* Se ingresa segunda  fecha por teclado*/
                            foreach($keeperList as $Keeper) {             
-                 if (($start >= $Keeper->getDateStart() && $finish <= $Keeper->getDateFinish()) || ($start <= $Keeper->getDateStart()l && $finish >= $Keeper->getDateFinish())) {     
+                 if (($start >= $Keeper->getDateStart() && $finish <= $Keeper->getDateFinish())) {     
                     ?>
                     <tr>               
                          <td><?php echo $Keeper->getName() ?></td>
