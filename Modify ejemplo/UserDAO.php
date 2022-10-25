@@ -2,7 +2,7 @@
 
     namespace DAO;
 
-    use Models\CellPhone;
+    use Models\Keeper;
 
     class userDAO implements IUserDAO {
    
