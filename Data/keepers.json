@@ -30,5 +30,37 @@
             "sex": "Male",
             "age": "25"
         }
+    },
+    {
+        "email": "Carolina@gmail.com",
+        "password": "123",
+        "id": 1,
+        "typeuser": {
+            "type": "Keeper",
+            "id": 1,
+            "name": "Carolina",
+            "lastname": "Zoppi",
+            "photo": "img.png",
+            "dni": "45678912",
+            "tuition": "456789",
+            "sex": "Female",
+            "age": "33"
+        }
+    },
+    {
+        "email": "Elian@gmail.com",
+        "password": "852",
+        "id": 1,
+        "typeuser": {
+            "type": "Keeper",
+            "id": 1,
+            "name": "Elian",
+            "lastname": "Olivera",
+            "photo": "carnet.png",
+            "dni": "40855858",
+            "tuition": "321456",
+            "sex": "Male",
+            "age": "20"
+        }
     }
 ]

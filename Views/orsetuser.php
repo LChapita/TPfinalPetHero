@@ -5,14 +5,14 @@
         </header>
         <form action="<?php echo FRONT_ROOT . "Home/itsOwner" ?>" method="POST" class="login-form bg-dark-alpha p-5 bg-light">
             <!-- pasa el owner -->
-
+            
             <input type="hidden" name="email" value="<?php echo $this->isOwner->getEmail() ?>">
             <button name="owner" class="btn btn-primary btn-block btn-lg">
                 Owner
             </button>
         </form>
-        <form action="<?php echo FRONT_ROOT."Home/itsKeeper" ?>" class="login-form bg-dark-alpha p-5 bg-light">
-            <?php echo var_dump($this->isKeeper) ?>
+        <form action="<?php echo FRONT_ROOT . "Home/itsKeeper" ?>" class="login-form bg-dark-alpha p-5 bg-light">
+            
             <input type="hidden" name="email" value="<?php echo $this->isKeeper->getEmail() ?>">
             <button name="keeper" class="btn btn-primary btn-block btn-lg">
                 Keeper

@@ -9,67 +9,76 @@
     class PetController
     {
         private $petDAO;
-        private $dueñoPet;
 
         public function __construct()
         {
             $this->petDAO = new PetDAO();
-            $this->dueñoPet=new Owner();
         }
 
-        
-        public function newPet(){
-            
-            $userArr=new User();
+        public function RegisterPet($name,$race,$vaccinationschendle,$photo,$video)
+        {
 
-            $userArr=$_SESSION;
-            
-            foreach($userArr as $user){
-                $this->setDueñoPet($user->getTypeUserOwner());
+            $userArr = new User();
+
+            $userArr = $_SESSION;
+            foreach ($userArr as $user) {
+                
+                $owner= new Owner();
+    
+                $owner->setOwner($user->getTypeUserOwner()->getOwner());
+                $owner->setId($user->getTypeUserOwner()->getId());
+                $owner->setName($user->getTypeUserOwner()->getName());
+                $owner->setSurName($user->getTypeUserOwner()->getSurName());
+                $owner->setDni($user->getTypeUserOwner()->getDni());
             }
-            //var_dump($this->getDueñoPet());
-            require_once(VIEWS_PATH . "formmascota.php");
-        }
 
-        public function RegisterPet($foto,$name, $vaccinationschendle,$raza,$video)
-        {   
+            //var_dump($owner);
 
             $pet=new Pet();
-            $pet->setFoto($foto);
+            
             $pet->setName($name);
+            $pet->setRaza($race);
             $pet->setVaccinationSchedule($vaccinationschendle);    
-            $pet->setRaza($raza);
+            $pet->setFoto($photo);
             $pet->setVideo($video);
-            
-            $dueño= new Owner();
-            /*
-            $dueño->setOwner($this->dueñoPet->getOwner());
-            $dueño->setId($this->dueñoPet->getId());
-            $dueño->setName($this->dueñoPet->getName());
-            $dueño->setSurName($this->dueñoPet->getSurName());
-            $dueño->setDni($this->dueñoPet->getDni());
-            */
-            
-            $this->petDAO->AddPet($pet, $dueño);
-            
-            $this->newPet();
-        }
 
-        public function getDueñoPet()
-        {
-                return $this->dueñoPet;
-        }
-        public function setDueñoPet(Owner $dueñoPet)
-        {
-                $this->dueñoPet = $dueñoPet;
-        }
-        public function getOwnerSession($user){
+            $pet->setOwnerID($owner->getId());
+            
+            $pet->setOwneR($owner);
 
-            foreach($user as $content){
-                $owner= new Owner();
+            
+            $this->petDAO->Add($pet);
 
+            $this->ShowView();
+        }
+        
+        public function ShowView($message = "") {
+            require_once(VIEWS_PATH . "validate-session.php");
+            require_once(VIEWS_PATH . "pet-list.php");
+        }
+        public function ShowAdd($message = "") {
+            require_once(VIEWS_PATH . "validate-session.php");
+            require_once(VIEWS_PATH . "add-pet.php");
+            require_once(VIEWS_PATH . "pet-list.php");
+        }
+        
+        /*
+        public function Remove($id) {
+            require_once(VIEWS_PATH . "validate-session.php");
+            $petDAO = new petDAO();
+
+            if($id != null) {
+                $Pet = $petDAO ->GetById($id);
+                if($Pet->getVideo()) {
+                    $petDAO ->Remove($id);
+
+                    $this->ShowAddView();
+              
+                } else {
+                    $this->ShowListView("El id no existe");
+                }
             }
-        }
+        }*/
     }
 
 ?>

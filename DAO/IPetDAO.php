@@ -4,7 +4,7 @@ namespace DAO;
 use Models\User as User;
 
 interface IPetDAO{
-    function AddPet($pet, $owner);
+    function Add($pet);
     function GetAllPets();
 }
 

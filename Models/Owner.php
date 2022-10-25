@@ -9,6 +9,7 @@ class Owner{
     private $name;
     private $surName;
     private $dni;
+    
     private $owner;
 
     public function getId()
@@ -52,8 +53,6 @@ class Owner{
     public function setOwner($owner)
     {
         $this->owner = $owner;
-
-        return $this;
     }
 }
 ?>

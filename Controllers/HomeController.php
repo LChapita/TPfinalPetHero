@@ -101,6 +101,7 @@
         ///logueado y menu owner
         public function InLogin($message = "",$owner) {
             require_once(VIEWS_PATH . "validate-session.php");
+            
             $dueño=new OwnerController();
             $dueño->setDueñoOwner($owner);
             $dueño->MenuOwner();

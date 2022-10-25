@@ -11,7 +11,9 @@ class Pet{
 	private $raza;
 	private $video;
 
-	private $dueño;
+	private $ownerID;
+
+	private $owner;
 
 	public function setFoto($foto){
 		$this->foto=$foto;
@@ -51,12 +53,21 @@ class Pet{
 		return $this->video;
 	}
 
-	public function getDueño(){
-		return $this->dueño;
+	/* setear dueño */
+	public function getOwneR(){
+		return $this->owner;
 	}
-	public function setDueño(Owner $owner){
-		$this->dueño=$owner;
+	public function setOwneR(Owner $owner){
+		$this->owner=$owner;
 	}
-
+	/*set id del dueño en pet */
+	public function getOwnerID()
+	{
+		return $this->ownerID;
+	}
+	public function setOwnerID($ownerID)
+	{
+		$this->ownerID = $ownerID;
+	}
 }
 ?> 

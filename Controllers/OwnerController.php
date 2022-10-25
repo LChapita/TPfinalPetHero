@@ -18,23 +18,10 @@ class OwnerController{
 
     public function MenuOwner()
     {
-        require_once(VIEWS_PATH . "validate-session.php");
-        //$petDAO = new PetDAO();
-        //$petList = $petDAO->GetAllPets();
-
-        $petControl=new PetController();
-
-        $dueño = new Owner();
-        $dueño = $this->getDueñoOwner();
-        
-        $petControl->setDueñoPet($dueño);
-        //var_dump($dueño);
-
-        require_once(VIEWS_PATH.'nav.php');
-        //require_once(VIEWS_PATH."formmascota.php");
-        //require_once(VIEWS_PATH . "pet-list.php");
+        require_once(VIEWS_PATH . "validate-session.php");   
+        $this->Show();
     }
-    
+
     public function getDueñoOwner()
     {
         return $this->owner;
@@ -43,6 +30,17 @@ class OwnerController{
     {
         $this->owner = $owner;
     }
+
+    public function Show($message = "")
+    {
+        require_once(VIEWS_PATH . "validate-session.php");
+        //$petDAO = new petDAO();
+        //var_dump($_SESSION);
+        //$petList = $petDAO->GetAllPets();
+        //$petControl = new PetController();
+        require_once(VIEWS_PATH . "pet-list.php");
+    }
+
 }
 
 ?>
