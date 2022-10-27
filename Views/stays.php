@@ -18,6 +18,8 @@ foreach ($userArr as $user) {
     $keeper->setAge($user->getTypeUserKeeper()->getAge());
     $keeper->setId($user->getTypeUserKeeper()->getId());
     $keeper->setKeeper($user->getTypeUserKeeper()->getId());
+    $keeper->setDateStart($user->getTypeUserKeeper()->getDateStart());
+    $keeper->setDateFinish($user->getTypeUserKeeper()->getDateFinish());
 }
 
 require_once('nav-keeper.php');
