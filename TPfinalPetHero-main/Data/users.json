@@ -1,0 +1,38 @@
+[
+    {
+        "email": "1",
+        "password": "1",
+        "id": 1,
+        "typeuser": {
+            "type": "Owner",
+            "id": 1,
+            "name": "1",
+            "surName": "1",
+            "dni": "1"
+        }
+    },
+    {
+        "email": "Chayane@gmail.com",
+        "password": "123",
+        "id": 2,
+        "typeuser": {
+            "type": "Owner",
+            "id": 2,
+            "name": "Chayane",
+            "surName": "Dios",
+            "dni": "456"
+        }
+    },
+    {
+        "email": "ssss@gmail.com",
+        "password": "789",
+        "id": 3,
+        "typeuser": {
+            "type": "Owner",
+            "id": 3,
+            "name": "aaa",
+            "surName": "bbbb",
+            "dni": "741"
+        }
+    }
+]

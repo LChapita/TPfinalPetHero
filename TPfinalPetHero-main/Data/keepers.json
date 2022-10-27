@@ -1,0 +1,74 @@
+[
+    {
+        "email": "1",
+        "password": "1",
+        "id": 1,
+        "typeuser": {
+            "type": "Keeper",
+            "id": 1,
+            "name": "1",
+            "lastname": "1",
+            "photo": "1",
+            "dni": "1",
+            "tuition": "1",
+            "sex": "Female",
+            "age": "18",
+            "dateStart": null,
+            "dateFinish": null
+        }
+    },
+    {
+        "email": "Carolina@gmail.com",
+        "password": "456",
+        "id": 3,
+        "typeuser": {
+            "type": 3,
+            "id": 3,
+            "name": "Carolina",
+            "lastname": "Zoppi",
+            "photo": "img.png",
+            "dni": "98765412",
+            "tuition": "114477",
+            "sex": "Female",
+            "age": "33",
+            "dateStart": null,
+            "dateFinish": null
+        }
+    },
+    {
+        "email": "lucas@gmail.com",
+        "password": "123",
+        "id": 2,
+        "typeuser": {
+            "type": 2,
+            "id": 2,
+            "name": "Lucas ",
+            "lastname": "Chapa",
+            "photo": "img.png",
+            "dni": "87654321",
+            "tuition": "112233",
+            "sex": "Male",
+            "age": "25",
+            "dateStart": "2022-11-01",
+            "dateFinish": "2022-11-06"
+        }
+    },
+    {
+        "email": "caro@ar",
+        "password": "12",
+        "id": 4,
+        "typeuser": {
+            "type": 4,
+            "id": 4,
+            "name": "carolina",
+            "lastname": "zo",
+            "photo": "caro.img",
+            "dni": "1222234554565",
+            "tuition": "1293208",
+            "sex": "Female",
+            "age": "21",
+            "dateStart": "2022-10-01",
+            "dateFinish": "2022-12-31"
+        }
+    }
+]
