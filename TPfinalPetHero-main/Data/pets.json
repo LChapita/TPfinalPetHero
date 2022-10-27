@@ -1,0 +1,34 @@
+[
+    {
+        "foto": "images.jpg",
+        "name": "pepe",
+        "vaccinationSchedule": "3",
+        "raza": "chiguagua",
+        "video": "",
+        "id": 1,
+        "ownerID": 2,
+        "owner": {
+            "type": "Owner",
+            "id": 2,
+            "name": "Chayane",
+            "surName": "Dios",
+            "dni": "456"
+        }
+    },
+    {
+        "foto": "image_2022-08-06_025442949.webp",
+        "name": "Leon",
+        "vaccinationSchedule": "5",
+        "raza": "Pila",
+        "video": "",
+        "id": 2,
+        "ownerID": 3,
+        "owner": {
+            "type": "Owner",
+            "id": 3,
+            "name": "aaa",
+            "surName": "bbbb",
+            "dni": "741"
+        }
+    }
+]
