@@ -52,5 +52,23 @@
             "dateStart": "2022-11-01",
             "dateFinish": "2022-11-06"
         }
+    },
+    {
+        "email": "caro@ar",
+        "password": "12",
+        "id": 4,
+        "typeuser": {
+            "type": 4,
+            "id": 4,
+            "name": "carolina",
+            "lastname": "zo",
+            "photo": "caro.img",
+            "dni": "1222234554565",
+            "tuition": "1293208",
+            "sex": "Female",
+            "age": "21",
+            "dateStart": "2022-10-01",
+            "dateFinish": "2022-12-31"
+        }
     }
 ]

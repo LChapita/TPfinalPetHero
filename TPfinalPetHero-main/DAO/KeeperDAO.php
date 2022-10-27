@@ -104,11 +104,7 @@ class KeeperDAO implements IKeeperDAO
         file_put_contents($this->fileKeeper, $fileContent);
     }
 
-    public function GetAllKeeper()
-    {
-        $this->RetrieveData();
-        return $this->keeperList;
-    }
+   
     public function GetById($id)
     {
         $this->RetrieveData();
