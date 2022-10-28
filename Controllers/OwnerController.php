@@ -38,9 +38,10 @@ class OwnerController{
         require_once(VIEWS_PATH . "validate-session.php");
         require_once(VIEWS_PATH . "pet-list.php");
     }
+    
     public function ShowAllKeepers($message = "")
     {
-        require_once(VIEWS_PATH . "keeper-list.php");
+        require_once(VIEWS_PATH . "owners/keeper-list.php");
     }
 
     public function RegisterOwner($email, $password, $name, $lastname, $dni)

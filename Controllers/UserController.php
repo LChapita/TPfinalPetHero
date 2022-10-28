@@ -43,7 +43,11 @@
 
         public function ConsultKeeper($message = "")
         {
-            require_once(VIEWS_PATH . "disp-keeper.php");
+            require_once(VIEWS_PATH . "owners\disp-keeper.php");
+        }
+        public function ReservtKeeper($message = "")
+        {
+            require_once(VIEWS_PATH . "owners\Reserv.php");
         }
     }
 ?>

@@ -7,7 +7,8 @@ use Controllers\PetController;
 use Models\Pet as Pet;
 use Models\Owner as Owner;
 
-require_once('nav.php');
+require_once(VIEWS_PATH."nav.php");
+
 ?>
 <main class="py-5">
     <section  class="mb-5">
