@@ -30,5 +30,53 @@
             "surName": "bbbb",
             "dni": "741"
         }
+    },
+    {
+        "foto": "images.jpg",
+        "name": "pompom",
+        "vaccinationSchedule": "hib,ptitib",
+        "raza": "coneja",
+        "video": "",
+        "id": 3,
+        "ownerID": 2,
+        "owner": {
+            "type": "Owner",
+            "id": 2,
+            "name": "Chayane",
+            "surName": "Dios",
+            "dni": "456"
+        }
+    },
+    {
+        "foto": "chiguagua.jpg",
+        "name": "Pepito",
+        "vaccinationSchedule": "epatiti b",
+        "raza": "chiguagua",
+        "video": "",
+        "id": 4,
+        "ownerID": 5,
+        "owner": {
+            "type": "Owner",
+            "id": 5,
+            "name": "Ezequiel",
+            "surName": "Chapa",
+            "dni": "12345689"
+        }
+    },
+    {
+        "foto": "pequines.jpg",
+        "name": "Pegui",
+        "vaccinationSchedule": "1",
+        "raza": "Pequines",
+        "video": "",
+        "id": 5,
+        "ownerID": 5,
+        "owner": {
+            "type": "Owner",
+            "id": 5,
+            "name": "Ezequiel",
+            "surName": "Chapa",
+            "dni": "12345689"
+        }
     }
 ]

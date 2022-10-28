@@ -26,8 +26,6 @@ class KeeperDAO implements IKeeperDAO
         return $this->keeperList;
     
     }
-    
-            
 
     private function RetrieveData()
     {

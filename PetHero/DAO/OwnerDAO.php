@@ -6,8 +6,8 @@ use DAO\IOwnerDAO as IOwnerDAO;
 
 class OwnerDAO implements IOwnerDAO
 {
-    private $fileName = ROOT . "Data/Owner.json";
-    private $OwnerList = array();
+    private $fileName = ROOT . "Data/owners.json";
+    private $ownerList = array();
 
     public function Add($owner)
     {
@@ -15,18 +15,15 @@ class OwnerDAO implements IOwnerDAO
 
         $owner->setId($this->GetNextId());
 
-        array_push($this->OwnerList,$owner);
+        array_push($this->ownerList,$owner);
 
         $this->SaveData();
         
     }
     
-    
-            
-
     private function RetrieveData()
     {
-        $this->OwnerList = array();
+        $this->ownerList = array();
 
         if (file_exists($this->fileName)) {
             $jsonToDecode = file_get_contents($this->fileName);
