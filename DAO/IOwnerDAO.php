@@ -1,4 +1,5 @@
 <?php
+
 namespace DAO;
 use Models\Owner as Owner;
 

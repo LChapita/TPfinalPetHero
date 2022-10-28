@@ -1,51 +1,52 @@
 <?php
     namespace Controllers;
 
+    use Controllers\KeeperController as KeeperController;
+    use Controllers\OwnerController as OwnerController;
 
-    use DAO\UserDAO as UserDAO;
+    use DAO\OwnerDAO as OwnerDAO;
+    use DAO\KeeperDAO as KeeperDAO;
+    
     use Models\User as User;
     use Models\Owner as Owner;
+    use Models\Keeper as Keeper;
     
-    use Controllers\OwnerController as OwnerController;
-    use Controllers\KeeperController as KeeperController;
     class HomeController
     {
-        private $userDAO;
-        private $ownerP;
+        private $ownerDAO;
+        private $keeperDAO;
 
         private $isOwner;
         private $isKeeper;
 
         public function __construct()
         {
-            $this->userDAO = new UserDAO();
+            $this->ownerDAO= new OwnerDAO();
+            $this->keeperDAO= new KeeperDAO();
             $this->isOwner=new User();
             $this->isKeeper=new User();
         }
+
         public function Index($message = "")
         {
             require_once(VIEWS_PATH."home.php");
         }
-        public function GoFirstPage(){
-            header('Location:../index.php');
-        }
         
         //validacion
-
         public function EnterUser($email,$password){
-            $user =$this->userDAO->getByEmail($email);
+            $owner =$this->ownerDAO->getByEmail($email);
 
-            $keeper=$this->userDAO->getByEmail2($email);
+            $keeper=$this->keeperDAO->getByEmail($email);
 
-            if((($user != null)&&($user->getPassword()==$password)) && (($keeper != null) && ($keeper->getPassword() == $password)))
+            if((($owner != null)&&($owner->getPassword()==$password)) && (($keeper != null) && ($keeper->getPassword() == $password)))
             {
             ///validar si es keeper o owner
-                $this->isOwner=$user;
+                $this->isOwner= $owner;
                 $this->isKeeper=$keeper;
                 $this->OwnerOrKeeper();
             } 
             else{
-                if(($user != null) && ($user->getPassword() == $password)){
+                if(($owner != null) && ($owner->getPassword() == $password)){
                     $user = $this->userDAO->getByEmail($email);
                     $_SESSION["loggedUser"] = $user;
 
@@ -76,9 +77,9 @@
         public function OwnerOrKeeper(){
             require_once(VIEWS_PATH."orsetuser.php");
         }
-
+        ///es Owner
         public function itsOwner($email){
-            $user = $this->userDAO->getByEmail($email);
+            $user = $this->ownerDAO->getByEmail($email);
             $_SESSION["loggedUser"] = $user;
             //$user=$_SESSION["loggedUser"];
             
@@ -91,13 +92,6 @@
                
             $this->InLogin("Welcome",$owner);
         }
-
-        public function itsKeeper($email){
-            $keeper = $this->userDAO->getByEmail2($email);
-            $_SESSION["loggedUser"] = $keeper;
-            $this->InKeeper("Welcome",$keeper);
-        }
-
         ///logueado y menu owner
         public function InLogin($message = "",$owner) {
             require_once(VIEWS_PATH . "validate-session.php");
@@ -106,6 +100,13 @@
             $dueño->setDueñoOwner($owner);
             $dueño->MenuOwner();
         }
+        ///es Keeper
+        public function itsKeeper($email){
+            $keeper = $this->keeperDAO->getByEmail($email);
+            $_SESSION["loggedUser"] = $keeper;
+            $this->InKeeper("Welcome",$keeper);
+        }
+
         /// login de keeper
         public function InKeeper($message = "",$keeper) {
             require_once(VIEWS_PATH . "validate-session.php");
@@ -113,6 +114,8 @@
             $keeperM->setKeeper($keeper);
             $keeperM->MenuKeeper();
         }
+
+
         //botones de registro o login
         public function LogIn(){
             require_once(VIEWS_PATH."index.php");

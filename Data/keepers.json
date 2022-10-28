@@ -88,5 +88,23 @@
             "dateStart": "2022-10-27",
             "dateFinish": "2022-10-30"
         }
+    },
+    {
+        "email": "toto@gmail.com",
+        "password": "1234",
+        "id": 6,
+        "typeuser": {
+            "type": "Keeper",
+            "id": 6,
+            "name": "Tito",
+            "lastname": "Bambino",
+            "photo": "img.png",
+            "dni": "45685289",
+            "tuition": "4567",
+            "sex": "Male",
+            "age": "37",
+            "dateStart": null,
+            "dateFinish": null
+        }
     }
 ]

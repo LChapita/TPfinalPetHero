@@ -10,7 +10,7 @@
         private $pdo = null;
         private $pdoStatement = null;
         private static $instance = null;
-
+         
         private function __construct()
         {
             try
