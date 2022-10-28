@@ -15,7 +15,7 @@ class OwnerDAO implements IOwnerDAO
 
         $owner->setId($this->GetNextId());
 
-        array_push($this->OwnerList,$owner);
+        array_push($this->ownerList,$owner);
 
         $this->SaveData();
         
@@ -23,7 +23,7 @@ class OwnerDAO implements IOwnerDAO
     
     private function RetrieveData()
     {
-        $this->OwnerList = array();
+        $this->ownerList = array();
 
         if (file_exists($this->fileName)) {
             $jsonToDecode = file_get_contents($this->fileName);
