@@ -18,24 +18,6 @@
         }
     },
     {
-        "email": "Carolina@gmail.com",
-        "password": "456",
-        "id": 3,
-        "typeuser": {
-            "type": 3,
-            "id": 3,
-            "name": "Carolina",
-            "lastname": "Zoppi",
-            "photo": "img.png",
-            "dni": "98765412",
-            "tuition": "114477",
-            "sex": "Female",
-            "age": "33",
-            "dateStart": null,
-            "dateFinish": null
-        }
-    },
-    {
         "email": "lucas@gmail.com",
         "password": "123",
         "id": 2,
@@ -54,21 +36,57 @@
         }
     },
     {
-        "email": "caro@ar",
-        "password": "12",
+        "email": "Carolina@gmail.com",
+        "password": "456",
+        "id": 3,
+        "typeuser": {
+            "type": 3,
+            "id": 3,
+            "name": "Carolina",
+            "lastname": "Zoppi",
+            "photo": "img.png",
+            "dni": "98765412",
+            "tuition": "114477",
+            "sex": "Female",
+            "age": "33",
+            "dateStart": "2022-11-01",
+            "dateFinish": "2022-11-06"
+        }
+    },
+    {
+        "email": "agustin@gmail.com",
+        "password": "789",
         "id": 4,
         "typeuser": {
             "type": 4,
             "id": 4,
-            "name": "carolina",
-            "lastname": "zo",
-            "photo": "caro.img",
-            "dni": "1222234554565",
-            "tuition": "1293208",
-            "sex": "Female",
-            "age": "21",
-            "dateStart": "2022-10-01",
-            "dateFinish": "2022-12-31"
+            "name": "Agustin",
+            "lastname": "Chapa",
+            "photo": "img.png",
+            "dni": "12457896",
+            "tuition": "124577",
+            "sex": "Male",
+            "age": "23",
+            "dateStart": "2022-10-27",
+            "dateFinish": "2022-10-29"
+        }
+    },
+    {
+        "email": "ezequiel@gmail.com",
+        "password": "159",
+        "id": 5,
+        "typeuser": {
+            "type": 5,
+            "id": 5,
+            "name": "Ezequiel",
+            "lastname": "Chapa",
+            "photo": "img.png",
+            "dni": "13258974",
+            "tuition": "112233",
+            "sex": "Male",
+            "age": "30",
+            "dateStart": "2022-10-27",
+            "dateFinish": "2022-10-30"
         }
     }
 ]

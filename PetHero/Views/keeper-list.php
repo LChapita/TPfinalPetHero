@@ -2,6 +2,7 @@
 
 require_once(VIEWS_PATH . "validate-session.php");
 
+use DAO\KeeperDAO;
 use DAO\userDAO;
 use Models\User;
 use Models\Keeper;
@@ -31,10 +32,10 @@ require_once('nav.php');
                 <tbody>
                     <?php
 
-                    $userDAO = new userDAO();
+                    $keeperDAO=new KeeperDAO();
                     //$user = new User();
-                    $keeperList = $userDAO->GetAllKeeper();
-
+                    $keeperList = $keeperDAO->GetAllKeepers();
+                    
                     foreach ($keeperList as $keeper) { //ensi es un user
                     ?>
                         <tr>

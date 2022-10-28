@@ -43,7 +43,6 @@ foreach ($userArr as $user) {
                         <td><?php echo $userMenu->getPassword() ?></td>
                         <td><?php echo $userMenu->getId() ?></td>
                 </tbody>
-                <br>
                 <thead class="bg-dark text-white">
                     <th>Name</th>
                     <th>Last Name</th>
@@ -61,7 +60,6 @@ foreach ($userArr as $user) {
                         <td><?php echo $keeper->getDNI() ?></td>
                         <td><?php echo $keeper->getTuition() ?></td>
                         <td><?php echo $keeper->getSex() ?></td>
-                        <td><?php echo $keeper->getAge() ?></td>
                         <td><?php echo $keeper->getAge() ?></td>
                 </tbody>
 
