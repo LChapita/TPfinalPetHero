@@ -1,7 +1,7 @@
 <?php
     namespace DAO;
 
-    use PDO\PDO as PDO;
+    use \PDO as PDO;
     use \Exception as Exception;
     use DAO\QueryType as QueryType;
 
