@@ -52,7 +52,7 @@ require_once('nav.php');
                          //
                          foreach ($keeperList as $keeper) {
                               //var_dump($keeper);
-
+                          if ((($keeper->getTypeUserKeeper()->getDateStart()) &&  ($keeper->getTypeUserKeeper()->getDateFinish())) !=null){
                               if (($start <= $keeper->getTypeUserKeeper()->getDateStart() && $finish >= $keeper->getTypeUserKeeper()->getDateFinish())) {
                          ?>
                                    <tr>
@@ -71,8 +71,8 @@ require_once('nav.php');
                                        
                                    </tr>
                          <?php
-                               } 
-                         }
+                               } }
+                         } 
                          ?>
                     </tbody>
                </table>
