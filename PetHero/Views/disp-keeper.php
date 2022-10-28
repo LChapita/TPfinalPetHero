@@ -13,7 +13,7 @@ require_once('nav.php');
 <main class="py-5">
      <section id="listado" class="mb-5">
           <div class="container">
-               <h2 class="mb-4">Listado de Keepers Disponibles entre esas fechas</h2>
+               <h2 class="mb-4">Listado de Keepers Disponibles entre fechas ingresadas</h2>
                <table class="table bg-light text-center">
                     <thead class="bg-dark text-white">
                          <th>Name</th>
@@ -26,18 +26,22 @@ require_once('nav.php');
                          <th>Id</th>
                          <th>Date Start</th>
                          <th>Date Finish</th>
-                    </thead>
+                    
                     <tbody>
-                         <form>
-                              <label>Add first Date</label>
-                              <input type="date" name="start" value="2022-10-27">
-                              <label>Add finish Date</label>
-                              <input type="date" name="finish" value="2022-10-30">
+                         <form method="post" action="">
+                              <label><h5>Add first Date: </5></label>
+                              <input type="date" name=start required>
+                              <label><h5>Add finish Date: </5></label>
+                              <input type="date" name="finish" required>
+                              <button type="submit" name="consultar" value="consultar">Consultar</button>
                          </form>
-                         <?php
-                         ///realizar un form con input antes de mostrar
-                         $start= "2022-10-27";
-                         $finish="2022-10-29";
+                         <?php  
+                         
+                        error_reporting(E_ALL^E_NOTICE);
+                        $start = $_POST['start'];
+                        $finish =$_POST['finish'];
+                
+                         
 
                          $keeperDAO = new KeeperDAO();
                          //$keeper = new Keeper();
@@ -49,7 +53,7 @@ require_once('nav.php');
                          foreach ($keeperList as $keeper) {
                               //var_dump($keeper);
 
-                              if (($start >= $keeper->getTypeUserKeeper()->getDateStart() && $finish <= $keeper->getTypeUserKeeper()->getDateFinish())) {
+                              if (($start <= $keeper->getTypeUserKeeper()->getDateStart() && $finish >= $keeper->getTypeUserKeeper()->getDateFinish())) {
                          ?>
                                    <tr>
                                         <td><?php echo $keeper->getTypeUserKeeper()->getName() ?></td>
@@ -66,11 +70,8 @@ require_once('nav.php');
 
                                        
                                    </tr>
-
                          <?php
-                              } else {
-                                   echo "No hay Keepers disponibles";
-                              }
+                               } 
                          }
                          ?>
                     </tbody>
