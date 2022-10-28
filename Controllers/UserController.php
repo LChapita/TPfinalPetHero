@@ -111,6 +111,10 @@
         {
             header('Location:'.FRONT_ROOT. 'Home/GoFirstPage');
         }
-        
+
+        public function ConsultKeeper($message = "")
+        {
+            require_once(VIEWS_PATH . "disp-keeper.php");
+        }
     }
 ?>
