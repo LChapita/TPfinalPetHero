@@ -11,6 +11,8 @@
 
                 <label for="" name="fechafinish">date finish</label>
                 <input type="text" name="fechafinish" id="fechafinish"><br><br>
+                <button type="submit">ingresar reserva</button>
+                <button type="submit">finish</button>
 
             </form>
         </body>
