@@ -14,5 +14,37 @@
             "surName": "Chapa",
             "dni": "78945612"
         }
+    },
+    {
+        "foto": "chiguagua.jpg",
+        "name": "Pepe",
+        "vaccinationSchedule": "https:\/\/www.youtube.com\/watch?v=ZsV8aj0LKs4&ab_channel=syko",
+        "raza": "chiguagua",
+        "video": "",
+        "id": 2,
+        "ownerID": 2,
+        "owner": {
+            "type": "Owner",
+            "id": 2,
+            "name": "Agust\u00edn",
+            "surName": "Chapa",
+            "dni": "12457896"
+        }
+    },
+    {
+        "foto": "golden.jpg",
+        "name": "pampa",
+        "vaccinationSchedule": "https:\/\/www.youtube.com\/watch?v=ci36yIHetMs&ab_channel=KILLER",
+        "raza": "Golden",
+        "video": "",
+        "id": 3,
+        "ownerID": 2,
+        "owner": {
+            "type": "Owner",
+            "id": 2,
+            "name": "Agust\u00edn",
+            "surName": "Chapa",
+            "dni": "12457896"
+        }
     }
 ]

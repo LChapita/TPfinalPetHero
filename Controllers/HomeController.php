@@ -47,7 +47,7 @@
             } 
             else{
                 if(($owner != null) && ($owner->getPassword() == $password)){
-                    $user = $this->userDAO->getByEmail($email);
+                    $user = $this->ownerDAO->getByEmail($email);
                     $_SESSION["loggedUser"] = $user;
 
                     $owner = new Owner();
@@ -62,7 +62,7 @@
                 else
                 {
                     if(($keeper!=null)&&($keeper->getPassword()==$password)){
-                        $keeper = $this->userDAO->getByEmail2($email);
+                        $keeper = $this->keeperDAO->getByEmail($email);
                         $_SESSION["loggedUser"] = $keeper;
                         $this->InKeeper("Welcome", $keeper);
                     }else
