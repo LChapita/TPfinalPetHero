@@ -44,7 +44,7 @@ require_once(VIEWS_PATH."nav.php");
                             <td><?php echo $pet->getOwnerID() ?></td>
                             <td><?php echo $pet->getName() ?></td>
                             <td><?php echo $pet->getRaza() ?></td>
-                            <td><?php echo $pet->getVaccinationSchedule() ?></td>
+                            <td><a href="<?php echo $pet->getVaccinationSchedule() ?>">Vacunaciones</a></td>
                             <td><?php echo $pet->getFoto() ?></td>
                             <td><?php echo $pet->getVideo() ?></td>
                         </tr>

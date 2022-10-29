@@ -11,11 +11,11 @@ use \DAO\UserDAO as UserDAO;
 
 class OwnerController{
 
+    private $ownerDAO;
     private $owner;
-
     public function __construct()
     {
-        $this->owner = new OwnerDAO();
+        $this->ownerDAO = new OwnerDAO();
     }
 
     public function MenuOwner()
@@ -36,7 +36,7 @@ class OwnerController{
     public function Show($message = "")
     {
         require_once(VIEWS_PATH . "validate-session.php");
-        require_once(VIEWS_PATH . "pet-list.php");
+        require_once(VIEWS_PATH . "owners/pet-list.php");
     }
     
     public function ShowAllKeepers($message = "")
@@ -57,11 +57,12 @@ class OwnerController{
         $owner->setSurName($lastname);
         $owner->setDni($dni);
 
-        $this->userDAO->AddOwner($user, $owner);
+        $this->ownerDAO->Add($user, $owner);
 
 
         $this->GoHome();
     }
+
     public function GoHome()
     {
         header('Location:' . FRONT_ROOT . 'Home/GoFirstPage');

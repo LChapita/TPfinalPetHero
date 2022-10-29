@@ -18,8 +18,10 @@ class Keeper{
     private $keeper;
 
     private $date;
+
     private $dateS;
     private $dateF;
+    
     private $numbersofpets;
     
     public function setName($name)

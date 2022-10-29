@@ -54,7 +54,7 @@
         
         public function ShowView($message = "") {
             require_once(VIEWS_PATH . "validate-session.php");
-            require_once(VIEWS_PATH . "pet-list.php");
+            require_once(VIEWS_PATH . "owners/pet-list.php");
         }
         public function ShowAdd($message = "") {
             require_once(VIEWS_PATH . "validate-session.php");

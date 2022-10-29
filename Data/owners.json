@@ -1,74 +1,38 @@
 [
     {
-        "email": "1",
-        "password": "1",
+        "email": "lucas@gmail.com",
+        "password": "123",
         "id": 1,
         "typeuser": {
             "type": "Owner",
             "id": 1,
-            "name": "1",
-            "surName": "1",
-            "dni": "1"
+            "name": "Lucas",
+            "surname": "Chapa",
+            "dni": "12345678"
         }
     },
     {
-        "email": "Chayane@gmail.com",
-        "password": "123",
+        "email": "agustin@gmail.com",
+        "password": "456",
         "id": 2,
         "typeuser": {
             "type": "Owner",
             "id": 2,
-            "name": "Chayane",
-            "surName": "Dios",
-            "dni": "456"
+            "name": "Agust\u00edn",
+            "surname": "Chapa",
+            "dni": "12457896"
         }
     },
     {
-        "email": "ssss@gmail.com",
+        "email": "ezequiel@gmail.com",
         "password": "789",
         "id": 3,
         "typeuser": {
             "type": "Owner",
             "id": 3,
-            "name": "aaa",
-            "surName": "bbbb",
-            "dni": "741"
-        }
-    },
-    {
-        "email": "lucas@gmail.com",
-        "password": "123",
-        "id": 4,
-        "typeuser": {
-            "type": "Owner",
-            "id": 4,
-            "name": "Lucas",
-            "surName": "Chapa",
-            "dni": "12345678"
-        }
-    },
-    {
-        "email": "ezequiel@gmail.com",
-        "password": "147",
-        "id": 5,
-        "typeuser": {
-            "type": "Owner",
-            "id": 5,
             "name": "Ezequiel",
-            "surName": "Chapa",
-            "dni": "12345689"
-        }
-    },
-    {
-        "email": "ezequiel@gmail.com",
-        "password": "159",
-        "id": 6,
-        "typeuser": {
-            "type": "Owner",
-            "id": 6,
-            "name": "Ezequiel",
-            "surName": "Chapa",
-            "dni": "456788798"
+            "surname": "Chapa",
+            "dni": "78945612"
         }
     }
 ]

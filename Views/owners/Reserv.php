@@ -54,6 +54,7 @@ require_once(VIEWS_PATH . "nav.php");
                     //private $start; /* Se ingresa primer fecha por teclado*/
                     //private $finish;  /* Se ingresa segunda  fecha por teclado*/
                     //
+                    ///owner,keeper,idReserva idPerroAsociadoAlKeeper
                     foreach ($keeperList as $keeper) {
                         //var_dump($keeper);
                         if ((($keeper->getTypeUserKeeper()->getDateStart()) &&  ($keeper->getTypeUserKeeper()->getDateFinish())) != null) {
@@ -71,7 +72,8 @@ require_once(VIEWS_PATH . "nav.php");
 
                                     <td><?php echo $keeper->getTypeUserKeeper()->getDateStart() ?></td>
                                     <td><?php echo $keeper->getTypeUserKeeper()->getDateFinish() ?></td>
-                                    <form method="post" action="">
+
+                                    <form action="" method="post">
 
                                         <td> <button type="submit" name="reservar" value="reservar">Reservar</button></td>
                                     </form>

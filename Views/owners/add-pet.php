@@ -32,7 +32,7 @@ require_once(VIEWS_PATH."nav.php");
                             <input type="text" name="race" required>
                         </td>
                         <td>
-                            <input type="text" name="vaccinationschendle" required>
+                            <input type="url" name="vaccinationschendle" required>
                         </td>
                         <td>
                             <input type="file" name="photo" required>

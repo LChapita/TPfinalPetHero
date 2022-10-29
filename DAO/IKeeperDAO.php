@@ -4,7 +4,7 @@ namespace DAO;
 use Models\Keeper as Keeper;
 
 interface IKeeperDAO{
-    function Add($keeper);
+    function Add($user,$keeper);
     function GetAllKeepers();
 }
 

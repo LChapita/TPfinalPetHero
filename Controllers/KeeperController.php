@@ -2,30 +2,33 @@
 
 namespace Controllers;
 
-use Controllers\PetController as PetController;
-
-use Models\Owner as Owner;
 use Models\Keeper as Keeper;
-use Models\Pet as Pet;
 use Models\User as User;
 
-use DAO\PetDAO as PetDAO;
-use DAO\UserDAO as UserDAO;
+use DAO\KeeperDAO as KeeperDAO;
 
 class KeeperController{
-    private $userDAO;
+    private $keeperDAO;
     private $keeper;
 
     public function __construct()
     {
-        $this->userDAO = new UserDAO();
-        $this->keeper= new Keeper();
+        $this->keeperDAO = new KeeperDAO();
+    }
+
+    public function getKeeperC()
+    {
+        return $this->keeper;
+    }
+    public function setKeeperC($keeper)
+    {
+        $this->keeper = $keeper;
     }
     public function MenuKeeper()
     {
         //MENU DE KEEPER
         require_once(VIEWS_PATH . "validate-session.php");
-        require_once(VIEWS_PATH . "menu-keeper.php");
+        require_once(VIEWS_PATH . "keepers/menu-keeper.php");
     }
 
     public function RegisterKeeper($email, $password, $name, $lastname, $photo, $dni, $tuition, $sex, $age)
@@ -60,7 +63,7 @@ class KeeperController{
             $keeper->setAge($age);
         }
 
-        $this->userDAO->AddKeeper($user, $keeper);
+        $this->keeperDAO->Add($user, $keeper);
 
         $this->GoHome();
     }
@@ -74,7 +77,7 @@ class KeeperController{
     public function ShowAddStays(){
         require_once(VIEWS_PATH . "validate-session.php");
         
-        require_once(VIEWS_PATH . "stays.php");
+        require_once(VIEWS_PATH . "keepers/stays.php");
     }
     
     public function WelcomeKeeper(){
@@ -108,7 +111,7 @@ class KeeperController{
         
         
 
-        $this->userDAO->AddStays($userIn,$keeper);
+        $this->keeperDAO->AddStays($userIn,$keeper);
 
         $this->MenuKeeper();
 

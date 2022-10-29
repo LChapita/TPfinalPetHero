@@ -11,13 +11,16 @@ class OwnerDAO implements IOwnerDAO
     private $ownerList = array();
 
 
-    public function Add($owner)
+    public function Add($user,$owner)
     {
         $this->RetrieveData();
 
-        $owner->setId($this->GetNextId());
+        $user->setId($this->GetNextId());
+        $owner->setId($user->getId());
 
-        array_push($this->ownerList,$owner);
+        $user->setTypeUserOwner($owner);
+
+        array_push($this->ownerList, $user);
 
         $this->SaveData();
         
@@ -44,7 +47,7 @@ class OwnerDAO implements IOwnerDAO
                 $owner->setOwner($content["typeuser"]["type"]);
                 $owner->setId($content["typeuser"]["id"]);
                 $owner->setName($content["typeuser"]["name"]);
-                $owner->setSurName($content["typeuser"]["surName"]);
+                $owner->setSurName($content["typeuser"]["surname"]);
                 $owner->setDni($content["typeuser"]["dni"]);
 
                 $user->setTypeUserOwner($owner);
@@ -68,13 +71,12 @@ class OwnerDAO implements IOwnerDAO
             $valuesArray["id"] = $user->getId();
             
             $valuesArray["typeuser"] = array(
-                "type" => $user->getTypeUserOwner()->GetOwner(),
+                "type" => $user->getTypeUserOwner()->getOwner(),
                 "id" => $user->getTypeUserOwner()->getId(),
 
                 "name"=> $user->getTypeUserOwner()->getName(),
                 "surname"=>$user->getTypeUserOwner()->getSurname(),
                 "dni" => $user->getTypeUserOwner()->getDni(),
-                
             );
 
 
@@ -83,7 +85,7 @@ class OwnerDAO implements IOwnerDAO
 
         $fileContent = json_encode($arrayToEncode, JSON_PRETTY_PRINT);
 
-        file_put_contents($this->fileOwner, $fileContent);
+        file_put_contents($this->fileName, $fileContent);
     }
 
     public function GetAllOwner()

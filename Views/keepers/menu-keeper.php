@@ -1,31 +1,21 @@
 <?php
 require_once("nav-keeper.php");
 
-use DAO\UserDAO;
+use DAO\KeeperDAO;
 use Models\User;
 use Models\Keeper;
 
+$keeperDAO=new KeeperDAO();
 $userMenu = new User();
 $userArr = $_SESSION;
+
 foreach ($userArr as $user) {
     $userMenu->setEmail($user->getEmail());
     $userMenu->setPassword($user->getPassword());
     $userMenu->setId($user->getId());
 
-    $keeper = new Keeper();
-    $keeper->setName($user->getTypeUserKeeper()->getName());
-    $keeper->setLastname($user->getTypeUserKeeper()->getLastname());
-    $keeper->setPhoto($user->getTypeUserKeeper()->getPhoto());
-    $keeper->setDNI($user->getTypeUserKeeper()->getDNI());
-    $keeper->setTuition($user->getTypeUserKeeper()->getTuition());
-    $keeper->setSex($user->getTypeUserKeeper()->getSex());
-    $keeper->setAge($user->getTypeUserKeeper()->getAge());
-    $keeper->setId($user->getTypeUserKeeper()->getId());
-    $keeper->setKeeper($user->getTypeUserKeeper()->getId());
-    $keeper->setDateStart($user->getTypeUserKeeper()->getDateStart());
-    $keeper->setDateFinish($user->getTypeUserKeeper()->getDateFinish());
 }
-//var_dump($user);
+$keeper=$keeperDAO->getByEmail($userMenu->getEmail());
 ?>
 <main class="py-5">
     <section id="listado" class="mb-5">
@@ -54,13 +44,13 @@ foreach ($userArr as $user) {
                 </thead>
                 <tbody>
                     <tr>
-                        <td><?php echo $keeper->getName() ?></td>
-                        <td><?php echo $keeper->getLastname() ?></td>
-                        <td><?php echo $keeper->getPhoto() ?></td>
-                        <td><?php echo $keeper->getDNI() ?></td>
-                        <td><?php echo $keeper->getTuition() ?></td>
-                        <td><?php echo $keeper->getSex() ?></td>
-                        <td><?php echo $keeper->getAge() ?></td>
+                        <td><?php echo $keeper->getTypeUserKeeper()->getName() ?></td>
+                        <td><?php echo $keeper->getTypeUserKeeper()->getLastname() ?></td>
+                        <td><?php echo $keeper->getTypeUserKeeper()->getPhoto() ?></td>
+                        <td><?php echo $keeper->getTypeUserKeeper()->getDNI() ?></td>
+                        <td><?php echo $keeper->getTypeUserKeeper()->getTuition() ?></td>
+                        <td><?php echo $keeper->getTypeUserKeeper()->getSex() ?></td>
+                        <td><?php echo $keeper->getTypeUserKeeper()->getAge() ?></td>
                 </tbody>
 
                 <thead class="bg-dark text-white">
@@ -69,10 +59,13 @@ foreach ($userArr as $user) {
                 </thead>
                 <tbody>
                     <tr>
-                        <td><?php echo $keeper->getDateStart() ?></td>
-                        <td><?php echo $keeper->getDateFinish() ?></td>
+                        <td><?php echo $keeper->getTypeUserKeeper()->getDateStart() ?></td>
+                        <td><?php echo $keeper->getTypeUserKeeper()->getDateFinish() ?></td>
                 </tbody>
             </table>
         </div>
     </section>
 </main>
+<?php
+    require_once(VIEWS_PATH."footer.php");
+?>

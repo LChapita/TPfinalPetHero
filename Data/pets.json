@@ -1,82 +1,18 @@
 [
     {
-        "foto": "images.jpg",
-        "name": "pepe",
-        "vaccinationSchedule": "3",
-        "raza": "chiguagua",
+        "foto": "pequines.jpg",
+        "name": "Pegui",
+        "vaccinationSchedule": "https:\/\/www.youtube.com\/watch?v=mCdA4bJAGGk&ab_channel=sweetblue.",
+        "raza": "Pequines",
         "video": "",
         "id": 1,
-        "ownerID": 2,
-        "owner": {
-            "type": "Owner",
-            "id": 2,
-            "name": "Chayane",
-            "surName": "Dios",
-            "dni": "456"
-        }
-    },
-    {
-        "foto": "image_2022-08-06_025442949.webp",
-        "name": "Leon",
-        "vaccinationSchedule": "5",
-        "raza": "Pila",
-        "video": "",
-        "id": 2,
         "ownerID": 3,
         "owner": {
             "type": "Owner",
             "id": 3,
-            "name": "aaa",
-            "surName": "bbbb",
-            "dni": "741"
-        }
-    },
-    {
-        "foto": "images.jpg",
-        "name": "pompom",
-        "vaccinationSchedule": "hib,ptitib",
-        "raza": "coneja",
-        "video": "",
-        "id": 3,
-        "ownerID": 2,
-        "owner": {
-            "type": "Owner",
-            "id": 2,
-            "name": "Chayane",
-            "surName": "Dios",
-            "dni": "456"
-        }
-    },
-    {
-        "foto": "chiguagua.jpg",
-        "name": "Pepito",
-        "vaccinationSchedule": "epatiti b",
-        "raza": "chiguagua",
-        "video": "",
-        "id": 4,
-        "ownerID": 5,
-        "owner": {
-            "type": "Owner",
-            "id": 5,
             "name": "Ezequiel",
             "surName": "Chapa",
-            "dni": "12345689"
-        }
-    },
-    {
-        "foto": "pequines.jpg",
-        "name": "Pegui",
-        "vaccinationSchedule": "1",
-        "raza": "Pequines",
-        "video": "",
-        "id": 5,
-        "ownerID": 5,
-        "owner": {
-            "type": "Owner",
-            "id": 5,
-            "name": "Ezequiel",
-            "surName": "Chapa",
-            "dni": "12345689"
+            "dni": "78945612"
         }
     }
 ]

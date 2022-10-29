@@ -102,16 +102,31 @@
         }
         ///es Keeper
         public function itsKeeper($email){
-            $keeper = $this->keeperDAO->getByEmail($email);
-            $_SESSION["loggedUser"] = $keeper;
-            $this->InKeeper("Welcome",$keeper);
+            $user = $this->keeperDAO->getByEmail($email);
+            $_SESSION["loggedUser"] = $user;
+
+            $keeper= new Keeper();
+            $keeper->setKeeper($user->getTypeUserOwner()->getKeeper());
+            $keeper->setId($user->getTypeUserOwner()->getId());
+            $keeper->setName($user->getTypeUserOwner()->getName());
+            $keeper->setLastname($user->getTypeUserOwner()->getLastName());
+            $keeper->setDni($user->getTypeUserOwner()->getDni());
+            $keeper->setTuition($user->getTypeUserOwner()->getTuition());
+            $keeper->setSex($user->getTypeUserOwner()->getSex());
+            $keeper->setAge($user->getTypeUserOwner()->getAge());
+
+            $keeper->setDateStart($user->getTypeUserOwner()->getDateStart());
+            $keeper->setDateFinish($user->getTypeUserOwner()->getDateFinish());
+
+
+            $this->InKeeper("Welcome", $keeper);
         }
 
         /// login de keeper
         public function InKeeper($message = "",$keeper) {
             require_once(VIEWS_PATH . "validate-session.php");
             $keeperM=new KeeperController();
-            $keeperM->setKeeper($keeper);
+            $keeperM->setKeeperC($keeper);
             $keeperM->MenuKeeper();
         }
 
@@ -125,6 +140,9 @@
             require_once(VIEWS_PATH."user-add.php");
         }
         
+        public function GoFirstPage(){
+            header('Location:../index.php');
+        }
         public function Logout()
         {
             require_once(VIEWS_PATH."logout.php");

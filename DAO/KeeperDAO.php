@@ -10,13 +10,18 @@ class KeeperDAO implements IKeeperDAO
     private $fileName = ROOT . "Data/keepers.json";
     private $keeperList = array();
 
-    public function Add($keeper)
+
+    public function Add($user,$keeper)
     {
         $this->RetrieveData();
 
-        $keeper->setId($this->GetNextId());
+        $user->setId($this->GetNextId());
+        $keeper->setId($user->getId());
 
-        array_push($this->keeperList,$keeper);
+        $user->setTypeUserKeeper($keeper);
+        var_dump($user);
+
+        array_push($this->keeperList,$user);
 
         $this->SaveData();
         
@@ -100,7 +105,7 @@ class KeeperDAO implements IKeeperDAO
 
         $fileContent = json_encode($arrayToEncode, JSON_PRETTY_PRINT);
 
-        file_put_contents($this->fileKeeper, $fileContent);
+        file_put_contents($this->fileName, $fileContent);
     }
 
    
