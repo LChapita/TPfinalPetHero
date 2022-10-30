@@ -1,19 +1,23 @@
 <html>
     <head>
-        <title>reservas</title></head>
+        <title>reservas</title>
         <body>
             <form action="" method="post">
-                <label for="elegir">hola <?php  Owner.getId(); $Owner->getName() ;$Owner->getsurName()?> <br>
+                <label for="elegir">hola <?php  $Owner->getId(); $Owner->getName() ;$Owner->getsurName()?> <br>
                 elija los dias que necesita un keeper</label><br><br>
                 
                 <label for="" name="fechastart">date start</label>
-                <input type="text" name="fechastart" id="fechastart"><br><br>
+                <input type="text" name="fechastart" id="fechastart"><br>
+                <input type="date"><br><br>
 
-                <label for="" name="fechafinish">date finish</label>
-                <input type="text" name="fechafinish" id="fechafinish"><br><br>
-                <button type="submit">ingresar reserva</button>
-                <button type="submit">finish</button>
+                 <label for="" name="fechafinish">date finish</label>
+                <input type="text" name="fechafinish" id="fechafinish"><br>
+                <input type="date"><br><br>
 
+                <input type="button" id="ingresarreserva">ingresar reserva</button>
+                <button type="button" id="finish">finish</button>
+                <button type="button" id="mostrarreserva">mostrar reserva</button>
+                
             </form>
         </body>
 </html>
