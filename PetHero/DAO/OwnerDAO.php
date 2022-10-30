@@ -1,4 +1,5 @@
-<?php 
+<?php
+
 namespace DAO;
 use Models\User as User;
 use Models\Owner as Owner;
@@ -9,13 +10,17 @@ class OwnerDAO implements IOwnerDAO
     private $fileName = ROOT . "Data/owners.json";
     private $ownerList = array();
 
-    public function Add($owner)
+
+    public function Add($user,$owner)
     {
         $this->RetrieveData();
 
-        $owner->setId($this->GetNextId());
+        $user->setId($this->GetNextId());
+        $owner->setId($user->getId());
 
-        array_push($this->ownerList,$owner);
+        $user->setTypeUserOwner($owner);
+
+        array_push($this->ownerList, $user);
 
         $this->SaveData();
         
@@ -48,7 +53,7 @@ class OwnerDAO implements IOwnerDAO
                 $user->setTypeUserOwner($owner);
 
 
-                array_push($this->OwnerList, $user);
+                array_push($this->ownerList, $user);
             }
         }
     }
@@ -58,7 +63,7 @@ class OwnerDAO implements IOwnerDAO
     {
         $arrayToEncode = array();
         
-        foreach($this->OwnerList as $user){
+        foreach($this->ownerList as $user){
 
             $valuesArray=array();
             $valuesArray["email"] = $user->getEmail();
@@ -66,13 +71,12 @@ class OwnerDAO implements IOwnerDAO
             $valuesArray["id"] = $user->getId();
             
             $valuesArray["typeuser"] = array(
-                "type" => $user->getTypeUserOwner()->GetOwner(),
+                "type" => $user->getTypeUserOwner()->getOwner(),
                 "id" => $user->getTypeUserOwner()->getId(),
 
                 "name"=> $user->getTypeUserOwner()->getName(),
                 "surname"=>$user->getTypeUserOwner()->getSurname(),
                 "dni" => $user->getTypeUserOwner()->getDni(),
-                
             );
 
 
@@ -81,19 +85,21 @@ class OwnerDAO implements IOwnerDAO
 
         $fileContent = json_encode($arrayToEncode, JSON_PRETTY_PRINT);
 
-        file_put_contents($this->fileOwner, $fileContent);
+        file_put_contents($this->fileName, $fileContent);
     }
 
     public function GetAllOwner()
     {
         $this->RetrieveData();
-        return $this->OwnerList;
+        return $this->ownerList;
     }
+
+    
     public function GetById($id)
     {
         $this->RetrieveData();
 
-        $aux = array_filter($this->OwnerList, function ($owner) use ($id) {
+        $aux = array_filter($this->ownerList, function ($owner) use ($id) {
             return $owner->getId() == $id;
         });
 
@@ -101,25 +107,31 @@ class OwnerDAO implements IOwnerDAO
 
         return (count($aux) > 0) ? $aux[0] : null;
     }
-    
-   /*public function Remove($id)
-    {
-        $this->RetrieveData();
 
-        $this->petList = array_filter($this->petList, function ($Pet) use ($id) {
-            return $Pet->getId() != $id;
-        });
-
-        $this->SaveDataPet();
-    }*/
-    
     private function GetNextId()
     {
         $id = 0;
-        foreach ($this->OwnerList as $owner) {
+        foreach ($this->ownerList as $owner) {
             $id = ($owner->getId() > $id) ? $owner->getId() : $id;
         }
         return $id + 1;
+    }
+    public function getByEmail($email) ///owner
+    {
+        $user = null;
+
+        $this->RetrieveData();
+
+        $users = array_filter(
+            $this->ownerList,
+            function ($owner) use ($email) {
+                return $owner->getEmail() == $email;
+            }
+        );
+
+        $users = array_values($users); //Reordering array indexes
+
+        return (count($users) > 0) ? $users[0] : null;
     }
 }
 

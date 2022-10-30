@@ -46,6 +46,7 @@ class Owner{
     {
         $this->dni = $dni;
     }
+    
     public function getOwner()
     {
         return $this->owner;

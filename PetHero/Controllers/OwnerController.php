@@ -2,19 +2,21 @@
 
 namespace Controllers;
 
-use Controllers\PetController as PetController;
-
+use DAO\OwnerDAO as OwnerDAO;
 use Models\Owner as Owner;
-use Models\Keeper as Keeper;
-use Models\Pet as Pet;
 use Models\User as User;
 
-use DAO\PetDAO as PetDAO;
-use DAO\UserDAO as UserDAO;
+use \DAO\PetDAO as PetDAO;
+use \DAO\UserDAO as UserDAO;
 
 class OwnerController{
 
+    private $ownerDAO;
     private $owner;
+    public function __construct()
+    {
+        $this->ownerDAO = new OwnerDAO();
+    }
 
     public function MenuOwner()
     {
@@ -34,15 +36,36 @@ class OwnerController{
     public function Show($message = "")
     {
         require_once(VIEWS_PATH . "validate-session.php");
-        //$petDAO = new petDAO();
-        //var_dump($_SESSION);
-        //$petList = $petDAO->GetAllPets();
-        //$petControl = new PetController();
-        require_once(VIEWS_PATH . "pet-list.php");
+        require_once(VIEWS_PATH . "owners/pet-list.php");
     }
+    
     public function ShowAllKeepers($message = "")
     {
-        require_once(VIEWS_PATH . "keeper-list.php");
+        require_once(VIEWS_PATH . "owners/keeper-list.php");
+    }
+
+    public function RegisterOwner($email, $password, $name, $lastname, $dni)
+    {
+        $user = new User();
+
+        $user->setEmail($email);
+        $user->setPassword($password);
+
+        $owner = new Owner();
+        $owner->setOwner("Owner");
+        $owner->setName($name);
+        $owner->setSurName($lastname);
+        $owner->setDni($dni);
+
+        $this->ownerDAO->Add($user, $owner);
+
+
+        $this->GoHome();
+    }
+
+    public function GoHome()
+    {
+        header('Location:' . FRONT_ROOT . 'Home/GoFirstPage');
     }
 
 }

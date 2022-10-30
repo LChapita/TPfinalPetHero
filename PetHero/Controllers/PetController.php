@@ -54,31 +54,14 @@
         
         public function ShowView($message = "") {
             require_once(VIEWS_PATH . "validate-session.php");
-            require_once(VIEWS_PATH . "pet-list.php");
+            require_once(VIEWS_PATH . "owners/pet-list.php");
         }
         public function ShowAdd($message = "") {
             require_once(VIEWS_PATH . "validate-session.php");
-            require_once(VIEWS_PATH . "add-pet.php");
-            require_once(VIEWS_PATH . "pet-list.php");
+            require_once(VIEWS_PATH . "owners/add-pet.php");
+            require_once(VIEWS_PATH . "owners/pet-list.php");
         }
         
-        /*
-        public function Remove($id) {
-            require_once(VIEWS_PATH . "validate-session.php");
-            $petDAO = new petDAO();
-
-            if($id != null) {
-                $Pet = $petDAO ->GetById($id);
-                if($Pet->getVideo()) {
-                    $petDAO ->Remove($id);
-
-                    $this->ShowAddView();
-              
-                } else {
-                    $this->ShowListView("El id no existe");
-                }
-            }
-        }*/
     }
 
 ?>

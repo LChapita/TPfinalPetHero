@@ -1,4 +1,5 @@
-<?php 
+<?php
+
 namespace DAO;
 use Models\User as User;
 use Models\Keeper as Keeper;
@@ -9,13 +10,18 @@ class KeeperDAO implements IKeeperDAO
     private $fileName = ROOT . "Data/keepers.json";
     private $keeperList = array();
 
-    public function Add($keeper)
+
+    public function Add($user,$keeper)
     {
         $this->RetrieveData();
 
-        $keeper->setId($this->GetNextId());
+        $user->setId($this->GetNextId());
+        $keeper->setId($user->getId());
 
-        array_push($this->keeperList,$keeper);
+        $user->setTypeUserKeeper($keeper);
+        var_dump($user);
+
+        array_push($this->keeperList,$user);
 
         $this->SaveData();
         
@@ -99,7 +105,7 @@ class KeeperDAO implements IKeeperDAO
 
         $fileContent = json_encode($arrayToEncode, JSON_PRETTY_PRINT);
 
-        file_put_contents($this->fileKeeper, $fileContent);
+        file_put_contents($this->fileName, $fileContent);
     }
 
    
@@ -134,6 +140,49 @@ class KeeperDAO implements IKeeperDAO
             $id = ($keeper->getId() > $id) ? $keeper->getId() : $id;
         }
         return $id + 1;
+    }
+    public function getByEmail($email) ///keepers
+    {
+        $user = null;
+
+        $this->RetrieveData();
+
+        $users = array_filter(
+            $this->keeperList,
+            function ($user) use ($email) {
+                return $user->getEmail() == $email;
+            }
+        );
+
+        $users = array_values($users); //Reordering array indexes
+
+        return (count($users) > 0) ? $users[0] : null;
+    }
+    public function AddStays($userIn, $keeper)
+    {
+        $this->RetrieveData();
+
+        //$user->setId($this->GetNextIdKeeper());
+        //$typeUser->setId($user->getId());
+
+        $this->Remove($userIn->getId());
+
+        $userIn->setTypeUserKeeper($keeper);
+
+        array_push($this->keeperList, $userIn);
+
+        $this->SaveData();
+    }
+
+    public function Remove($id)
+    {
+        //$this->RetrieveDataKeeper();
+
+        $this->keeperList = array_filter($this->keeperList, function ($keeper) use ($id) {
+            return $keeper->getId() != $id;
+        });
+
+        $this->SaveData();
     }
 }
 
