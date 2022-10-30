@@ -3,7 +3,7 @@
         <title>reservas</title>
         <body>
             <form action="" method="post">
-                <label for="elegir">hola <?php  $Owner->getId(); $Owner->getName() ;$Owner->getsurName()?> <br>
+                <label for="elegir">hola <?php echo $Owner->getId();echo $Owner->getName() ;echo $Owner->getsurName()?> <br>
                 elija los dias que necesita un keeper</label><br><br>
                 
                 <label for="" name="fechastart">date start</label>
