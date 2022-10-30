@@ -13,7 +13,7 @@ require_once('nav.php');
 <main class="py-5">
      <section id="listado" class="mb-5">
           <div class="container">
-               <h2 class="mb-4">Listado de Keepers Disponibles entre fechas ingresadas</h2>
+               <h2 class="mb-4">Listado de Keepers a Reservar</h2>
                <table class="table bg-light text-center">
                     <thead class="bg-dark text-white">
                          <th>Name</th>
@@ -26,6 +26,7 @@ require_once('nav.php');
                          <th>Id</th>
                          <th>Date Start</th>
                          <th>Date Finish</th>
+                         <th>Reserve</th>
                     
                     <tbody>
                          <form method="post" action="">
@@ -67,7 +68,10 @@ require_once('nav.php');
                                         
                                              <td><?php echo $keeper->getTypeUserKeeper()->getDateStart() ?></td>
                                              <td><?php echo $keeper->getTypeUserKeeper()->getDateFinish() ?></td>
-
+                                             <form method="post" action="">
+                             
+                                             <td> <button type="submit" name="reservar" value="reservar">Reservar</button></td>
+                         </form>
                                        
                                    </tr>
                          <?php
