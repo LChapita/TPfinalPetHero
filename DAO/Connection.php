@@ -2,7 +2,7 @@
     namespace DAO;
 
     use \PDO as PDO;
-    use \Exception as Exception;
+    use \Exception;
     use DAO\QueryType as QueryType;
 
     class Connection
