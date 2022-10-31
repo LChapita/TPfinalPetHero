@@ -14,26 +14,28 @@ class ReservController{
     }
     
     
-    public function ShowAddView(){
-        //require_once(VIEWS_PATH."formreserva.php");
-        require_once(VIEWS_PATH . "formreserva.php");
+    public function ShowAddView($idKeeper){
+        //var_dump($idKeeper);
+        require_once(VIEWS_PATH. "owners/form-reserv.php");
     }
     
     public function ShowListView(){
         $reservList=$this->reservDAO->GetAll();
         //require_once(VIEWS_PATH."reserv-list.php");        
     }
-    public function Add(/*$idOwner,$idKeeper,$dateStart,$dateFinish*/){
+    public function Add($idOwner,$idKeeper,$dateStart,$dateFinish){
+        
         $reserv=new Reserv();
 
-        $reserv->setIdOwner(1);
-        $reserv->setIdKeeper(1);
-        $reserv->setDateStart("2022-10-01");
-        $reserv->setDateFinish("2022-11-01");
+        $reserv->setIdOwner($idOwner);
+        $reserv->setIdKeeper($idKeeper);
+        $reserv->setDateStart($dateStart);
+        $reserv->setDateFinish($dateFinish);
 
+        //var_dump($reserv);
         $this->reservDAO->Add($reserv);
 
-        $this->ShowAddView();
+        $this->ShowAddView($idKeeper);
         
     }
 }
