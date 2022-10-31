@@ -25,4 +25,9 @@ BEGIN
         (idReserv,idOwner,idKeeper,dateStart,dateFinish);
 END$$
 
+
 DELIMITER ;
+
+delete from reserv where idReserv=3;
+
+select * from reserv;
