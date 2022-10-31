@@ -9,6 +9,7 @@ use DAO\UserDAO;
 use Models\User;
 use Models\Keeper;
 use Models\Reserv;
+
 require_once(VIEWS_PATH . "nav.php");
 ?>
 <main class="py-5">
@@ -75,8 +76,8 @@ require_once(VIEWS_PATH . "nav.php");
                                     <td><?php echo $keeper->getTypeUserKeeper()->getDateStart() ?></td>
                                     <td><?php echo $keeper->getTypeUserKeeper()->getDateFinish() ?></td>
 
-                                    <form action="<?php echo FRONT_ROOT."Reserv/Add" ?>" method="POST">
-
+                                    <form action="<?php echo FRONT_ROOT . "Reserv/ShowAddView" ?>" method="POST">
+                                        <input type="hidden" name="idKeeper" value="<?php echo $keeper->getTypeUserKeeper()->getId() ?>">
                                         <td> <button type="submit" name="reservar" value="reservar">Reservar</button></td>
                                     </form>
 

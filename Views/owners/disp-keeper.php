@@ -39,6 +39,7 @@ require_once(VIEWS_PATH . "nav.php");
                               <input type="date" name="finish" required>
                               <button type="submit" name="consultar" value="consultar">Consultar</button>
                          </form>
+                         
                          <?php
 
                          error_reporting(E_ALL ^ E_NOTICE);

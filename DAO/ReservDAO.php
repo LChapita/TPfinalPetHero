@@ -9,22 +9,23 @@ use Models\Reserv as Reserv;
 
 class ReservDAO implements IReservDAO{
     private $connection;
-    private $tableName="Reservs";
+    private $tableName="reservs";
 
     public function Add(Reserv $reserv)
     {
         try
         {
-            $query="INSERT INTO".$this->tableName."(idReserv,idOwner,idKeeper,dateStart,dateFinish) VALUES(:idReserv,:idOwner,:idKeeper,:dateStart,:dateFinish);";
+            $query = "CALL Reserv_Add(?, ?, ?, ?, ?)";
+
             $parameters["idReserv"] = $reserv->getIdReserv();
             $parameters["idOwner"] = $reserv->getIdOwner();
             $parameters["idKeeper"] = $reserv->getIdKeeper();
-            $parameters["dateStart"] = $reserv->getIdKeeper();
-            $parameters["dateFinish"] = $reserv->getIdKeeper();
+            $parameters["dateStart"] = $reserv->getDateStart();
+            $parameters["dateFinish"] = $reserv->getDateFinish();
 
             $this->connection=Connection::GetInstance();
 
-            $this->connection->ExecuteNonQuery($query,$parameters);
+            $this->connection->ExecuteNonQuery($query, $parameters, QueryType::StoredProcedure);
 
             
         }catch(Exception $ex){
