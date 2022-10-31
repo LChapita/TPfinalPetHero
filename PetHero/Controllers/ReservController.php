@@ -21,7 +21,7 @@ class ReservController{
     
     public function ShowListView(){
         $reservList=$this->reservDAO->GetAll();
-        //require_once(VIEWS_PATH."reserv-list.php");        
+        require_once(VIEWS_PATH."owners/list-reserv.php");        
     }
     public function Add($idOwner,$idKeeper,$dateStart,$dateFinish){
         
