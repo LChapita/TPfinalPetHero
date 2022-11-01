@@ -9,7 +9,7 @@ use Models\Reserv as Reserv;
 
 class ReservDAO implements IReservDAO{
     private $connection;
-    private $tableName="reservs";
+    private $tableName="reserv";
 
     public function Add(Reserv $reserv)
     {
@@ -43,22 +43,21 @@ class ReservDAO implements IReservDAO{
             $this->connection = Connection::GetInstance();
 
             $resultSet = $this->connection->Execute($query);
-
-             foreach ($resultSet as $row)
-                {                
-                    $reserv = new Reserv();
-                    $reserv->setIdReserv($row["idReserv"]);
-                    $reserv->setIdReserv($row["idOwner"]);
-                    $reserv->setIdReserv($row["idKeeper"]);
-
-                    $reserv->setIdReserv($row["dateStart"]);
-                    $reserv->setIdReserv($row["dateFinish"]);
-
-                    array_push($reservList, $reserv);
+            foreach ($resultSet as $row)
+            {                
+                $reserv = new Reserv();
+                $reserv->setIdReserv($row["idReserv"]);
+                $reserv->setIdOwner($row["idOwner"]);
+                $reserv->setIdKeeper($row["idKeeper"]);
+                
+                $reserv->setDateStart($row["dateStart"]);
+                $reserv->setDateFinish($row["dateFinish"]);
+                
+                array_push($reservList, $reserv);
                 }
 
+                
                 return $reservList;
-        
          }
         catch(Exception $ex)
         {
