@@ -23,6 +23,17 @@ class ReservController{
         $reservList=$this->reservDAO->GetAll();
         require_once(VIEWS_PATH."owners/list-reserv.php");        
     }
+  
+    public function ShowListConfirm(){
+        $reservList=$this->reservDAO->GetAll();
+        require_once(VIEWS_PATH."keepers/confirm-reserv.php");        
+    }
+    public function ShowAddConfirm(){
+        $reservList=$this->reservDAO->GetAll();
+        require_once(VIEWS_PATH."keepers/confirm-reserv.php");        
+    }
+
+
     public function Add($idOwner,$idKeeper,$dateStart,$dateFinish){
         
         $reserv=new Reserv();
