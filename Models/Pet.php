@@ -10,7 +10,7 @@ class Pet{
 	private $vaccinationSchedule;
 	private $raza;
 	private $video;
-
+	
 	private $ownerID;
 
 	private $owner;

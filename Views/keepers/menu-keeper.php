@@ -16,6 +16,8 @@ foreach ($userArr as $user) {
 
 }
 $keeper=$keeperDAO->getByEmail($userMenu->getEmail());
+
+var_dump($keeper);
 ?>
 <main class="py-5">
     <section id="listado" class="mb-5">
@@ -46,7 +48,7 @@ $keeper=$keeperDAO->getByEmail($userMenu->getEmail());
                     <tr>
                         <td><?php echo $keeper->getTypeUserKeeper()->getName() ?></td>
                         <td><?php echo $keeper->getTypeUserKeeper()->getLastname() ?></td>
-                        <td><?php echo $keeper->getTypeUserKeeper()->getPhoto() ?></td>
+                        <td><?php echo "<img src=".$keeper->getTypeUserKeeper()->getPhoto().">" ?></td>
                         <td><?php echo $keeper->getTypeUserKeeper()->getDNI() ?></td>
                         <td><?php echo $keeper->getTypeUserKeeper()->getTuition() ?></td>
                         <td><?php echo $keeper->getTypeUserKeeper()->getSex() ?></td>
