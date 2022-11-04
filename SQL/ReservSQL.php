@@ -2,12 +2,12 @@
 
 namespace SQL;
 
-use DAO\IReservSQL as IReservSQL;
+use SQL\IReservSQL as IReservSQL;
 use SQL\Connection as Connection;
 use \Exception as Exception;
 use Models\Reserv as Reserv;
 
-class ReservDAO implements IReservSQL{
+class ReservSQL implements IReservSQL{
     private $connection;
     private $tableName="reserv";
 

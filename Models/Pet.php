@@ -4,55 +4,18 @@ use Models\Owner as Owner;
 
 class Pet{
 
-	private $foto;
+	private $photo;
 	private $id;
 	private $name;
 	private $vaccinationSchedule;
-	private $raza;
+	private $race;
 	private $video;
-	
-	private $ownerID;
+	private $sizePet;
 
+	private $ownerID;
 	private $owner;
 
-	public function setFoto($foto){
-		$this->foto=$foto;
-	}
-	public function setId($id){
-		$this->id=$id;
-	}
-	public function setName($name){
-		$this->name=$name;
-	}
-	public function setVaccinationSchedule($vaccinationSchedule){
-		$this->vaccinationSchedule= $vaccinationSchedule;
-	}
-	public function setRaza($raza){
-		$this->raza=$raza;
-	}
-	public function setVideo($video){
-		$this->video=$video;
-	}
-
-	public function getFoto(){
-		return $this->foto;
-	}
-	public function getId(){
-		return $this->id;
-	}
-	public function getName(){
-		return $this->name;
-	}
-	public function getVaccinationSchedule(){
-		return $this->vaccinationSchedule;
-	}
-	public function getRaza(){
-		return $this->raza;
-	}
-	public function getVideo(){
-		return $this->video;
-	}
-
+	
 	/* setear dueño */
 	public function getOwneR(){
 		return $this->owner;
@@ -68,6 +31,69 @@ class Pet{
 	public function setOwnerID($ownerID)
 	{
 		$this->ownerID = $ownerID;
+	}
+
+
+
+
+
+	public function getPhoto()
+	{
+		return $this->photo;
+	}
+	public function getId()
+	{
+		return $this->id;
+	}
+	public function getName()
+	{
+		return $this->name;
+	}
+	public function getVaccinationSchedule()
+	{
+		return $this->vaccinationSchedule;
+	}
+	public function getRace()
+	{
+		return $this->race;
+	}
+	public function getVideo()
+	{
+		return $this->video;
+    }
+	public function getSizePet()
+	{
+		return $this->sizePet;
+	}
+	
+	
+	public function setPhoto($photo)
+	{
+		$this->photo = $photo;
+	} 
+	public function setId($id)
+	{
+		$this->id = $id;
+	}
+	public function setName($name)
+	{
+		$this->name = $name;
+	}
+	public function setVaccinationSchedule($vaccinationSchedule)
+	{
+		$this->vaccinationSchedule = $vaccinationSchedule;
+	}
+	public function setRace($race)
+	{
+		$this->race = $race;
+	}
+	public function setVideo($video)
+	{
+		$this->video = $video;
+	}
+	public function setSizePet($sizePet)
+	{
+		$this->sizePet = $sizePet;
 	}
 }
 ?> 

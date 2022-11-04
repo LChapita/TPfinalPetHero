@@ -4,16 +4,18 @@ namespace Controllers;
 
 use Models\Keeper as Keeper;
 use Models\User as User;
-
-use DAO\KeeperDAO as KeeperDAO;
+use SQL\KeeperSQL as KeeperSQL;
+//use DAO\KeeperDAO as KeeperDAO;
 
 class KeeperController{
+    private $keeperSQL;
     private $keeperDAO;
     private $keeper;
 
     public function __construct()
     {
-        $this->keeperDAO = new KeeperDAO();
+        //$this->keeperDAO = new KeeperDAO();
+        $this->keeperSQL=new KeeperSQL();
     }
 
     public function getKeeperC()
@@ -78,8 +80,9 @@ class KeeperController{
             $keeper->setAge($age);
         }
 
-        $this->keeperDAO->Add($user, $keeper);
-
+        //$this->keeperDAO->Add($user, $keeper);
+        $this->keeperSQL->Add($user, $keeper);
+        
         $this->GoHome();
     }
 

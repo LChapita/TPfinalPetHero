@@ -1,9 +1,10 @@
 [
     {
-        "foto": "pequines.jpg",
+        "photo": "pequines.jpg",
         "name": "Pegui",
         "vaccinationSchedule": "https:\/\/www.youtube.com\/watch?v=mCdA4bJAGGk&ab_channel=sweetblue.",
-        "raza": "Pequines",
+        "race": "Pequines",
+        "sizePet": "big",
         "video": "",
         "id": 1,
         "ownerID": 3,
@@ -16,11 +17,12 @@
         }
     },
     {
-        "foto": "chiguagua.jpg",
+        "photo": "chiguagua.jpg",
         "name": "Pepe",
         "vaccinationSchedule": "https:\/\/www.youtube.com\/watch?v=ZsV8aj0LKs4&ab_channel=syko",
-        "raza": "chiguagua",
+        "race": "chiguagua",
         "video": "",
+        "sizePet": "medium",
         "id": 2,
         "ownerID": 2,
         "owner": {
@@ -32,11 +34,12 @@
         }
     },
     {
-        "foto": "golden.jpg",
+        "photo": "golden.jpg",
         "name": "pampa",
         "vaccinationSchedule": "https:\/\/www.youtube.com\/watch?v=ci36yIHetMs&ab_channel=KILLER",
-        "raza": "Golden",
+        "race": "Golden",
         "video": "",
+        "sizePet":"small",
         "id": 3,
         "ownerID": 2,
         "owner": {

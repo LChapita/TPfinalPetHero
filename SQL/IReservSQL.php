@@ -1,9 +1,9 @@
 <?php
 
-namespace DAO;
+namespace SQL;
 
 use Models\Reserv as Reserv;
-use DAO\Connection as Connection;
+use SQL\Connection as Connection;
 
 interface IReservSQL
 {

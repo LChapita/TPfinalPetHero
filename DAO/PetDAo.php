@@ -44,11 +44,12 @@ class PetDAO implements IPetDAO
 
                 $pet = new Pet();
 
-                $pet->setFoto($content["foto"]);
+                $pet->setPhoto($content["photo"]);
                 $pet->setName($content["name"]);
                 $pet->setVaccinationSchedule($content["vaccinationSchedule"]);
-                $pet->setRaza($content["raza"]);
+                $pet->setRace($content["race"]);
                 $pet->setVideo($content["video"]);
+                $pet->setSizePet($content["sizePet"]);
                 $pet->setId($content["id"]);
                 $pet->setOwnerID($content["ownerID"]);
                 
@@ -72,11 +73,12 @@ class PetDAO implements IPetDAO
 
         foreach ($this->petList as $pet) {
             $valuesArray = array();
-            $valuesArray["foto"] = $pet->getFoto();
+            $valuesArray["photo"] = $pet->getPhoto();
             $valuesArray["name"] = $pet->getName();
             $valuesArray["vaccinationSchedule"] = $pet->getVaccinationSchedule();
-            $valuesArray["raza"] = $pet->getRaza();
+            $valuesArray["race"] = $pet->getRace();
             $valuesArray["video"] = $pet->getVideo();
+            $valuesArray["sizePet"]=$pet->getSizePet();
             $valuesArray["id"] = $pet->getId();
             $valuesArray["ownerID"]=$pet->getOwnerID();
             

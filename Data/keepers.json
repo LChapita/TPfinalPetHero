@@ -4,19 +4,39 @@
         "password": "123",
         "id": 1,
         "typeuser": {
-            "type": "Keeper",
+            "type": 1,
             "id": 1,
             "name": "Lucas",
             "lastname": "Chapa",
             "photo": "pequines.jpg",
             "dni": "12345678",
             "tuition": "112233",
-            "sizepet": "medium",
-            "price": "400",
+            "sizepet": null,
+            "price": null,
             "sex": "Male",
             "age": "25",
-            "dateStart": null,
-            "dateFinish": null
+            "dateStart": "2022-11-01",
+            "dateFinish": "2022-11-10"
+        }
+    },
+    {
+        "email": "123",
+        "password": "456",
+        "id": 2,
+        "typeuser": {
+            "type": 2,
+            "id": 2,
+            "name": "dsada",
+            "lastname": "123",
+            "photo": "chiguagua.jpg",
+            "dni": "44",
+            "tuition": "2323",
+            "sizepet": null,
+            "price": null,
+            "sex": "Female",
+            "age": "18",
+            "dateStart": "2022-11-01",
+            "dateFinish": "2022-11-11"
         }
     }
 ]
