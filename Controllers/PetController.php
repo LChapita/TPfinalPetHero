@@ -19,21 +19,26 @@
 
         public function RegisterPet($name,$race,$vaccinationschendle,$photo,$video,$sizePet)
         {
-
             $userArr = new User();
-
+            
             $userArr = $_SESSION;
+        /*
             foreach ($userArr as $user) {
                 
                 $owner= new Owner();
-    
-                $owner->setOwner($user->getTypeUserOwner()->getOwner());
+                
+                //$owner->setOwner($user->getTypeUserOwner()->getOwner());
                 $owner->setId($user->getTypeUserOwner()->getId());
                 $owner->setName($user->getTypeUserOwner()->getName());
                 $owner->setSurName($user->getTypeUserOwner()->getSurName());
                 $owner->setDni($user->getTypeUserOwner()->getDni());
             }
-
+            */
+            foreach ($userArr as $user) {
+                $owner = new Owner();
+                $owner->setId($user->getId());
+            }
+            //var_dump($userArr);
             //var_dump($owner);
 
             $pet=new Pet();
@@ -59,6 +64,7 @@
             
             //$this->petDAO->Add($pet);
             $this->petSQL->Add($owner,$pet);
+
             $this->ShowView();
         }
         

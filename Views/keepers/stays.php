@@ -21,7 +21,7 @@ foreach ($userArr as $user) {
     $keeper->setDateStart($user->getTypeUserKeeper()->getDateStart());
     $keeper->setDateFinish($user->getTypeUserKeeper()->getDateFinish());
 }
-
+//var_dump($keeper);
 require_once('nav-keeper.php');
 ?>
 <main>
@@ -49,6 +49,7 @@ require_once('nav-keeper.php');
                 <tbody>
                     <tr>
                         <td>
+                            
                             <input type="date" name="dateS" placeholder="START" required>
                         </td>
                         <td>

@@ -6,6 +6,7 @@ use DAO\KeeperDAO;
 use DAO\userDAO;
 use Models\User;
 use Models\Keeper;
+use SQL\KeeperSQL;
 
 require_once(VIEWS_PATH."nav.php");
 
@@ -33,10 +34,13 @@ require_once(VIEWS_PATH."nav.php");
                 <tbody>
                     <?php
 
-                    $keeperDAO=new KeeperDAO();
+                    //$keeperDAO=new KeeperDAO();
                     //$user = new User();
-                    $keeperList = $keeperDAO->GetAllKeepers();
+                    //$keeperList = $keeperDAO->GetAllKeepers();
+                    $keeperSQL=new KeeperSQL();
+                    $keeperList=$keeperSQL->GetAll();
                     
+
                     foreach ($keeperList as $keeper) { //ensi es un user
                     ?>
                         <tr>

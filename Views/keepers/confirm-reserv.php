@@ -47,7 +47,7 @@ require_once(VIEWS_PATH . "keepers/nav-keeper.php");
                     $ReservSQL = new ReservSQL();
                     $reserv=new Reserv();
                     $reservList = $this->reservSQL->GetAll();
-
+                    //var_dump($reservList);
                     foreach ($reservList as $reserv) {
                         if ($userMenu->getId() == $reserv->getIdKeeper()) {
                     ?>

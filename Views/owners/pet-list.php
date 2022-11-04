@@ -28,17 +28,21 @@ require_once(VIEWS_PATH . "nav.php");
                 </thead>
                 <tbody>
                     <?php
+
                     //$petDAO = new petDAO();
                     //$petList = $petDAO->GetAllPets();
                     $petSQL=new PetSQL();
                     $petList=$petSQL->GetAll();
-
+                    
                     $userArr = $_SESSION;
                     foreach ($userArr as $user) {
                         $owner = new Owner();
-                        $owner->setId($user->getTypeUserOwner()->getId());
+                        //$owner->setId($user->getTypeUserOwner()->getId());
+                        $owner->setId($user->getId());
                     }
-
+                    
+                    //var_dump($owner);
+                    
                     foreach ($petList as $pet) {
                         //var_dump($pet);
                         if ($pet->getOwnerID() == $owner->getId()) {

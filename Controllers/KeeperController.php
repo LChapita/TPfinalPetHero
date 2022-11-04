@@ -105,12 +105,13 @@ class KeeperController{
     public function RegisterStays($dateS,$dateF)
     {
         $userIn=new User();
-
+        
         $userArr = $_SESSION;
         foreach ($userArr as $user) {
             $userIn->setEmail($user->getEmail());
             $userIn->setPassword($user->getPassword());
             $userIn->setId($user->getId());
+            /*
 
             $keeper = new Keeper();
             $keeper->setName($user->getTypeUserKeeper()->getName());
@@ -122,15 +123,19 @@ class KeeperController{
             $keeper->setAge($user->getTypeUserKeeper()->getAge());
             $keeper->setId($user->getTypeUserKeeper()->getId());
             $keeper->setKeeper($user->getTypeUserKeeper()->getId());
+            */
         }
-
-        $keeper->setDateStart($dateS);
-        $keeper->setDateFinish($dateF);
         
+        //$keeper->setDateStart($dateS);
+        //$keeper->setDateFinish($dateF);
         
 
-        $this->keeperDAO->AddStays($userIn,$keeper);
+        //$this->keeperDAO->AddStays($userIn,$keeper);
+        
 
+
+        //var_dump($dateS);
+        $this->keeperSQL->AddStays($userIn->getId(),$dateS,$dateF);
         $this->MenuKeeper();
 
     }

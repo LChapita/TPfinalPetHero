@@ -6,7 +6,7 @@ use DAO\KeeperDAO;
 use DAO\UserDAO;
 use Models\User;
 use Models\Keeper;
-
+use SQL\KeeperSQL;
 
 require_once(VIEWS_PATH . "nav.php");
 ?>
@@ -48,18 +48,24 @@ require_once(VIEWS_PATH . "nav.php");
 
 
 
-                         $keeperDAO = new KeeperDAO();
+                         //$keeperDAO = new KeeperDAO();
                          //$keeper = new Keeper();
-                         $keeperList = $keeperDAO->GetAllKeepers();
+                         //$keeperList = $keeperDAO->GetAllKeepers();
                          //
+                         $keeperSQL = new KeeperSQL();
+                         $keeper = new Keeper();
+                         $keeperList=$keeperSQL->GetAll();  
                          //private $start; /* Se ingresa primer fecha por teclado*/
                          //private $finish;  /* Se ingresa segunda  fecha por teclado*/
                          //
                          foreach ($keeperList as $keeper) {
                               //var_dump($keeper);
-                              if ((($keeper->getTypeUserKeeper()->getDateStart()) &&  ($keeper->getTypeUserKeeper()->getDateFinish())) != null) {
-                                   if (($start <= $keeper->getTypeUserKeeper()->getDateStart() && $finish >= $keeper->getTypeUserKeeper()->getDateFinish())) {
-                         ?>
+                              if ((($keeper->getTypeUserKeeper()->getDateStart())  &&  ($keeper->getTypeUserKeeper()->getDateFinish())) != null) {
+
+                                   if($start<$finish){
+                                        
+                                        if (($start >= $keeper->getTypeUserKeeper()->getDateStart()) && ($finish <= $keeper->getTypeUserKeeper()->getDateFinish())) {
+                                             ?>
                                         <tr>
                                              <td><?php echo $keeper->getTypeUserKeeper()->getName() ?></td>
                                              <td><?php echo $keeper->getTypeUserKeeper()->getLastname() ?></td>
@@ -69,14 +75,15 @@ require_once(VIEWS_PATH . "nav.php");
                                              <td><?php echo $keeper->getTypeUserKeeper()->getSex() ?></td>
                                              <td><?php echo $keeper->getTypeUserKeeper()->getAge() ?></td>
                                              <td><?php echo $keeper->getTypeUserKeeper()->getId() ?></td>
-
+                                             
                                              <td><?php echo $keeper->getTypeUserKeeper()->getDateStart() ?></td>
                                              <td><?php echo $keeper->getTypeUserKeeper()->getDateFinish() ?></td>
 
-
+                                             
                                         </tr>
-                         <?php
+                                        <?php
                                    }
+                              }
                               }
                          }
                          ?>
