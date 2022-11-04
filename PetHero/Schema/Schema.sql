@@ -25,17 +25,19 @@ create table keeper(
     price float not NULL,
     sex varchar(10) not NULL,
     age int not NULL,
-    dateStart DATETIME,
-    dateFinish DATETIME
+    dateStart DATE,
+    dateFinish DATE,
+    Dt_FORMATTED as (convert(varchar(255),dateStart,112)),
+    Dt_FORMATTED as (convert(varchar(255),dateFinish,112))
 )Engine=InnoDB;
 
 create table pet(
-    photo varchar(65535) not NULL,
+    photo text(65535) not NULL,
     id_Pet int not NULL AUTO_INCREMENT PRIMARY KEY,
     name varchar(50) not NULL,
-    vaccinationSchedule varchar(65535) not NULL,
+    vaccinationSchedule text(65535) not NULL,
     race varchar(30) not NULL,
-    video varchar(65535) not NULL,
+    video text(65535) not NULL,
     sizePet varchar(20) not NULL,
     id_Owner int not null,
     constraint FK_pet_Onwer foreign key (id_Owner) references owner(id_Owner)
@@ -44,10 +46,11 @@ create table pet(
 CREATE TABLE reserv
 (
 	idReserv INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    idOwner INT NOT NULL,
+    id_Pet int not null,
     idKeeper INT NOT NULL,
-    dateStart DATETIME,
-    dateFinish DATETIME
+    dateStart DATE,
+    dateFinish DATE,
+    confirm varchar(10);
 )Engine=InnoDB;
 
 DROP procedure IF EXISTS `Owner_Add`;
@@ -94,8 +97,8 @@ CREATE PROCEDURE Keeper_Add(
     IN price float,
     IN sex varchar(10),
     IN age int,
-    IN dateStart DATETIME,
-    IN dateFinish DATETIME
+    IN dateStart DATE,
+    IN dateFinish DATE
     )
 BEGIN
 	INSERT INTO keeper
@@ -140,12 +143,12 @@ DROP procedure IF EXISTS `Pet_Add`;
 DELIMITER $$
 
 CREATE PROCEDURE Pet_Add(
-    IN photo INT, 
+    IN photo text(65535), 
     IN id_Pet INT, 
     IN name varchar(50), 
-    IN vaccinationSchedule varchar(MAX), 
+    IN vaccinationSchedule text(65535), 
     IN race varchar(30), 
-    IN video varchar(MAX),
+    IN video text(65535),
     IN sizePet varchar(20),
     IN id_Owner int
     )
@@ -160,11 +163,29 @@ END$$
 DELIMITER ;
 
 
+
+DROP procedure IF EXISTS `Stays_Add`;
+
+DELIMITER $$
+
+CREATE PROCEDURE Stays_Add(IN id_Keeper INT,IN dateStart DATE,IN dateFinish DATE)
+BEGIN
+    UPDATE keeper k
+    SET k.dateStart = dateStart,
+    k.dateFinish=dateFinish 
+    WHERE k.id_Keeper = id_Keeper ;
+	
+END$$
+
+
+DELIMITER ;
+
+
 DROP procedure IF EXISTS `Reserv_Add`;
 
 DELIMITER $$
 
-CREATE PROCEDURE Reserv_Add(IN idReserv INT, IN idOwner INT, IN idKeeper INT, IN dateStart DATETIME,IN dateFinish DATETIME)
+CREATE PROCEDURE Reserv_Add(IN idReserv INT, IN idOwner INT, IN idKeeper INT, IN dateStart DATE,IN dateFinish DATE)
 BEGIN
 	INSERT INTO reserv
         (reserv.idReserv, reserv.idOwner, reserv.idKeeper, reserv.dateStart,reserv.dateFinish)
@@ -176,19 +197,15 @@ END$$
 DELIMITER ;
 
 
-
-
-
 select * from owner;
-
-
-
 select * from keeper;
-DROP table keeper;
+select * from pet;
+select * from reserv;
 
-
-
-
+delete from pet where id_Pet=23;
 delete from reserv where idReserv=3;
 
-select * from reserv;
+drop table owner;
+DROP table keeper;
+DROP table pet;
+drop table reserv;

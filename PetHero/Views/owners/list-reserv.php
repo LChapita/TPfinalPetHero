@@ -9,6 +9,8 @@ use Models\Keeper;
 use Models\Owner;
 use Models\Reserv as Reserv;
 use DAO\ReservDAO;
+use SQL\ReservSQL;
+
 require_once(VIEWS_PATH."nav.php");
 
 ?>
@@ -28,10 +30,13 @@ require_once(VIEWS_PATH."nav.php");
                 <tbody>
                     <?php
 
-                    $ReservDAO=new ReservDAO();
+                    //$ReservDAO=new ReservDAO();
                     //$reserv = new Reserv();
-                    $reservList = $ReservDAO->GetAll();
-       
+                    //$reservList = $ReservDAO->GetAll();
+                    $reservSQL=new ReservSQL();
+                    $reserv=new Reserv();
+                    $reservList=$reservSQL->GetAll();
+                    
                     foreach ($reservList as $reserv) { 
                     //var_dump($reserv);
                     ?>

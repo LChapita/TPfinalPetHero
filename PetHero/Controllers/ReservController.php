@@ -25,7 +25,8 @@ class ReservController{
 
     public function ShowListView()
     {
-        $reservList = $this->reservDAO->GetAll();
+        //$reservList = $this->reservDAO->GetAll();
+        $reservList=$this->reservSQL->GetAll();
         require_once(VIEWS_PATH . "owners/list-reserv.php");
     }
 

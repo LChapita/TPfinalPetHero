@@ -4,8 +4,10 @@ require_once("nav-keeper.php");
 use DAO\KeeperDAO;
 use Models\User;
 use Models\Keeper;
+use SQL\KeeperSQL;
 
-$keeperDAO=new KeeperDAO();
+//$keeperDAO=new KeeperDAO();
+$keeperSQL=new KeeperSQL();
 $userMenu = new User();
 $userArr = $_SESSION;
 
@@ -13,11 +15,15 @@ foreach ($userArr as $user) {
     $userMenu->setEmail($user->getEmail());
     $userMenu->setPassword($user->getPassword());
     $userMenu->setId($user->getId());
-
+    
 }
-$keeper=$keeperDAO->getByEmail($userMenu->getEmail());
+//$keeper=$keeperDAO->getByEmail($userMenu->getEmail());
+$keeper=$keeperSQL->GetByEmail($userMenu->getEmail());
 
-var_dump($keeper);
+//var_dump($keeper);
+
+
+
 ?>
 <main class="py-5">
     <section id="listado" class="mb-5">

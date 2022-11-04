@@ -7,5 +7,5 @@ use SQL\Connection as Connection;
 
 interface IOwnerSQL{
     function Add(User $user,Owner $owner);
-    function GetAll();
+    function GetByEmail($email);
 }

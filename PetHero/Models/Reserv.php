@@ -10,6 +10,8 @@ class Reserv{
 
     private $dateStart;
     private $dateFinish;
+
+    private $confirm=null;
     
     public function getIdReserv()
     {
@@ -56,6 +58,16 @@ class Reserv{
     public function setDateFinish($dateFinish)
     {
         $this->dateFinish = $dateFinish;
+    }
+
+    public function getConfirm()
+    {
+        return $this->confirm;
+    }
+    public function setConfirm($confirm)
+    {
+        $this->confirm = $confirm;
+
     }
 }
 ?>

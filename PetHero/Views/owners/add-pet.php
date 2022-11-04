@@ -7,6 +7,7 @@ use Controllers\PetController;
 use Models\Pet as Pet;
 use Models\Owner as Owner;
 
+
 require_once(VIEWS_PATH . "nav.php");
 
 ?>
@@ -57,3 +58,7 @@ require_once(VIEWS_PATH . "nav.php");
         </form>
     </section>
 </main>
+
+<?php
+require_once(VIEWS_PATH."footer.php");
+?>

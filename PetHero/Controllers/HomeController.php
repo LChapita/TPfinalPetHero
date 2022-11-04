@@ -6,6 +6,9 @@
 
     use DAO\OwnerDAO as OwnerDAO;
     use DAO\KeeperDAO as KeeperDAO;
+
+    use SQL\OwnerSQL as OwnerSQL;
+    use SQL\KeeperSQL as KeeperSQL;
     
     use Models\User as User;
     use Models\Owner as Owner;
@@ -15,14 +18,21 @@
     {
         private $ownerDAO;
         private $keeperDAO;
+        
+        private $ownerSQL;
+        private $keeperSQL;
 
         private $isOwner;
         private $isKeeper;
 
         public function __construct()
         {
-            $this->ownerDAO= new OwnerDAO();
-            $this->keeperDAO= new KeeperDAO();
+            //$this->ownerDAO= new OwnerDAO();
+            //$this->keeperDAO= new KeeperDAO();
+
+            $this->ownerSQL= new OwnerSQL();
+            $this->keeperSQL= new KeeperSQL();
+
             $this->isOwner=new User();
             $this->isKeeper=new User();
         }
@@ -34,9 +44,14 @@
         
         //validacion
         public function EnterUser($email,$password){
-            $owner =$this->ownerDAO->getByEmail($email);
+            //$owner =$this->ownerDAO->getByEmail($email);
+            //$keeper=$this->keeperDAO->getByEmail($email);
 
-            $keeper=$this->keeperDAO->getByEmail($email);
+            $owner=$this->ownerSQL->GetByEmail($email);
+
+            $keeper= $this->keeperSQL->GetByEmail($email);     
+
+            
 
             if((($owner != null)&&($owner->getPassword()==$password)) && (($keeper != null) && ($keeper->getPassword() == $password)))
             {
@@ -47,7 +62,8 @@
             } 
             else{
                 if(($owner != null) && ($owner->getPassword() == $password)){
-                    $user = $this->ownerDAO->getByEmail($email);
+                    //$user = $this->ownerDAO->Get($email);
+                    $user = $this->ownerSQL->GetByEmail($email);
                     $_SESSION["loggedUser"] = $user;
 
                     $owner = new Owner();
@@ -56,13 +72,13 @@
                     $owner->setName($user->getTypeUserOwner()->getName());
                     $owner->setSurName($user->getTypeUserOwner()->getSurName());
                     $owner->setDni($user->getTypeUserOwner()->getDni());
-
                     $this->InLogin("Welcome", $owner);
                 }
                 else
                 {
                     if(($keeper!=null)&&($keeper->getPassword()==$password)){
-                        $keeper = $this->keeperDAO->getByEmail($email);
+                        //$keeper = $this->keeperDAO->getByEmail($email);
+                        $keeper = $this->keeperSQL->GetByEmail($email);
                         $_SESSION["loggedUser"] = $keeper;
                         $this->InKeeper("Welcome", $keeper);
                     }else
@@ -89,7 +105,8 @@
             $owner->setName($user->getTypeUserOwner()->getName());
             $owner->setSurName($user->getTypeUserOwner()->getSurName());
             $owner->setDni($user->getTypeUserOwner()->getDni());
-               
+
+
             $this->InLogin("Welcome",$owner);
         }
         ///logueado y menu owner
