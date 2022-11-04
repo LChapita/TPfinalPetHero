@@ -2,20 +2,22 @@
     namespace Controllers;
 
     use DAO\PetDAO as PetDAO;
+    use SQL\PetSQL as PetSQL;
     use Models\Owner as Owner;
-    use Models\Pet;
+    use Models\Pet as Pet;
     use Models\User as User;
 
     class PetController
     {
         private $petDAO;
-
+        private $petSQL;
         public function __construct()
         {
-            $this->petDAO = new PetDAO();
+            //$this->petDAO = new PetDAO();
+            $this->petSQL = new PetSQL();
         }
 
-        public function RegisterPet($name,$race,$vaccinationschendle,$photo,$video)
+        public function RegisterPet($name,$race,$vaccinationschendle,$photo,$video,$sizePet)
         {
 
             $userArr = new User();
@@ -37,18 +39,26 @@
             $pet=new Pet();
             
             $pet->setName($name);
-            $pet->setRaza($race);
+            $pet->setRace($race);
             $pet->setVaccinationSchedule($vaccinationschendle);    
-            $pet->setFoto($photo);
+            $pet->setPhoto($photo);
             $pet->setVideo($video);
-
+            
+            if ($_REQUEST["sizePet"] == "small") {
+                $pet->setSizePet($sizePet);
+            } elseif ($_REQUEST["sizePet"] == "medium") {
+                $pet->setSizePet($sizePet);
+            } else {
+                $pet->setSizePet($sizePet);
+            }
+            
             $pet->setOwnerID($owner->getId());
             
             $pet->setOwneR($owner);
 
             
-            $this->petDAO->Add($pet);
-
+            //$this->petDAO->Add($pet);
+            $this->petSQL->Add($owner,$pet);
             $this->ShowView();
         }
         

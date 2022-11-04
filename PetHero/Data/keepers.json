@@ -1,56 +1,42 @@
 [
     {
-        "email": "aaa@gmail.com",
+        "email": "chapa@gmail.com",
         "password": "123",
         "id": 1,
         "typeuser": {
             "type": 1,
             "id": 1,
-            "name": "aaa",
-            "lastname": "bbb",
-            "photo": "img.png",
-            "dni": "123123123",
-            "tuition": "12312312",
-            "sex": "Female",
-            "age": "18",
-            "dateStart": "2022-10-28",
-            "dateFinish": "2022-11-02"
+            "name": "Lucas",
+            "lastname": "Chapa",
+            "photo": "pequines.jpg",
+            "dni": "12345678",
+            "tuition": "112233",
+            "sizepet": null,
+            "price": null,
+            "sex": "Male",
+            "age": "25",
+            "dateStart": "2022-11-01",
+            "dateFinish": "2022-11-10"
         }
     },
     {
-        "email": "bbb@gmail.com",
-        "password": "1234",
+        "email": "123",
+        "password": "456",
         "id": 2,
         "typeuser": {
             "type": 2,
             "id": 2,
-            "name": "cxasdads",
-            "lastname": "zxc",
-            "photo": "123123",
-            "dni": "1231231",
-            "tuition": "44444",
+            "name": "dsada",
+            "lastname": "123",
+            "photo": "chiguagua.jpg",
+            "dni": "44",
+            "tuition": "2323",
+            "sizepet": null,
+            "price": null,
             "sex": "Female",
             "age": "18",
-            "dateStart": "2022-12-01",
-            "dateFinish": "2022-12-15"
-        }
-    },
-    {
-        "email": "123123123",
-        "password": "5555",
-        "id": 3,
-        "typeuser": {
-            "type": 3,
-            "id": 3,
-            "name": "vgsdfvr",
-            "lastname": "asdasd",
-            "photo": "45555",
-            "dni": "1232",
-            "tuition": "444444444123123",
-            "sex": "Female",
-            "age": "18",
-            "dateStart": "2022-12-03",
-            "dateFinish": "2022-12-10"
+            "dateStart": "2022-11-01",
+            "dateFinish": "2022-11-11"
         }
     }
 ]

@@ -4,16 +4,18 @@ namespace Controllers;
 
 use Models\Keeper as Keeper;
 use Models\User as User;
-
-use DAO\KeeperDAO as KeeperDAO;
+use SQL\KeeperSQL as KeeperSQL;
+//use DAO\KeeperDAO as KeeperDAO;
 
 class KeeperController{
+    private $keeperSQL;
     private $keeperDAO;
     private $keeper;
 
     public function __construct()
     {
-        $this->keeperDAO = new KeeperDAO();
+        //$this->keeperDAO = new KeeperDAO();
+        $this->keeperSQL=new KeeperSQL();
     }
 
     public function getKeeperC()
@@ -31,7 +33,7 @@ class KeeperController{
         require_once(VIEWS_PATH . "keepers/menu-keeper.php");
     }
 
-    public function RegisterKeeper($email, $password, $name, $lastname, $photo, $dni, $tuition, $sex, $age)
+    public function RegisterKeeper($email, $password, $name, $lastname, $photo, $dni, $tuition,$sizePet ,$price,$sex, $age)
     {
         $user = new User();
 
@@ -49,6 +51,21 @@ class KeeperController{
 
         $keeper->setTuition($tuition);
 
+        if ($_REQUEST["sizePet"] == "small") {
+            $keeper->setSizePet($sizePet);
+        } elseif ($_REQUEST["sizePet"] == "medium") {
+            $keeper->setSizePet($sizePet);
+        } else {
+            $keeper->setSizePet($sizePet);
+        }
+        $keeper->setPrice($price);
+
+        if ($_REQUEST["age"] > 17) {
+            $keeper->setAge($age);
+        } else {
+            $keeper->setAge($age);
+        }
+
         if ($_REQUEST["sex"] == "Female") {
             $keeper->setSex($sex);
         } elseif ($_REQUEST["sex"] == "Male") {
@@ -63,8 +80,9 @@ class KeeperController{
             $keeper->setAge($age);
         }
 
-        $this->keeperDAO->Add($user, $keeper);
-
+        //$this->keeperDAO->Add($user, $keeper);
+        $this->keeperSQL->Add($user, $keeper);
+        
         $this->GoHome();
     }
 

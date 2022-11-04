@@ -29,11 +29,11 @@ require_once(VIEWS_PATH."nav.php");
                     <?php
 
                     $ReservDAO=new ReservDAO();
-                   $reserv = new Reserv();
+                    //$reserv = new Reserv();
                     $reservList = $ReservDAO->GetAll();
        
                     foreach ($reservList as $reserv) { 
-                        var_dump($reserv);
+                    //var_dump($reserv);
                     ?>
                         <tr>
                             <td><?php echo $reserv->getIdReserv(); ?></td>

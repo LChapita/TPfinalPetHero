@@ -7,7 +7,7 @@ use Controllers\PetController;
 use Models\Pet as Pet;
 use Models\Owner as Owner;
 
-require_once(VIEWS_PATH."nav.php");
+require_once(VIEWS_PATH . "nav.php");
 
 ?>
 <main>
@@ -21,6 +21,7 @@ require_once(VIEWS_PATH."nav.php");
                         <th>Vacunaciones</th>
                         <th>Link de Fotos</th>
                         <th>Videos</th>
+                        <th>Size PET</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -35,10 +36,17 @@ require_once(VIEWS_PATH."nav.php");
                             <input type="url" name="vaccinationschendle" required>
                         </td>
                         <td>
-                            <input type="file" name="photo" required>
+                            <input type="url" name="photo" required>
                         </td>
                         <td>
-                            <input type="file" name="video">
+                            <input type="url" name="video">
+                        </td>
+                        <td>
+                            <select name="sizePet">
+                                <option value="small">SMALL</option>
+                                <option value="medium">MEDIUM</option>
+                                <option value="big">BIG</option>
+                            </select>
                         </td>
                     </tr>
                 </tbody>

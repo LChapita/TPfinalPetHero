@@ -15,18 +15,27 @@ require_once('nav-new-user.php');
                             <label for="">Name</label>
                             <input type="text" name="name" class="form-control" required>
 
-                            <label for="">Last Name</label>
+                            <label for="">Last Name</label><br>
                             <input type="text" name="lastname" class="form-control" required>
-
+                            <br>
                             <label for="">Photo</label>
-                            <input type="text" name="photo" class="form-control" required>
-
+                            <input type="file" name="photo"required>
+                            <br>
                             <label for="">DNI</label>
                             <input type="number" name="dni" class="form-control" required>
 
                             <label for="">Tuition</label>
                             <input type="number" name="tuition" class="form-control" required>
 
+                            <label for="">Size Pet</label><br>
+                            <select name="sizePet">
+                                <option value="small">SMALL</option>
+                                <option value="medium">MEDIUM</option>
+                                <option value="big">BIG</option>
+                            </select>
+                            <br>
+                            <label for="">Price</label>
+                            <input type="number" name="price" class="form-control" required>
                             <label for="">Sex</label>
                             <select name="sex">
                                 <option value="Female">Female</option>

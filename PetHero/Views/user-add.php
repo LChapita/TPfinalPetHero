@@ -9,13 +9,13 @@ require_once('nav-new-user.php');
                 <div class="row">
                     <div class="col-lg-5">
                         <div class="form-group">
-                            <label for="">Email</label>
+                            <label for="" >Email</label>
                             <input type="text" name="email" class="form-control" required>
 
                             <label for="">Password</label>
                             <input type="password" name="password" class="form-control" required>
 
-                            <a>Select User Type</a>
+                            <label>Select User Type</label>
                             <select name="typeuser" class="form-control">
                                 <option value="Owner" required>Owner</option>
                                 <option value="Keeper" required>Keeper</option>

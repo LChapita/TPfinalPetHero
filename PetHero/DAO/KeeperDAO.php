@@ -58,6 +58,8 @@ class KeeperDAO implements IKeeperDAO
                 $keeper->setPhoto($content["typeuser"]["photo"]);
                 $keeper->setDni($content["typeuser"]["dni"]);
                 $keeper->setTuition($content["typeuser"]["tuition"]);
+                $keeper->setSizePet($content["typeuser"]["sizepet"]);
+                $keeper->setPrice($content["typeuser"]["price"]);
                 $keeper->setSex($content["typeuser"]["sex"]);
                 $keeper->setAge($content["typeuser"]["age"]);
                 $keeper->setDateStart($content["typeuser"]["dateStart"]);
@@ -92,6 +94,8 @@ class KeeperDAO implements IKeeperDAO
                 "photo" => $user->getTypeUserKeeper()->getPhoto(),
                 "dni" => $user->getTypeUserKeeper()->getDni(),
                 "tuition" => $user->getTypeUserKeeper()->getTuition(),
+                "sizepet"=>$user->getTypeUserKeeper()->getSizePet(),
+                "price"=>$user->getTypeUserKeeper()->getPrice(),
                 "sex"=>$user->getTypeUserKeeper()->getSex(),
                 "age" => $user->getTypeUserKeeper()->getAge(),
                 "dateStart"=>$user->getTypeUserKeeper()->getDateStart(),

@@ -17,7 +17,8 @@ class Keeper{
     
     private $keeper;
 
-    private $date;
+    private $price;
+    private $sizePet;
 
     private $dateS;
     private $dateF;
@@ -135,6 +136,23 @@ class Keeper{
         return $this->dateF;
     }
 
+    public function getPrice()
+    {
+        return $this->price;
+    }
+    public function setPrice($price)
+    {
+        $this->price = $price;  
+    }
+ 
+    public function getSizePet()
+    {
+        return $this->sizePet;
+    }
+    public function setSizePet($sizePet)
+    {
+        $this->sizePet = $sizePet;
+    }
 }
 
 ?>
