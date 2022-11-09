@@ -12,6 +12,7 @@ use SQL\KeeperSQL as KeeperSQL;
 use Models\Keeper as Keeper;
 use Models\Pet;
 use SQL\PetSQL;
+use SQL\ReservSQL;
 
 $userArr = $_SESSION;
 
@@ -57,17 +58,17 @@ $keeper = $keeperSQL->GetById($idKeeper);
             </table>
         -->
             <label.colorNegro> Ingrese las Fechas Entre las que desea hacer su Reserva</label><br>
-            <br>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Date Started</th>
-                        <th>Date Finish</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <!--  
+                <br>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Date Started</th>
+                            <th>Date Finish</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <!--  
                             <input type="hidden" name="idKeeper" value="< ?php echo $keeper->getId() ?>">
                             <input type="hidden" name="idOwner" value="< ?php echo $owner->getId()?>">
                              <select name="confirm" class="form-control">
@@ -76,26 +77,60 @@ $keeper = $keeperSQL->GetById($idKeeper);
                                     </select>
                         -->
 
-                        <select name="pet" class="form-control">
+                            <select name="pet" class="form-control">
+                                <?php
+                                foreach ($petList as $pet) {
+                                    echo "<option value=" . $pet->getId() . " required>" . $pet->getName() . "</option>";
+                                }
+                                ?>
+                            </select>
+                            <input type="hidden" name="idKeeper" value="<?php echo $idKeeper ?>">
                             <?php
-                            foreach ($petList as $pet) {
-                                echo "<option value=" . $pet->getId() . " required>" . $pet->getName() . "</option>";
+                            $reservSQL = new ReservSQL();
+                            $reservList = $reservSQL->GetReservbyIdKeeper($idKeeper);
+                            //var_dump($reservList);
+                            //var_dump($keeper->getTypeUserKeeper()->getDateStart());
+                            //var_dump($keeper->getTypeUserKeeper()->getDateFinish());
+                            if ($reservList == null) {
+                            ?>
+                                <td>
+                                    <input type="date" name="dateStart" min="<?php echo $keeper->getTypeUserKeeper()->getDateStart(); ?>" max="<?php echo $keeper->getTypeUserKeeper()->getDateFinish(); ?>" placeholder="START" required>
+                                </td>
+                                <td>
+                                    <input type="date" name="dateFinish" min="<?php echo date('Y-m-d', strtotime($keeper->getTypeUserKeeper()->getDateStart() . "+1 day")); ?>" max="<?php echo $keeper->getTypeUserKeeper()->getDateFinish(); ?>" placeholder="FINISH" required>
+                                </td>
+                                    
+                                <?php
+                            } else {
+                                foreach ($reservList as $reserv) {
+                                    if ($reserv->getConfirm() == null || $reserv->getConfirm() == 0) {
+                                ?>
+                                        <td>
+                                            <input type="date" name="dateStart" 
+                                            min="<?php echo $keeper->getTypeUserKeeper()->getDateStart(); ?>"
+                                            max="<?php echo $keeper->getTypeUserKeeper()->getDateFinish(); ?>" 
+                                            placeholder="START" required>
+                                            <!-- min="2022/11/04 aca 2022/11/08 |2022/11/09 hasta 2022/11/12  |2022/11/13 aca max="2022/11/15 -->
+                                        </td>
+                                        <td>
+                                            <input type="date" name="dateStart" 
+                                            min="<?php echo $keeper->getTypeUserKeeper()->getDateStart(); ?>" 
+                                            max="<?php echo $keeper->getTypeUserKeeper()->getDateFinish(); ?>" 
+                                            
+                                            placeholder="START" required>
+                                            <!-- min="2022/11/04 aca 2022/11/08 |2022/11/09 hasta 2022/11/12  |2022/11/13 aca max="2022/11/15 -->
+                                        </td>
+                            <?php
+                                    }
+                                }
                             }
                             ?>
-                        </select>
-                        <input type="hidden" name="idKeeper" value="<?php echo $idKeeper ?>">
-                        <td>
-                            <input type="date" name="dateStart" min="<?php echo $keeper->getTypeUserKeeper()->getDateStart(); ?>" max="<?php echo $keeper->getTypeUserKeeper()->getDateFinish(); ?>" placeholder="START" required>
-                        </td>
-                        <td>
-                            <input type="date" name="dateFinish" min="<?php echo date('Y-m-d', strtotime($keeper->getTypeUserKeeper()->getDateStart() . "+1 day")); ?>" max="<?php echo $keeper->getTypeUserKeeper()->getDateFinish(); ?>" placeholder="FINISH" required>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <div>
-                <input type="submit" class="btn" value="Add Stay" style="background-color:#DC8E47;color:white;" />
-            </div>
+                        </tr>
+                    </tbody>
+                </table>
+                <div>
+                    <input type="submit" class="btn" value="Add Stay" style="background-color:#DC8E47;color:white;" />
+                </div>
         </form>
     </section>
 </main>

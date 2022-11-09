@@ -114,11 +114,11 @@ class ReservSQL implements IReservSQL{
             foreach ($resultSet as $row) {
                 $reserv = new Reserv();
                 $reserv->setIdReserv($row["id_Reserv"]);
-                $reserv->setIdReserv($row["id_Pet"]);
-                $reserv->setIdReserv($row["id_Keeper"]);
+                $reserv->setIdPet($row["id_Pet"]);
+                $reserv->setIdKeeper($row["id_Keeper"]);
 
-                $reserv->setIdReserv($row["dateStart"]);
-                $reserv->setIdReserv($row["dateFinish"]);
+                $reserv->setDateStart($row["dateStart"]);
+                $reserv->setDateFinish($row["dateFinish"]);
 
                 $reserv->setConfirm($row["confirm"]);
 
@@ -131,6 +131,36 @@ class ReservSQL implements IReservSQL{
         }
     }
 
+    public function GetReservbyIdKeeper($idKeeper)
+    {
+        try {
+            $reservList = array();
+
+            $query = "SELECT * FROM " . $this->tableName
+            . " WHERE id_Keeper=" . "'" . $idKeeper . "'";
+            $this->connection = Connection::GetInstance();
+
+            $resultSet = $this->connection->Execute($query);
+
+            foreach ($resultSet as $row) {
+                $reserv = new Reserv();
+                $reserv->setIdReserv($row["id_Reserv"]);
+                $reserv->setIdPet($row["id_Pet"]);
+                $reserv->setIdKeeper($row["id_Keeper"]);
+
+                $reserv->setDateStart($row["dateStart"]);
+                $reserv->setDateFinish($row["dateFinish"]);
+
+                $reserv->setConfirm($row["confirm"]);
+
+                array_push($reservList, $reserv);
+            }
+            //var_dump($reservList);
+            return $reservList;
+        } catch (Exception $ex) {
+            throw $ex;
+        }
+    }
     public function Confirm(Reserv $reserv,$id_Reserv)
     {
         try {
