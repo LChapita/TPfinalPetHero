@@ -9,6 +9,7 @@ use DAO\UserDAO;
 use Models\User;
 use Models\Keeper;
 use Models\Reserv;
+use SQL\KeeperSQL;
 
 require_once(VIEWS_PATH . "nav.php");
 ?>
@@ -50,18 +51,26 @@ require_once(VIEWS_PATH . "nav.php");
 
 
 
-                    $keeperDAO = new KeeperDAO();
+                    //$keeperDAO = new KeeperDAO();
                     //$keeper = new Keeper();
-                    $keeperList = $keeperDAO->GetAllKeepers();
+                    //$keeperList = $keeperDAO->GetAllKeepers();
+                    //
+                    $keeperSQL=new KeeperSQL();
+                    //$keeper = new Keeper();
+                    $keeperList =$keeperSQL->GetAll();
                     //
                     //private $start; /* Se ingresa primer fecha por teclado*/
                     //private $finish;  /* Se ingresa segunda  fecha por teclado*/
                     //
                     ///owner,keeper,idReserva idPerroAsociadoAlKeeper
-                    foreach ($keeperList as $keeper) {
-                        //var_dump($keeper);
-                        if ((($keeper->getTypeUserKeeper()->getDateStart()) &&  ($keeper->getTypeUserKeeper()->getDateFinish())) != null) {
-                            if (($start <= $keeper->getTypeUserKeeper()->getDateStart() && $finish >= $keeper->getTypeUserKeeper()->getDateFinish())) {
+                    if($start!=null){
+                    if ($start < $finish) {
+                        foreach ($keeperList as $keeper) {
+                            //var_dump($keeper);
+                            if ((($keeper->getTypeUserKeeper()->getDateStart()) &&  ($keeper->getTypeUserKeeper()->getDateFinish())) != null) {
+                                if ((($start >=  $keeper->getTypeUserKeeper()->getDateStart() && $finish <= $keeper->getTypeUserKeeper()->getDateFinish())) ||
+                                    (($start <= $keeper->getTypeUserKeeper()->getDateStart() && $finish >= $keeper->getTypeUserKeeper()->getDateFinish()))
+                                ) {
                     ?>
                                 <tr>
                                     <td><?php echo $keeper->getTypeUserKeeper()->getName() ?></td>
@@ -77,15 +86,22 @@ require_once(VIEWS_PATH . "nav.php");
                                     <td><?php echo $keeper->getTypeUserKeeper()->getDateFinish() ?></td>
 
                                     <form action="<?php echo FRONT_ROOT . "Reserv/ShowAddView" ?>" method="POST">
-                                        <input type="hidden" name="idKeeper" value="<?php echo $keeper->getTypeUserKeeper()->getId() ?>">
+                                        <input type="hidden" name="idKeeper" value="<?php echo $keeper->getId() ?>">
                                         <td> <button type="submit" name="reservar" value="reservar">Reservar</button></td>
                                     </form>
 
                                 </tr>
                     <?php
+                                
+                                }
                             }
                         }
                     }
+                        else{
+                           echo "<script> alert('Ingrese la fecha correctamente. La fecha START tiene que ser menor a la fecha FINISH'); </script>";
+                       }
+                    }
+                
                     ?>
                 </tbody>
             </table>

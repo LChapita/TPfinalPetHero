@@ -10,6 +10,7 @@ use SQL\Connection as Connection;
 class PetSQL implements IPetSQL{
     private $connection;
     private $tableName = "pet";
+
     public function Add(Owner $owner,Pet $pet)
     {
         try {
@@ -56,6 +57,39 @@ class PetSQL implements IPetSQL{
                 $pet->setOwnerID($row["id_Owner"]);
 
                 
+                array_push($petList, $pet);
+            }
+
+
+            return $petList;
+        } catch (Exception $ex) {
+            throw $ex;
+        }
+    }
+    public function GetPetByOwnerId($idOwner)
+    {
+        try {
+            $petList = array();
+
+            $query = "SELECT * FROM " . $this->tableName
+            . " WHERE id_Owner=" . "'" . $idOwner . "'";
+
+            $this->connection = Connection::GetInstance();
+
+            $resultSet = $this->connection->Execute($query);
+            foreach ($resultSet as $row) {
+                $pet = new Pet();
+
+                $pet->setPhoto($row["photo"]);
+                $pet->setId($row["id_Pet"]);
+                $pet->setName($row["name"]);
+                $pet->setVaccinationSchedule($row["vaccinationSchedule"]);
+                $pet->setRace($row["race"]);
+                $pet->setVideo($row["video"]);
+                $pet->setSizePet($row["sizePet"]);
+                $pet->setOwnerID($row["id_Owner"]);
+
+
                 array_push($petList, $pet);
             }
 

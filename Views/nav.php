@@ -4,6 +4,9 @@
      </span>
      <ul class="navbar-nav ml-auto">
           <li class="nav-item">
+               <a class="nav-link" href="<?php echo FRONT_ROOT . "Owner/MyProfile"  ?>">My Profile</a>
+          </li>
+          <li class="nav-item">
                <a class="nav-link" href="<?php echo FRONT_ROOT . "Pet/ShowAdd" ?>">Add Pets</a>
           </li>
           <li class="nav-item">

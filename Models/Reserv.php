@@ -5,7 +5,7 @@ namespace Models;
 class Reserv{
 
     private $idReserv;
-    private $idOwner;
+    private $idPet;
     private $idKeeper;
 
     private $dateStart;
@@ -22,13 +22,13 @@ class Reserv{
         $this->idReserv = $idReserv;
     }
     
-    public function getIdOwner()
+    public function getIdPet()
     {
-        return $this->idOwner;
+        return $this->idPet;
     }
-    public function setIdOwner($idOwner)
+    public function setIdPet($idPet)
     {
-        $this->idOwner = $idOwner;
+        $this->idPet = $idPet;
     }
 
     public function getIdKeeper()

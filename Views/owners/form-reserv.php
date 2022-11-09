@@ -8,21 +8,36 @@ use DAO\ReservDAO as ReservDAO;
 use Models\Owner as Owner;
 
 use DAO\KeeperDAO as KeeperDAO;
+use SQL\KeeperSQL as KeeperSQL;
 use Models\Keeper as Keeper;
+use Models\Pet;
+use SQL\PetSQL;
 
-$userArr=$_SESSION;
+$userArr = $_SESSION;
 
-foreach($userArr as $user){
-    $owner=new Owner();
-    $owner->setId($user->getTypeUserOwner()->getId());
+foreach ($userArr as $user) {
+    $owner = new Owner();
+    //$owner->setId($user->getTypeUserOwner()->getId());
+    $owner->setId($user->getId());
 }
 
-$keeper=new Keeper();
-$keeperDAO=new KeeperDAO();
+//$petSQL=
 
-$keeper = $keeperDAO->GetById($idKeeper);
+//$keeper=new Keeper();
+//$keeperDAO=new KeeperDAO();
 
-var_dump($keeper);
+//$keeper = new Keeper();
+//$keeper = $keeperDAO->GetById($idKeeper);
+
+$petSQL = new PetSQL();
+$petList = $petSQL->GetPetByOwnerId($owner->getId());
+
+$keeperSQL = new KeeperSQL();
+$keeper = $keeperSQL->GetById($idKeeper);
+
+
+//var_dump($petList);
+//var_dump($idKeeper);
 ?>
 <main>
     <section id="agregar" class="mb-7">
@@ -41,7 +56,8 @@ var_dump($keeper);
                 </thead>
             </table>
         -->
-            <br><br>
+            <label.colorNegro> Ingrese las Fechas Entre las que desea hacer su Reserva</label><br>
+            <br>
             <table>
                 <thead>
                     <tr>
@@ -51,13 +67,28 @@ var_dump($keeper);
                 </thead>
                 <tbody>
                     <tr>
-                        <input type="hidden" name="idOwner" value="<?php echo $owner->getId()?>">
-                        <input type="hidden" name="idKeeper" value="<?php echo $keeper->getId() ?>">
+                        <!--  
+                            <input type="hidden" name="idKeeper" value="< ?php echo $keeper->getId() ?>">
+                            <input type="hidden" name="idOwner" value="< ?php echo $owner->getId()?>">
+                             <select name="confirm" class="form-control">
+                                        <option value="1" required>Confirmed</option>
+                                        <option value="0" required>UnConfirmed</option>
+                                    </select>
+                        -->
+
+                        <select name="pet" class="form-control">
+                            <?php
+                            foreach ($petList as $pet) {
+                                echo "<option value=" . $pet->getId() . " required>" . $pet->getName() . "</option>";
+                            }
+                            ?>
+                        </select>
+                        <input type="hidden" name="idKeeper" value="<?php echo $idKeeper ?>">
                         <td>
-                            <input type="date" name="dateStart" placeholder="START" required>
+                            <input type="date" name="dateStart" min="<?php echo $keeper->getTypeUserKeeper()->getDateStart(); ?>" max="<?php echo $keeper->getTypeUserKeeper()->getDateFinish(); ?>" placeholder="START" required>
                         </td>
                         <td>
-                            <input type="date" name="dateFinish" placeholder="FINISH" required>
+                            <input type="date" name="dateFinish" min="<?php echo date('Y-m-d', strtotime($keeper->getTypeUserKeeper()->getDateStart() . "+1 day")); ?>" max="<?php echo $keeper->getTypeUserKeeper()->getDateFinish(); ?>" placeholder="FINISH" required>
                         </td>
                     </tr>
                 </tbody>
