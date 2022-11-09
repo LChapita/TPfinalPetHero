@@ -152,5 +152,52 @@ class KeeperSQL implements IKeeperSQL{
             throw $ex;
         }
     }
+    public function GetById($idKeeper)
+    {
+        try {
+            $keeperList = array();
+
+            $query = "SELECT * FROM " . $this->tableName
+                . " WHERE id_Keeper=" . "'" . $idKeeper . "'";
+
+
+            $this->connection = Connection::GetInstance();
+
+            $resultSet = $this->connection->Execute($query);
+
+            $user = new User();
+            foreach ($resultSet as $row) {
+
+
+                $user->setEmail($row["email"]);
+                $user->setPassword($row["password"]);
+                $user->setId($row["id_Keeper"]);
+
+                $keeper = new Keeper();
+                $keeper->setName($row["name"]);
+                $keeper->setLastname($row["lastaname"]);
+                $keeper->setPhoto($row["photo"]);
+                $keeper->setDNI($row["DNI"]);
+                $keeper->setTuition($row["tuition"]);
+                $keeper->setSizePet($row["sizePet"]);
+                $keeper->setPrice($row["price"]);
+                $keeper->setSex($row["sex"]);
+                $keeper->setAge($row["age"]);
+                $keeper->setDateStart($row["dateStart"]);
+                $keeper->setDateFinish($row["dateFinish"]);
+
+
+                $keeper->setKeeper("Keeper");
+                $keeper->setId($user->getId());
+                $user->setTypeUserKeeper($keeper);
+
+                array_push($keeperList, $user);
+            }
+            //var_dump($user);
+            return $user;
+        } catch (Exception $ex) {
+            throw $ex;
+        }
+    }
 }
 ?>

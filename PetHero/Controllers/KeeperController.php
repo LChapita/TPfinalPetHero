@@ -5,7 +5,7 @@ namespace Controllers;
 use Models\Keeper as Keeper;
 use Models\User as User;
 use SQL\KeeperSQL as KeeperSQL;
-//use DAO\KeeperDAO as KeeperDAO;
+use DAO\KeeperDAO as KeeperDAO;
 
 class KeeperController{
     private $keeperSQL;
@@ -14,7 +14,7 @@ class KeeperController{
 
     public function __construct()
     {
-        //$this->keeperDAO = new KeeperDAO();
+        $this->keeperDAO = new KeeperDAO();
         $this->keeperSQL=new KeeperSQL();
     }
 

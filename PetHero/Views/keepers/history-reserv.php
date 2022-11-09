@@ -28,8 +28,6 @@ require_once(VIEWS_PATH . "keepers/nav-keeper.php");
                     <th>Date Start</th>
                     <th>Date Finish</th>
                     <th>Confirm</th>
-                    <th>Select Confirmed</th>
-
                 </thead>
                 <tbody>
                     <?php
@@ -51,31 +49,27 @@ require_once(VIEWS_PATH . "keepers/nav-keeper.php");
 
 
                     //var_dump($reservList);
-                    
+
                     foreach ($reservList as $reserv) {
                         if ($userMenu->getId() == $reserv->getIdKeeper()) {
-                            if($reserv->getConfirm()==null){
+                            if ($reserv->getConfirm() != null) {
                     ?>
-
-                            <tr>
-                                <td><?php echo $reserv->getIdReserv(); ?></td>
-                                <td><?php echo $reserv->getIdPet(); ?></td>
-                                <td><?php echo $reserv->getIdKeeper(); ?></td>
-                                <td><?php echo $reserv->getDateStart(); ?></td>
-                                <td><?php echo $reserv->getDateFinish(); ?></td>
-
-                                <form action="<?php echo FRONT_ROOT . "Reserv/Confirm" ?>" method="POST">
-                                <td>
-                                    
-                                    <input type="hidden" name="id_Reserv" value="<?php echo $reserv->getIdReserv(); ?>">
-                                    <select name="confirm" class="form-control">
-                                        <option value="1" required>Confirmed</option>
-                                        <option value="0" required>UnConfirmed</option>
-                                    </select>
-                                </td>
-                                    <td> <button type="submit" name="confirmar" value="confirmar">ACEPTAR</button></td>
-                                </form>
-                            </tr>
+                                <tr>
+                                    <td><?php echo $reserv->getIdReserv(); ?></td>
+                                    <td><?php echo $reserv->getIdPet(); ?></td>
+                                    <td><?php echo $reserv->getIdKeeper(); ?></td>
+                                    <td><?php echo $reserv->getDateStart(); ?></td>
+                                    <td><?php echo $reserv->getDateFinish(); ?></td>
+                                    <td>
+                                        <?php 
+                                            if($reserv->getConfirm()==1){
+                                                echo "Confirmed";
+                                            }else{
+                                                echo "UnConfirmed";
+                                            }
+                                        ?>
+                                    </td>
+                                </tr>
 
                     <?php
                             }

@@ -66,6 +66,10 @@ class OwnerController{
         $this->GoHome();
     }
 
+    public function MyProfile(){
+        require_once(VIEWS_PATH."owners/menu-owner.php");
+    }
+
     public function GoHome()
     {
         header('Location:' . FRONT_ROOT . 'Home/GoFirstPage');

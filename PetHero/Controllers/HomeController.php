@@ -48,10 +48,7 @@
             //$keeper=$this->keeperDAO->getByEmail($email);
 
             $owner=$this->ownerSQL->GetByEmail($email);
-
             $keeper= $this->keeperSQL->GetByEmail($email);     
-
-            
 
             if((($owner != null)&&($owner->getPassword()==$password)) && (($keeper != null) && ($keeper->getPassword() == $password)))
             {

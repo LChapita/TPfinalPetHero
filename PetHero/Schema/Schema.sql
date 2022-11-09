@@ -26,9 +26,7 @@ create table keeper(
     sex varchar(10) not NULL,
     age int not NULL,
     dateStart DATE,
-    dateFinish DATE,
-    Dt_FORMATTED as (convert(varchar(255),dateStart,112)),
-    Dt_FORMATTED as (convert(varchar(255),dateFinish,112))
+    dateFinish DATE
 )Engine=InnoDB;
 
 create table pet(
@@ -45,12 +43,14 @@ create table pet(
 
 CREATE TABLE reserv
 (
-	idReserv INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	id_Reserv INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     id_Pet int not null,
-    idKeeper INT NOT NULL,
+    id_Keeper INT NOT NULL,
     dateStart DATE,
     dateFinish DATE,
-    confirm varchar(10);
+    confirm BOOLEAN,
+    constraint FK_pet_reserv foreign key(id_Pet) references pet(id_Pet),
+	constraint FK_keeper_reserv foreign key(id_Keeper) references keeper(id_Keeper)
 )Engine=InnoDB;
 
 DROP procedure IF EXISTS `Owner_Add`;
@@ -185,17 +185,28 @@ DROP procedure IF EXISTS `Reserv_Add`;
 
 DELIMITER $$
 
-CREATE PROCEDURE Reserv_Add(IN idReserv INT, IN idOwner INT, IN idKeeper INT, IN dateStart DATE,IN dateFinish DATE)
+CREATE PROCEDURE Reserv_Add(IN id_Reserv INT, IN id_Pet INT, IN id_Keeper INT, IN dateStart DATE,IN dateFinish DATE)
 BEGIN
 	INSERT INTO reserv
-        (reserv.idReserv, reserv.idOwner, reserv.idKeeper, reserv.dateStart,reserv.dateFinish)
+        (reserv.id_Reserv, reserv.id_Pet, reserv.id_Keeper, reserv.dateStart,reserv.dateFinish)
     VALUES
-        (idReserv,idOwner,idKeeper,dateStart,dateFinish);
+        (id_Reserv,id_Pet,id_Keeper,dateStart,dateFinish);
 END$$
-
-
 DELIMITER ;
 
+DROP procedure IF EXISTS `Reserv_Confirm`;
+
+DELIMITER $$
+CREATE PROCEDURE Reserv_Confirm(in confirm int,in id_Reserv int)
+BEGIN
+	UPDATE reserv r 
+    SET r.confirm= confirm 
+    where r.id_Reserv= id_Reserv
+    ;
+END$$
+DELIMITER ;
+
+call Reserv_Confirm(false,3);
 
 select * from owner;
 select * from keeper;
@@ -205,7 +216,10 @@ select * from reserv;
 delete from pet where id_Pet=23;
 delete from reserv where idReserv=3;
 
-drop table owner;
-DROP table keeper;
-DROP table pet;
-drop table reserv;
+
+
+##drop table owner;
+##DROP table keeper;
+##DROP table pet;
+##drop table reserv;
+ 

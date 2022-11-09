@@ -2,18 +2,21 @@
 ///esto lo hace el owner
 require_once(VIEWS_PATH . "validate-session.php");
 
+use DAO\ReservDAO;
 use DAO\KeeperDAO;
+use SQL\KeeperSQL;
 use DAO\UserDAO;
+
 use Models\User;
 use Models\Keeper;
-use SQL\KeeperSQL;
+use Models\Reserv;
 
 require_once(VIEWS_PATH . "nav.php");
 ?>
 <main class="py-5">
      <section id="listado" class="mb-5">
           <div class="container">
-               <h2 class="mb-4">Listado de Keepers Disponibles entre fechas ingresadas</h2>
+               <h2 class="mb-4">Keepers disponibles entre fechas seleccionadas</h2>
                <table class="table bg-light text-center">
                     <thead class="bg-dark text-white">
                          <th>Name</th>
@@ -27,6 +30,7 @@ require_once(VIEWS_PATH . "nav.php");
                          <th>Date Start</th>
                          <th>Date Finish</th>
 
+
                     <tbody>
                          <form method="post" action="">
                               <label>
@@ -39,7 +43,6 @@ require_once(VIEWS_PATH . "nav.php");
                               <input type="date" name="finish" required>
                               <button type="submit" name="consultar" value="consultar">Consultar</button>
                          </form>
-                         
                          <?php
 
                          error_reporting(E_ALL ^ E_NOTICE);
@@ -48,24 +51,25 @@ require_once(VIEWS_PATH . "nav.php");
 
 
 
-                         //$keeperDAO = new KeeperDAO();
-                         //$keeper = new Keeper();
-                         //$keeperList = $keeperDAO->GetAllKeepers();
-                         //
                          $keeperSQL = new KeeperSQL();
-                         $keeper = new Keeper();
-                         $keeperList=$keeperSQL->GetAll();  
+                         //$keeper = new Keeper();
+                         $keeperList = $keeperSQL->GetAll();
+                         //
                          //private $start; /* Se ingresa primer fecha por teclado*/
                          //private $finish;  /* Se ingresa segunda  fecha por teclado*/
                          //
+                         ///owner,keeper,idReserva idPerroAsociadoAlKeeper
+                         if($start!=null){
+                         if($start<$finish){
                          foreach ($keeperList as $keeper) {
                               //var_dump($keeper);
-                              if ((($keeper->getTypeUserKeeper()->getDateStart())  &&  ($keeper->getTypeUserKeeper()->getDateFinish())) != null) {
+                              if ((($keeper->getTypeUserKeeper()->getDateStart()) &&  ($keeper->getTypeUserKeeper()->getDateFinish())) != null) {
+                                   if ((($start >=  $keeper->getTypeUserKeeper()->getDateStart() && $finish <= $keeper->getTypeUserKeeper()->getDateFinish())) ||
+                                                  (($start <= $keeper->getTypeUserKeeper()->getDateStart() && $finish >= $keeper->getTypeUserKeeper()->getDateFinish())) ||
+                                                  ($start < $keeper->getTypeUserKeeper()->getDateStart() && $finish < $keeper->getTypeUserKeeper()->getDateFinish()))
+                                    {
 
-                                   if($start<$finish){
-                                        
-                                        if (($start >= $keeper->getTypeUserKeeper()->getDateStart()) && ($finish <= $keeper->getTypeUserKeeper()->getDateFinish())) {
-                                             ?>
+                         ?>
                                         <tr>
                                              <td><?php echo $keeper->getTypeUserKeeper()->getName() ?></td>
                                              <td><?php echo $keeper->getTypeUserKeeper()->getLastname() ?></td>
@@ -75,17 +79,22 @@ require_once(VIEWS_PATH . "nav.php");
                                              <td><?php echo $keeper->getTypeUserKeeper()->getSex() ?></td>
                                              <td><?php echo $keeper->getTypeUserKeeper()->getAge() ?></td>
                                              <td><?php echo $keeper->getTypeUserKeeper()->getId() ?></td>
-                                             
+
                                              <td><?php echo $keeper->getTypeUserKeeper()->getDateStart() ?></td>
                                              <td><?php echo $keeper->getTypeUserKeeper()->getDateFinish() ?></td>
 
-                                             
+
+
                                         </tr>
-                                        <?php
+                         <?php
                                    }
                               }
-                              }
                          }
+                    }else
+                    {
+                         echo "<script> alert('Ingrese la fecha correctamente. La fecha START tiene que ser menor a la fecha FINISH'); </script>";
+                    }
+               }
                          ?>
                     </tbody>
                </table>
