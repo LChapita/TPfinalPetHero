@@ -69,7 +69,9 @@ class OwnerController{
     public function MyProfile(){
         require_once(VIEWS_PATH."owners/menu-owner.php");
     }
-
+    public function GenerateCuponPay(){
+        require_once(VIEWS_PATH . "owners/cupon-pago.php");
+    }
     public function GoHome()
     {
         header('Location:' . FRONT_ROOT . 'Home/GoFirstPage');

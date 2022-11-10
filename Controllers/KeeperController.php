@@ -46,9 +46,31 @@ class KeeperController{
 
         $keeper->setName($name);
         $keeper->setLastname($lastname);
-        $keeper->setPhoto($photo);
+        
+        if(isset($_FILES["photo"])){
+            $file=$_FILES["photo"];
+            $name=$file["name"];
+            $tipo=$file["type"];
+            $ruta_provicional=$file["tmp_name"];
+            $size=$file["size"];
+            $dimensiones=getimagesize($ruta_provicional);
+            $width=$dimensiones[0];
+            $height=$dimensiones[1];
+            $carpeta=VIEWS_PATH.("keepers/photos/");
+            /*validaciones de foto */
+
+            
+            $src=$carpeta.$name;
+            move_uploaded_file($ruta_provicional,$src);
+            $imagen= VIEWS_PATH."keepers/photos/".$name;
+        }
+        
+        $keeper->setPhoto($imagen);
+        
+        $dni=$_POST["dni"];
         $keeper->setDNI($dni);
 
+        $tuition=$_POST["tuition"];
         $keeper->setTuition($tuition);
 
         if ($_REQUEST["sizePet"] == "small") {
@@ -58,29 +80,19 @@ class KeeperController{
         } else {
             $keeper->setSizePet($sizePet);
         }
+
+        $price=$_POST["price"];
         $keeper->setPrice($price);
 
-        if ($_REQUEST["age"] > 17) {
-            $keeper->setAge($age);
-        } else {
-            $keeper->setAge($age);
-        }
+        $sexo= $_POST["sex"];
+        $keeper->setSex($sexo);
 
-        if ($_REQUEST["sex"] == "Female") {
-            $keeper->setSex($sex);
-        } elseif ($_REQUEST["sex"] == "Male") {
-            $keeper->setSex($sex);
-        } else {
-            $keeper->setSex($sex);
-        }
-
-        if ($_REQUEST["age"] > 17) {
-            $keeper->setAge($age);
-        } else {
-            $keeper->setAge($age);
-        }
-
+        $edad= $_POST["age"];
+        $keeper->setAge($edad);
+        
+        var_dump($keeper);
         //$this->keeperDAO->Add($user, $keeper);
+
         $this->keeperSQL->Add($user, $keeper);
         
         $this->GoHome();

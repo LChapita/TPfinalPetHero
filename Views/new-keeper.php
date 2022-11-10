@@ -5,7 +5,7 @@ require_once('nav-new-user.php');
     <section id="listado" class="mb-5">
         <div class="container">
             <h2 class="mb-4">Enter Data</h2>
-            <form action="<?php echo FRONT_ROOT . "Keeper/RegisterKeeper" ?>" method="POST" class="bg-light-alpha p-5">
+            <form action="<?php echo FRONT_ROOT . "Keeper/RegisterKeeper" ?>" method="POST" class="bg-light-alpha p-5" enctype="multipart/form-data">
                 <div class="row">
                     <div class="col-lg-5">
                         <div class="form-group">
@@ -19,7 +19,7 @@ require_once('nav-new-user.php');
                             <input type="text" name="lastname" class="form-control" required>
                             <br>
                             <label for="">Photo</label>
-                            <input type="file" name="photo"required>
+                            <input type="file" name="photo" multiple required>
                             <br>
                             <label for="">DNI</label>
                             <input type="number" name="dni" class="form-control" required>
