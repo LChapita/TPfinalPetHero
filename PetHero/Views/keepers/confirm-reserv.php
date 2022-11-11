@@ -18,11 +18,11 @@ require_once(VIEWS_PATH . "keepers/nav-keeper.php");
 <main class="py-5">
     <section id="listado" class="mb-5">
         <div class="container">
-            <h2 class="mb-4">Confirmar reservas</h2>
-            <h2 class="mb-4">Listado de Reservas propias:</h2>
+            <h2 class="mb-4">Confirm reservations</h2>
+            <h2 class="mb-4">List of own reservations:</h2>
             <table class="table bg-light text-center">
                 <thead class="bg-dark text-white">
-                    <th>Id Reserva</th>
+                    <th>Id Reserv</th>
                     <th>Id Owner</th>
                     <th>Id Keeper</th>
                     <th>Date Start</th>
@@ -73,7 +73,7 @@ require_once(VIEWS_PATH . "keepers/nav-keeper.php");
                                         <option value="0" required>UnConfirmed</option>
                                     </select>
                                 </td>
-                                    <td> <button type="submit" name="confirmar" value="confirmar">ACEPTAR</button></td>
+                                    <td> <button type="submit" name="confirmar" value="confirmar">Confirm</button></td>
                                 </form>
                             </tr>
 
