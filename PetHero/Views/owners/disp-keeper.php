@@ -16,7 +16,7 @@ require_once(VIEWS_PATH . "nav.php");
 <main class="py-5">
      <section id="listado" class="mb-5">
           <div class="container">
-               <h2 class="mb-4">Keepers disponibles entre fechas seleccionadas</h2>
+               <h2 class="mb-4">Keepers available between 2 dates</h2>
                <table class="table bg-light text-center">
                     <thead class="bg-dark text-white">
                          <th>Name</th>
@@ -45,9 +45,9 @@ require_once(VIEWS_PATH . "nav.php");
                          </form>
                          <?php
 
-                    error_reporting(E_ALL ^ E_NOTICE);
-                    $start = $_POST['start'];
-                    $finish = $_POST['finish'];
+                         error_reporting(E_ALL ^ E_NOTICE);
+                         $start = $_POST['start'];
+                         $finish = $_POST['finish'];
 
 
 
@@ -92,7 +92,7 @@ require_once(VIEWS_PATH . "nav.php");
                          }
                     }else
                     {
-                         echo "<script> alert('Ingrese la fecha correctamente. La fecha START tiene que ser menor a la fecha FINISH'); </script>";
+                         echo "<script> alert('Enter the date correctly. The START date must be less than the FINISH date'); </script>";
                     }
                }
                          ?>

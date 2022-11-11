@@ -17,8 +17,8 @@ require_once(VIEWS_PATH . "nav.php");
 <main class="py-5">
     <section id="listado" class="mb-5">
         <div class="container">
-            <h2 class="mb-4">Listado de Reservas</h2>
-            <h5 class="mb-4">Si su Reserva no aperece Espere a que se confirme por el keeper</h5>
+            <h2 class="mb-4">Reserv List</h2>
+            <h5 class="mb-4">If your reservation does not appear, it still requires confirmation from the keeper</h5>
             <table class="table bg-light text-center">
                 <thead class="bg-dark text-white">
                     <th>Id Reserva</th>

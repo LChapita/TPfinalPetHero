@@ -10,10 +10,10 @@
             <a class="nav-link" href="<?php echo FRONT_ROOT . "Keeper/WelcomeKeeper"  ?>">STAYS</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="<?php echo FRONT_ROOT . "Reserv/ShowListConfirm"  ?>">Confirm Reserv</a>
+            <a class="nav-link" href="<?php echo FRONT_ROOT . "Reserv/ShowListConfirm"  ?>">Confirm Reserve</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="<?php echo FRONT_ROOT . "Reserv/HistoryReservs"  ?>">Histori Reserv</a>
+            <a class="nav-link" href="<?php echo FRONT_ROOT . "Reserv/HistoryReservs"  ?>">Reservation History</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="<?php echo FRONT_ROOT . "Home/Logout"  ?>">Logout</a>

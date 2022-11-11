@@ -60,11 +60,6 @@ class KeeperController{
         }
         $keeper->setPrice($price);
 
-        if ($_REQUEST["age"] > 17) {
-            $keeper->setAge($age);
-        } else {
-            $keeper->setAge($age);
-        }
 
         if ($_REQUEST["sex"] == "Female") {
             $keeper->setSex($sex);
@@ -112,7 +107,6 @@ class KeeperController{
             $userIn->setPassword($user->getPassword());
             $userIn->setId($user->getId());
             /*
-
             $keeper = new Keeper();
             $keeper->setName($user->getTypeUserKeeper()->getName());
             $keeper->setLastname($user->getTypeUserKeeper()->getLastname());
@@ -154,4 +148,3 @@ class KeeperController{
         $this->keeper = $keeper;
     }
 }
-?>

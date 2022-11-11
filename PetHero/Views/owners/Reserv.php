@@ -16,7 +16,7 @@ require_once(VIEWS_PATH . "nav.php");
 <main class="py-5">
     <section id="listado" class="mb-5">
         <div class="container">
-            <h2 class="mb-4">Listado de Keepers a Reservar</h2>
+            <h2 class="mb-4">List of keepers to reserve</h2>
             <table class="table bg-light text-center">
                 <thead class="bg-dark text-white">
                     <th>Name</th>
@@ -87,7 +87,7 @@ require_once(VIEWS_PATH . "nav.php");
 
                                     <form action="<?php echo FRONT_ROOT . "Reserv/ShowAddView" ?>" method="POST">
                                         <input type="hidden" name="idKeeper" value="<?php echo $keeper->getId() ?>">
-                                        <td> <button type="submit" name="reservar" value="reservar">Reservar</button></td>
+                                        <td> <button type="submit" name="reservar" value="reservar">Reserve</button></td>
                                     </form>
 
                                 </tr>
