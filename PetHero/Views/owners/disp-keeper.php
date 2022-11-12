@@ -45,9 +45,9 @@ require_once(VIEWS_PATH . "nav.php");
                          </form>
                          <?php
 
-                    error_reporting(E_ALL ^ E_NOTICE);
-                    $start = $_POST['start'];
-                    $finish = $_POST['finish'];
+                         error_reporting(E_ALL ^ E_NOTICE);
+                         $start = $_POST['start'];
+                         $finish = $_POST['finish'];
 
 
 

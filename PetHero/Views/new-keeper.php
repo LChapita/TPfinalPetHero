@@ -19,7 +19,7 @@ require_once('nav-new-user.php');
                             <input type="text" name="lastname" class="form-control" required>
                             <br>
                             <label for="">Photo</label>
-                            <input type="file" name="photo"required>
+                            <input type="file" name="photo" multiple required>
                             <br>
                             <label for="">DNI</label>
                             <input type="number" name="dni" class="form-control" required>
