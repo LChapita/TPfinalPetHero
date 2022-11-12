@@ -57,7 +57,7 @@ $keeper = $keeperSQL->GetById($idKeeper);
                 </thead>
             </table>
         -->
-            <label.colorNegro> Enter the dates between you want to make your reservation</label><br>
+            <label.colorNegro> Ingrese las Fechas Entre las que desea hacer su Reserva</label><br>
                 <br>
                 <table>
                     <thead>
@@ -88,9 +88,11 @@ $keeper = $keeperSQL->GetById($idKeeper);
                             <?php
                             $reservSQL = new ReservSQL();
                             $reservList = $reservSQL->GetReservbyIdKeeper($idKeeper);
+                            var_dump($reservList);
                             //var_dump($reservList);
                             //var_dump($keeper->getTypeUserKeeper()->getDateStart());
                             //var_dump($keeper->getTypeUserKeeper()->getDateFinish());
+                            //var_dump($reservList);
                             if ($reservList == null) {
                             ?>
                                 <td>
@@ -99,31 +101,33 @@ $keeper = $keeperSQL->GetById($idKeeper);
                                 <td>
                                     <input type="date" name="dateFinish" min="<?php echo date('Y-m-d', strtotime($keeper->getTypeUserKeeper()->getDateStart() . "+1 day")); ?>" max="<?php echo $keeper->getTypeUserKeeper()->getDateFinish(); ?>" placeholder="FINISH" required>
                                 </td>
-                                    
+
                                 <?php
-                            } else {
-                                foreach ($reservList as $reserv) {
-                                    if ($reserv->getConfirm() == null || $reserv->getConfirm() == 0) {
-                                ?>
-                                        <td>
-                                            <input type="date" name="dateStart" 
-                                            min="<?php echo $keeper->getTypeUserKeeper()->getDateStart(); ?>"
-                                            max="<?php echo $keeper->getTypeUserKeeper()->getDateFinish(); ?>" 
-                                            placeholder="START" required>
-                                            <!-- min="2022/11/04 aca 2022/11/08 |2022/11/09 hasta 2022/11/12  |2022/11/13 aca max="2022/11/15 -->
-                                        </td>
-                                        <td>
-                                            <input type="date" name="dateStart" 
-                                            min="<?php echo $keeper->getTypeUserKeeper()->getDateStart(); ?>" 
-                                            max="<?php echo $keeper->getTypeUserKeeper()->getDateFinish(); ?>" 
-                                            
-                                            placeholder="START" required>
-                                            <!-- min="2022/11/04 aca 2022/11/08 |2022/11/09 hasta 2022/11/12  |2022/11/13 aca max="2022/11/15 -->
-                                        </td>
-                            <?php
-                                    }
-                                }
                             }
+                            /* elseif($reservList!=null){
+                                //$reserv=new Reserv();
+                                var_dump(
+                                    end($reservList));
+                                foreach ($reservList as $reserv) {//tiene mas de 1
+                                    
+                                                   ?>
+                                            <tbody>
+                                        <td>
+                                            <input type="date" name="dateStart" 
+                                            min="<?php echo date('Y-m-d', strtotime($reserv->getDateFinish() . "+1 day")); ?>" 
+                                            max="<?php echo $keeper->getTypeUserKeeper()->getDateFinish(); ?>" placeholder="START" required>
+                                        </td>
+                                        
+                                        <td>
+                                            <input type="date" name="dateFinish" 
+                                            min="<?php echo date('Y-m-d', strtotime($reserv->getDateFinish() . "+1 day")); ?>" 
+                                            max="<?php echo $keeper->getTypeUserKeeper()->getDateFinish(); ?>" placeholder="FINISH" required>
+                                        </td>
+                                    </tbody>
+                            <?php
+                                    
+                                }
+                            }*/
                             ?>
                         </tr>
                     </tbody>
