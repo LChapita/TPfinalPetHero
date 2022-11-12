@@ -23,8 +23,6 @@
 	
 ?>
 
-<!-- 
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -44,24 +42,9 @@
 		<label>
 			<h5>Add finish Date: </5>
 		</label>
-		
 		<input type="date" name="finish" required>
 		<button type="submit" name="consultar" value="consultar">Consultar</button>
 	</form>
 </body>
 
-</html> 
-
-<!DOCTYPE html>
- <html lang="en">
-	 <head>
-		 <meta charset="UTF-8">
-		 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-		 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-		 <title>Calendario web</title>
-		</head>
-		<body>
-			
-			</body>
-			</html>
-		-->
+</html>

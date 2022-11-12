@@ -20,11 +20,11 @@ if (isset($_FILES["photo"])) {
     move_uploaded_file($ruta_provicional, $src);
     $imagen ="fotos/" . $name;
 }
-
+*/
 //echo "<img src=".$imagen.">";
 
 //echo "<td><img src=".VIEWS_PATH. 'keepers/photos/golden.jpg'.">" ;
-*/
+
 
 error_reporting(E_ALL ^ E_NOTICE);
 $start = $_POST['start'];
@@ -40,7 +40,6 @@ $reservFinish = date("Y-m-d", strtotime("2022/11/09"));
 
 $fechasKeeper=array();
 $reservas=array();
-
 for ($i = $start; $i <= $finish; $i = date("Y-m-d", strtotime($i . "+ 1 days"))) {
     array_push($fechasKeeper,$i);
 }
@@ -49,7 +48,7 @@ for ($i = $reservStart; $i <= $reservFinish; $i = date("Y-m-d", strtotime($i . "
 }
 
 echo "<br>";
-foreach($fechasKeeper as $value){
+/*foreach($fechasKeeper as $value){
     echo "<br>".$value;
 }
 echo "<br>";
@@ -57,61 +56,18 @@ foreach ($reservas as $value) {
     echo "<br>" . $value;
 }
 echo "<br>";
-
-
-/*
-$reservStart2= date("Y-m-d", strtotime("2022/11/02"));
-$reservFinish2 = date("Y-m-d", strtotime("2022/11/04"));
-$reservas2 = array();
-
-for ($i = $reservStart2; $i <= $reservFinish2; $i = date("Y-m-d",strtotime($i . "+ 1 days")))
-{
-    array_push($reservas2, $i);
-}
-
-foreach ($reservas2 as $value) {
-    echo "<br>" . $value;
-}
-echo "<br>";
-foreach($reservas2 as $value)
-{
-    array_push($reservas,$value);
-}
 */
-sort($reservas);
-/*
-foreach ($reservas as $value) {
-    echo "<br>" . $value;
-}*/
 
-$reservasKeepers=array_diff($fechasKeeper,$reservas); ///la mejor de todas
-echo "<br>";
+$reservasKeepers=array();
 
-echo "<select name='fechas'>". "fechas disponibles";
-foreach ($reservasKeepers as $value) {
-    
-    echo "<option value='" . $value."'>".$value."</option>";
+foreach($fechasKeeper as $valueK){
+    foreach($reservas as $valueR){
+        if($valueK !=$valueR){
+            array_push($reservasKeepers,);
+        }
+    }
 }
-echo "</select>";
-/*
-echo "<br>";
-echo "<input type='date'";
-echo "min='".print_r(array_values($reservas2))."'";
-echo "max='" . print_r(array_values($reservas2)) . "'";
-echo ">";
-*/
-/*
-$textos = array("Hola", "Chau", "Bien", "Mal");
-
-echo "Borrando la palabra 'Chau' dentro del array:<br>";
-if (($clave = array_search("Chau", $textos)) !== false) {
-    unset($textos[$clave]);
-    print_r($textos);
-}
-var_dump($textos);
-*/
 //echo "<br>".$reservStart;
 //echo $dateStart;
 //echo $dateFinish;
-
 ?>
