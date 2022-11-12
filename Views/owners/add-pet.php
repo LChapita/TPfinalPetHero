@@ -17,10 +17,10 @@ require_once(VIEWS_PATH . "nav.php");
             <table>
                 <thead>
                     <tr>
-                        <th>Nombre mascota</th>
-                        <th>Raza</th>
-                        <th>Vacunaciones</th>
-                        <th>Link de Fotos</th>
+                        <th>Pet's Name</th>
+                        <th>Race</th>
+                        <th>Vaccination Schendle</th>
+                        <th>Photos</th>
                         <th>Videos</th>
                         <th>Size PET</th>
                     </tr>

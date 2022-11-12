@@ -18,8 +18,8 @@ require_once(VIEWS_PATH . "keepers/nav-keeper.php");
 <main class="py-5">
     <section id="listado" class="mb-5">
         <div class="container">
-            <h2 class="mb-4">Confirmar reservas</h2>
-            <h2 class="mb-4">Listado de Reservas propias:</h2>
+      
+            <h2 class="mb-4">List of own reservations:</h2>
             <table class="table bg-light text-center">
                 <thead class="bg-dark text-white">
                     <th>Id Reserva</th>

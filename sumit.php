@@ -20,11 +20,19 @@ if (isset($_FILES["photo"])) {
     move_uploaded_file($ruta_provicional, $src);
     $imagen ="fotos/" . $name;
 }
+<<<<<<< HEAD
 
 //echo "<img src=".$imagen.">";
 
 //echo "<td><img src=".VIEWS_PATH. 'keepers/photos/golden.jpg'.">" ;
 */
+=======
+*/
+//echo "<img src=".$imagen.">";
+
+//echo "<td><img src=".VIEWS_PATH. 'keepers/photos/golden.jpg'.">" ;
+
+>>>>>>> 66fdbbf9cfa9375778d30b72a69990e24ea97fca
 
 error_reporting(E_ALL ^ E_NOTICE);
 $start = $_POST['start'];
@@ -40,7 +48,10 @@ $reservFinish = date("Y-m-d", strtotime("2022/11/09"));
 
 $fechasKeeper=array();
 $reservas=array();
+<<<<<<< HEAD
 
+=======
+>>>>>>> 66fdbbf9cfa9375778d30b72a69990e24ea97fca
 for ($i = $start; $i <= $finish; $i = date("Y-m-d", strtotime($i . "+ 1 days"))) {
     array_push($fechasKeeper,$i);
 }
@@ -49,7 +60,11 @@ for ($i = $reservStart; $i <= $reservFinish; $i = date("Y-m-d", strtotime($i . "
 }
 
 echo "<br>";
+<<<<<<< HEAD
 foreach($fechasKeeper as $value){
+=======
+/*foreach($fechasKeeper as $value){
+>>>>>>> 66fdbbf9cfa9375778d30b72a69990e24ea97fca
     echo "<br>".$value;
 }
 echo "<br>";
@@ -57,6 +72,7 @@ foreach ($reservas as $value) {
     echo "<br>" . $value;
 }
 echo "<br>";
+<<<<<<< HEAD
 
 
 /*
@@ -114,4 +130,20 @@ var_dump($textos);
 //echo $dateStart;
 //echo $dateFinish;
 
+=======
+*/
+
+$reservasKeepers=array();
+
+foreach($fechasKeeper as $valueK){
+    foreach($reservas as $valueR){
+        if($valueK !=$valueR){
+            array_push($reservasKeepers,);
+        }
+    }
+}
+//echo "<br>".$reservStart;
+//echo $dateStart;
+//echo $dateFinish;
+>>>>>>> 66fdbbf9cfa9375778d30b72a69990e24ea97fca
 ?>
