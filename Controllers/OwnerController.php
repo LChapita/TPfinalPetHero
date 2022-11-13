@@ -72,7 +72,7 @@ class OwnerController{
     }
     public function GenerateCuponPay(){
         require_once(VIEWS_PATH . "validate-session.php");
-        require_once(VIEWS_PATH . "owners/cupon-pago.php");
+        require_once(VIEWS_PATH . "owners/cupon de pago mejorado.php");
     }
     public function GoHome()
     {

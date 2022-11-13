@@ -105,7 +105,7 @@ $keeper = $keeperSQL->GetById($idKeeper);
                                 <?php
                             }
                             elseif($reservList!=null){
-                                //sort($reservList);
+                                sort($reservList);
                                 $fechasKeeper=array();
                                 
                                 for ($i = $keeper->getTypeUserKeeper()->getDateStart();
@@ -132,13 +132,13 @@ $keeper = $keeperSQL->GetById($idKeeper);
                                     $libres=array_diff($fechasKeeper,$reservas);//0,1,/5,6
 
                                     $aceptados=array();
-                                    
+                                    echo "libres";
                                     var_dump($libres);
                                     
                                     foreach($libres as $key=>$value){
                                         array_push($aceptados, $libres[$key]);
                                     }
-
+                                    echo "aceptados";
                                     var_dump($aceptados);
 
                                     $otro=array();
@@ -147,16 +147,27 @@ $keeper = $keeperSQL->GetById($idKeeper);
                                     if($libres!=null){
                                         error_reporting(E_ALL ^ E_NOTICE);
                                         foreach($aceptados as $key=>$ace){
-                                            if($ace==$libres[$key]){
+                                            if($ace==$libres[$key] && $unaVez==0){
                                                 array_push($otro,$libres[$key]);
+                                            }else{
+                                                $unaVez=1;
                                             }
                                         }
 
                                     var_dump($otro);
+
                                     if($otro!=null){
 
                                         $min=min($otro);
                                         $max=max($otro);
+                                        error_reporting(E_ALL ^ E_NOTICE);
+                                        foreach ($aceptados as $ace) {
+                                            if ($ace == $libres[$key] && $unaVez == 0) {
+                                                array_push($otro, $libres[$key]);
+                                            } else {
+                                                $unaVez = 1;
+                                            }
+                                        }
                                         ?>
                                             <tbody>
                                                 <td>
@@ -167,12 +178,13 @@ $keeper = $keeperSQL->GetById($idKeeper);
                                                 
                                         <td>
                                             <input type="date" name="dateFinish" 
-                                            min="<?php echo $min;; ?>" 
+                                            min="<?php echo $min; ?>" 
                                             max="<?php echo $max; ?>" placeholder="FINISH" required>
                                         </td>
                                     </tbody>
                                     <?php
-                                    }else{ 
+                                    }else{
+                                        //echo "macaco";
                                         $min=min($aceptados);
                                         $max=max($aceptados);
                                         ?>
@@ -185,7 +197,7 @@ $keeper = $keeperSQL->GetById($idKeeper);
                                                 
                                         <td>
                                             <input type="date" name="dateFinish" 
-                                            min="<?php echo $min;; ?>" 
+                                            min="<?php echo $min; ?>" 
                                             max="<?php echo $max; ?>" placeholder="FINISH" required>
                                         </td>
                                     </tbody>
