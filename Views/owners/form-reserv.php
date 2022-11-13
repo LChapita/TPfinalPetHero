@@ -88,7 +88,7 @@ $keeper = $keeperSQL->GetById($idKeeper);
                             <?php
                             $reservSQL = new ReservSQL();
                             $reservList = $reservSQL->GetReservbyIdKeeper($idKeeper);
-                            var_dump($reservList);
+                            //var_dump($reservList);
                             //var_dump($reservList);
                             //var_dump($keeper->getTypeUserKeeper()->getDateStart());
                             //var_dump($keeper->getTypeUserKeeper()->getDateFinish());
@@ -104,13 +104,73 @@ $keeper = $keeperSQL->GetById($idKeeper);
 
                                 <?php
                             }
-                            /* elseif($reservList!=null){
-                                //$reserv=new Reserv();
-                                var_dump(
-                                    end($reservList));
-                                foreach ($reservList as $reserv) {//tiene mas de 1
+                            elseif($reservList!=null){
+                                sort($reservList);
+                                $fechasKeeper=array();
+                                
+                                for ($i = $keeper->getTypeUserKeeper()->getDateStart();
+                                $i <= $keeper->getTypeUserKeeper()->getDateFinish(); 
+                                $i = date("Y-m-d", strtotime($i . "+ 1 days"))) {
+                                    array_push($fechasKeeper, $i);
+                                }
+                                
+                                
+                                $reservas=array();
+                                    $reserv=new Reserv();
+                                    foreach ($reservList as $reserv) { //tiene mas de 1
+                                    for (
+                                        $i = $reserv->getDateStart();
+                                        $i <= $reserv->getDateFinish();
+                                        $i = date("Y-m-d", strtotime($i . "+ 1 days"))
+                                    ) {
+                                        array_push($reservas,
+                                            $i
+                                        );
+                                    }
+                                    }
+                                    var_dump($fechasKeeper);
+                                    var_dump($reservas);
                                     
-                                                   ?>
+                                    
+                                    
+                                    $libres=array_diff($fechasKeeper,$reservas);//0,1,5,6
+                                    $aceptados=array();
+                                    
+                                    var_dump($libres);
+                                    
+                                    foreach($libres as $key=>$value){
+                                        array_push($aceptados, $libres[$key]);
+                                    }
+
+                                    var_dump($aceptados);
+                                    $otro=array();
+                                    $unaVez=0;
+
+                                    if($libres!=null){
+                                        foreach($aceptados as $key=>$ace){
+                                            
+                                            array_push($otro,$libres[$key]);
+                                            
+                                        }
+                                    
+                                    var_dump($otro);
+                                        ?>
+                                            <tbody>
+                                        <td>
+                                            <input type="date" name="dateStart" 
+                                            min="<?php echo date('Y-m-d', strtotime($reserv->getDateFinish() . "+1 day")); ?>" 
+                                            max="<?php echo $keeper->getTypeUserKeeper()->getDateFinish(); ?>" placeholder="START" required>
+                                        </td>
+                                        
+                                        <td>
+                                            <input type="date" name="dateFinish" 
+                                            min="<?php echo date('Y-m-d', strtotime($reserv->getDateFinish() . "+1 day")); ?>" 
+                                            max="<?php echo $keeper->getTypeUserKeeper()->getDateFinish(); ?>" placeholder="FINISH" required>
+                                        </td>
+                                    </tbody>
+                                    <?php
+                                    }else                                    
+                                    ?>
                                             <tbody>
                                         <td>
                                             <input type="date" name="dateStart" 
@@ -125,9 +185,8 @@ $keeper = $keeperSQL->GetById($idKeeper);
                                         </td>
                                     </tbody>
                             <?php
-                                    
-                                }
-                            }*/
+                                    }   
+                            
                             ?>
                         </tr>
                     </tbody>
