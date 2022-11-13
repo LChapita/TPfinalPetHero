@@ -15,7 +15,7 @@
         {
             try
             {
-                $this->pdo = new PDO("mysql:host=".DB_HOST.";port=3306; dbname=".DB_NAME, DB_USER, DB_PASS);
+                $this->pdo = new PDO("mysql:host=".DB_HOST.";port=3308; dbname=".DB_NAME, DB_USER, DB_PASS);
                 $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             }
             catch(Exception $ex)
