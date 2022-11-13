@@ -93,7 +93,7 @@ $keeper = $keeperSQL->GetById($idKeeper);
                             //var_dump($keeper->getTypeUserKeeper()->getDateStart());
                             //var_dump($keeper->getTypeUserKeeper()->getDateFinish());
                             //var_dump($reservList);
-                            if ($reservList == null) {
+                            if ($reservList == null) {//este primero
                             ?>
                                 <td>
                                     <input type="date" name="dateStart" min="<?php echo $keeper->getTypeUserKeeper()->getDateStart(); ?>" max="<?php echo $keeper->getTypeUserKeeper()->getDateFinish(); ?>" placeholder="START" required>
@@ -105,7 +105,7 @@ $keeper = $keeperSQL->GetById($idKeeper);
                                 <?php
                             }
                             elseif($reservList!=null){
-                                sort($reservList);
+                                //sort($reservList);
                                 $fechasKeeper=array();
                                 
                                 for ($i = $keeper->getTypeUserKeeper()->getDateStart();
@@ -116,24 +116,21 @@ $keeper = $keeperSQL->GetById($idKeeper);
                                 
                                 
                                 $reservas=array();
-                                    $reserv=new Reserv();
-                                    foreach ($reservList as $reserv) { //tiene mas de 1
-                                    for (
-                                        $i = $reserv->getDateStart();
-                                        $i <= $reserv->getDateFinish();
-                                        $i = date("Y-m-d", strtotime($i . "+ 1 days"))
-                                    ) {
-                                        array_push($reservas,
-                                            $i
-                                        );
-                                    }
-                                    }
-                                    var_dump($fechasKeeper);
-                                    var_dump($reservas);
-                                    
-                                    
-                                    
-                                    $libres=array_diff($fechasKeeper,$reservas);//0,1,5,6
+                                $reserv=new Reserv();
+                                foreach ($reservList as $reserv) { //tiene mas de 1
+                                for (
+                                    $i = $reserv->getDateStart();
+                                    $i <= $reserv->getDateFinish();
+                                    $i = date("Y-m-d", strtotime($i . "+ 1 days"))
+                                ) {
+                                    array_push($reservas,$i);
+                                }
+                                }
+                                var_dump($fechasKeeper);
+                                var_dump($reservas);
+
+                                    $libres=array_diff($fechasKeeper,$reservas);//0,1,/5,6
+
                                     $aceptados=array();
                                     
                                     var_dump($libres);
@@ -143,50 +140,59 @@ $keeper = $keeperSQL->GetById($idKeeper);
                                     }
 
                                     var_dump($aceptados);
+
                                     $otro=array();
                                     $unaVez=0;
 
                                     if($libres!=null){
+                                        error_reporting(E_ALL ^ E_NOTICE);
                                         foreach($aceptados as $key=>$ace){
-                                            
-                                            array_push($otro,$libres[$key]);
-                                            
+                                            if($ace==$libres[$key]){
+                                                array_push($otro,$libres[$key]);
+                                            }
                                         }
-                                    
+
                                     var_dump($otro);
+                                    if($otro!=null){
+
+                                        $min=min($otro);
+                                        $max=max($otro);
                                         ?>
                                             <tbody>
-                                        <td>
-                                            <input type="date" name="dateStart" 
-                                            min="<?php echo date('Y-m-d', strtotime($reserv->getDateFinish() . "+1 day")); ?>" 
-                                            max="<?php echo $keeper->getTypeUserKeeper()->getDateFinish(); ?>" placeholder="START" required>
-                                        </td>
-                                        
+                                                <td>
+                                                    <input type="date" name="dateStart" 
+                                                    min="<?php echo $min; ?>" 
+                                                    max="<?php echo $max; ?>" placeholder="START" required>
+                                                </td>
+                                                
                                         <td>
                                             <input type="date" name="dateFinish" 
-                                            min="<?php echo date('Y-m-d', strtotime($reserv->getDateFinish() . "+1 day")); ?>" 
-                                            max="<?php echo $keeper->getTypeUserKeeper()->getDateFinish(); ?>" placeholder="FINISH" required>
+                                            min="<?php echo $min;; ?>" 
+                                            max="<?php echo $max; ?>" placeholder="FINISH" required>
                                         </td>
                                     </tbody>
                                     <?php
-                                    }else                                    
-                                    ?>
+                                    }else{ 
+                                        $min=min($aceptados);
+                                        $max=max($aceptados);
+                                        ?>
                                             <tbody>
-                                        <td>
-                                            <input type="date" name="dateStart" 
-                                            min="<?php echo date('Y-m-d', strtotime($reserv->getDateFinish() . "+1 day")); ?>" 
-                                            max="<?php echo $keeper->getTypeUserKeeper()->getDateFinish(); ?>" placeholder="START" required>
-                                        </td>
-                                        
+                                                <td>
+                                                    <input type="date" name="dateStart" 
+                                                    min="<?php echo $min; ?>" 
+                                                    max="<?php echo $max; ?>" placeholder="START" required>
+                                                </td>
+                                                
                                         <td>
                                             <input type="date" name="dateFinish" 
-                                            min="<?php echo date('Y-m-d', strtotime($reserv->getDateFinish() . "+1 day")); ?>" 
-                                            max="<?php echo $keeper->getTypeUserKeeper()->getDateFinish(); ?>" placeholder="FINISH" required>
+                                            min="<?php echo $min;; ?>" 
+                                            max="<?php echo $max; ?>" placeholder="FINISH" required>
                                         </td>
                                     </tbody>
-                            <?php
-                                    }   
-                            
+                                    <?php
+                                    }
+                                    }
+                            }
                             ?>
                         </tr>
                     </tbody>
