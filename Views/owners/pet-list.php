@@ -14,7 +14,7 @@ require_once(VIEWS_PATH . "nav.php");
 <main class="py-5">
     <section class="mb-5">
         <div class="container">
-            <h2 class="mb-4">Listado de Mascotas</h2>
+            <h2 class="mb-4">Pet List</h2>
             <table class="table bg-light text-center">
                 <thead class="bg-dark text-white">
                     <th>Pet id</th>
@@ -72,7 +72,7 @@ require_once(VIEWS_PATH . "nav.php");
     <section id="eliminar" class="mb-5">
         <form action="<?php echo FRONT_ROOT . "Pet/Remove" ?>" method="post">
             <div class="container">
-                <h3 class="mb-3">Eliminar Mascota</h3>
+                <h3 class="mb-3">Delete Pet </h3>
                 <div class="bg-light p-4">
                     <div class="row">
                         <div class="col-lg-3">

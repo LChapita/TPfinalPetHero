@@ -23,8 +23,11 @@
 	
 ?>
 
+<<<<<<< HEAD
 <!-- 
 
+=======
+>>>>>>> 66fdbbf9cfa9375778d30b72a69990e24ea97fca
 <!DOCTYPE html>
 <html lang="en">
 
@@ -44,12 +47,16 @@
 		<label>
 			<h5>Add finish Date: </5>
 		</label>
+<<<<<<< HEAD
 		
+=======
+>>>>>>> 66fdbbf9cfa9375778d30b72a69990e24ea97fca
 		<input type="date" name="finish" required>
 		<button type="submit" name="consultar" value="consultar">Consultar</button>
 	</form>
 </body>
 
+<<<<<<< HEAD
 </html> 
 
 <!DOCTYPE html>
@@ -65,3 +72,6 @@
 			</body>
 			</html>
 		-->
+=======
+</html>
+>>>>>>> 66fdbbf9cfa9375778d30b72a69990e24ea97fca

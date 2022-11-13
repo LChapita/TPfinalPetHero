@@ -57,7 +57,7 @@ $keeper = $keeperSQL->GetById($idKeeper);
                 </thead>
             </table>
         -->
-            <label.colorNegro> Ingrese las Fechas Entre las que desea hacer su Reserva</label><br>
+            <label.colorNegro> Enter the dates between you want to make your reservation</label><br>
                 <br>
                 <table>
                     <thead>
