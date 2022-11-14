@@ -13,7 +13,7 @@ require_once(VIEWS_PATH . "nav.php");
 ?>
 <main>
     <section id="agregar" class="mb-7">
-        <form action="<?php echo FRONT_ROOT . "Pet/RegisterPet" ?>" method="post" style="background-color: #EAEDED;padding: 2rem !important;">
+        <form action="<?php echo FRONT_ROOT . "Pet/RegisterPet" ?>" method="post" name="fromulario" style="background-color: #EAEDED;padding: 2rem !important;">
             <table>
                 <thead>
                     <tr>
@@ -60,5 +60,6 @@ require_once(VIEWS_PATH . "nav.php");
 </main>
 
 <?php
+
 require_once(VIEWS_PATH."footer.php");
 ?>
