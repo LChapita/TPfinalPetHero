@@ -10,6 +10,9 @@
                <a class="nav-link" href="<?php echo FRONT_ROOT . "Pet/ShowAdd" ?>">Add Pets</a>
           </li>
           <li class="nav-item">
+               <a class="nav-link" href="<?php echo FRONT_ROOT . "Pet/ShowView" ?>">List Pets</a>
+          </li>
+          <li class="nav-item">
                <a class="nav-link" href="<?php echo FRONT_ROOT . "Owner/ShowAllKeepers" ?>">List Keepers</a>
           </li>
           <li class="nav-item">
