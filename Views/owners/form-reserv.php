@@ -168,6 +168,7 @@ $keeper = $keeperSQL->GetById($idKeeper);
                                                 $unaVez = 1;
                                             }
                                         }
+                                        var_dump($otro);
                                         ?>
                                             <tbody>
                                                 <td>
@@ -185,8 +186,20 @@ $keeper = $keeperSQL->GetById($idKeeper);
                                     <?php
                                     }else{
                                         //echo "macaco";
-                                        $min=min($aceptados);
-                                        $max=max($aceptados);
+                                        error_reporting(E_ALL ^ E_NOTICE);
+                                        
+                                        $fechaFija=date("Y-m-d",strtotime($aceptados[0]."- 1 days"));
+                                        $fechaAcumulada=date("Y-m-d", strtotime($fechaFija));
+                                        
+                                        foreach($aceptados as $acept) {
+                                            $fechaAcumulada++;
+                                                if($acept==$fechaAcumulada){
+                                                    array_push($otro, $acept);
+                                            }
+                                        }
+                                        var_dump($fechaAcumulada);
+                                        $min=min($otro);
+                                        $max=max($otro);
                                         ?>
                                             <tbody>
                                                 <td>
@@ -215,3 +228,6 @@ $keeper = $keeperSQL->GetById($idKeeper);
         </form>
     </section>
 </main>
+<?php
+clearstatcache();
+?>

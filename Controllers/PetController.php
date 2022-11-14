@@ -19,6 +19,7 @@
 
         public function RegisterPet($name,$race,$vaccinationschendle,$photo,$video,$sizePet)
         {
+            require_once(VIEWS_PATH . "validate-session.php");
             $userArr = new User();
             
             $userArr = $_SESSION;
@@ -40,7 +41,8 @@
             }
             //var_dump($userArr);
             //var_dump($owner);
-
+        
+            
             $pet=new Pet();
             
             $pet->setName($name);
@@ -64,8 +66,10 @@
             
             //$this->petDAO->Add($pet);
             $this->petSQL->Add($owner,$pet);
-
-            $this->ShowView();
+            echo "<script>alert('se agrego correctamente')</script>";
+            //$this->ShowView();
+            //$this->ShowAdd();
+            $this->GoMyProfile();
         }
         
         public function ShowView($message = "") {
@@ -75,9 +79,12 @@
         public function ShowAdd($message = "") {
             require_once(VIEWS_PATH . "validate-session.php");
             require_once(VIEWS_PATH . "owners/add-pet.php");
-            require_once(VIEWS_PATH . "owners/pet-list.php");
+            
+            //require_once(VIEWS_PATH . "owners/pet-list.php");
         }
-        
+        public function GoMyProfile(){
+             require_once(VIEWS_PATH . "owners/menu-owner.php");
+        }
     }
 
 ?>
