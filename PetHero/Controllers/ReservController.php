@@ -90,5 +90,12 @@ class ReservController{
         $keeperSQL=new KeeperController();
         $keeperSQL->MenuKeeper();
     }
+
+    public function GenerateCoupon($id_Reserv){
+        require_once(VIEWS_PATH . "validate-session.php");
+        $reservs=$this->reservSQL->GetAll();
+
+        require_once(VIEWS_PATH . "owners/cupon de pago mejorado.php");
+    }
 }
 ?>

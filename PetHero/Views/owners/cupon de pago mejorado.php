@@ -1,39 +1,40 @@
-<html>
+<?php
 
+?>
 <head>
     <style>
         .tabla {
             font-size: 18px;
             text-align: center;
         }
-
+        
         .bd {
             border: 3px solid black;
         }
-
+        
         .tabla2 {
             width: 350px;
         }
-
+        
         td {
             font-size: 9px;
             width: 175px;
         }
-
+        
         .tabla3 {
             width: 350px;
             text-align: center;
         }
-
+        
         .mc {
             width: 10px;
         }
-
+        
         .t {
             font-size: 12px;
             width: 150;
         }
-
+        
         div {
             border: 2px solid green;
             width: 350px;
@@ -41,79 +42,79 @@
             float: left;
             margin: 3px;
         }
-
+        
         strong {
             font-size: 15px;
         }
-
+        
         h1 {
             background-color: green;
             color: white;
             text-align: right;
             font-size: 22px;
         }
-
+        
         h2 {
             background-color: saddlebrown;
             color: antiquewhite;
             text-align: left;
             font-size: 22px;
         }
-
+        
         h5 {
             font-size: 18px;
             background-color: brown;
             color: antiquewhite;
         }
-
+        
         span {
             width: 175;
             height: 25;
             float: left;
         }
-
+        
         .spandex2 {
             border: 1px solid black;
             width: 0px;
             height: 40px;
         }
-
+        
         .spandex3 {
             background-color: white;
             margin: 2px;
             border: 3px solid rgb(152, 207, 177);
             width: 360px;
-            height:500px;
+            height: 500px;
         }
-
+        
         h3 {
             font-size: 20px;
         }
-
+        
         .h31 {
             font-size: 14px;
             width: 350;
             text-align: right;
         }
-
+        
         .td1 {
             font-size: 22px;
             text-align: left;
             width: 350px;
         }
-
+        
         .td2 {
             font-size: 22px;
             text-align: right;
             width: 350px;
         }
-
+        
         body {
-
+            
             border: 1px solid black;
             color: black;
         }
-
+        
         .spandex4 {
             margin: 0px;
             padding: 0px;
@@ -124,9 +125,10 @@
     </style>
 </head>
 
+<main>
 <body>
     <span class="spandex3">
-
+        
         <span>
             <h2>the pets</h2>
         </span>
@@ -240,5 +242,4 @@
         <hr class="bd" />
     </span>
 </body>
-
-</html>
+</main>
