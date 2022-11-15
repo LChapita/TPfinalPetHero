@@ -56,13 +56,20 @@ class ReservController{
 
         //var_dump($reserv);
         //$this->reservDAO->Add($reserv);
-        $this->reservSQL->Add($reserv);
+        ///verificar
+        if($this->reservSQL->VerificReserv($reserv,$idPet,$idKeeper)==0){
+            echo "<script> alert('Reserva Realizada, Aguarde por la Confirmacion del Keeper'); </script>";
+            $this->reservSQL->Add($reserv);
+            require_once(VIEWS_PATH . "owners/menu-owner.php");
+        }else{
+            echo "<script> alert('Esta Reserva Esta en espera de que un Keeper la Acepte'); </script>";
+            require_once(VIEWS_PATH . "owners/menu-owner.php");
+        }
 
         //$this->ShowAddView(1);
 
         //var_dump($reserv);
-        echo "<script> alert('Reserva Realizada, Aguarde por la Confirmacion del Keeper'); </script>";
-        require_once(VIEWS_PATH . "owners/menu-owner.php");
+
     }
     public function Confirm($id_Reserv,$confim)
     {
@@ -82,6 +89,13 @@ class ReservController{
         $this->reservSQL->Confirm($reserv,$id_Reserv);
         $keeperSQL=new KeeperController();
         $keeperSQL->MenuKeeper();
+    }
+
+    public function GenerateCoupon($id_Reserv){
+        require_once(VIEWS_PATH . "validate-session.php");
+        $reservs=$this->reservSQL->GetAll();
+
+        require_once(VIEWS_PATH . "owners/cupon de pago mejorado.php");
     }
 }
 ?>

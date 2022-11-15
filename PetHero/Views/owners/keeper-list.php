@@ -14,8 +14,9 @@ require_once(VIEWS_PATH."nav.php");
 <main class="py-5">
     <section id="listado" class="mb-5">
         <div class="container">
-            <h2 class="mb-4">Keepers List</h2>
-            <table class="table bg-light text-center">
+        <section id="listado" class="bg-dark text-white"> <center>
+            <h2 class="mb-4 text-white"> Keepers List</h2> <h6 class="mb-4 text-white"> These are all the keepers available in our database   </h6> </section id="listado" class="mb-5">
+</center>   <table class="table bg-light text-center">
                 <thead class="bg-dark text-white">
                     <th>Name</th>
                     <th>Lastname</th>

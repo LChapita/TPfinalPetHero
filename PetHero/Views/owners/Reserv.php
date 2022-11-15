@@ -16,7 +16,9 @@ require_once(VIEWS_PATH . "nav.php");
 <main class="py-5">
     <section id="listado" class="mb-5">
         <div class="container">
-            <h2 class="mb-4">List of keepers to reserve</h2>
+        <section id="listado" class="bg-dark text-white"> <center>
+            <h2 class="mb-4 text-white">  List of keepers to reserve</h2> <h6 class="mb-4 text-white"> Keepers appear in them availability date range   </h6> </section id="listado" class="mb-5">
+</center>
             <table class="table bg-light text-center">
                 <thead class="bg-dark text-white">
                     <th>Name</th>
@@ -26,23 +28,27 @@ require_once(VIEWS_PATH . "nav.php");
                     <th>Tuition</th>
                     <th>Sex</th>
                     <th>Age</th>
-                    <th>Id</th>
+                    <!--  
+                        <th>Id</th>
+                    -->
+                    <th>Size Pet</th>
                     <th>Date Start</th>
                     <th>Date Finish</th>
                     <th>Reserve</th>
 
                 <tbody>
-                    <form method="post" action="">
+                    <form method="post" action="">     <center>     
                         <label>
-                            <h5>Add first Date: </5>
+                   
+                        <h5 class="mb-4 text-dark">Add first Date: </5>
                         </label>
                         <input type="date" name=start required>
                         <label>
-                            <h5>Add finish Date: </5>
+                        <h5 class="mb-4 text-dark">Add finish Date: </5>
                         </label>
                         <input type="date" name="finish" required>
                         <button type="submit" name="consultar" value="consultar">Consultar</button>
-                    </form>
+                     </center> </form>
                     <?php
 
                     error_reporting(E_ALL ^ E_NOTICE);
@@ -55,53 +61,54 @@ require_once(VIEWS_PATH . "nav.php");
                     //$keeper = new Keeper();
                     //$keeperList = $keeperDAO->GetAllKeepers();
                     //
-                    $keeperSQL=new KeeperSQL();
+                    $keeperSQL = new KeeperSQL();
                     //$keeper = new Keeper();
-                    $keeperList =$keeperSQL->GetAll();
+                    $keeperList = $keeperSQL->GetAll();
                     //
                     //private $start; /* Se ingresa primer fecha por teclado*/
                     //private $finish;  /* Se ingresa segunda  fecha por teclado*/
                     //
                     ///owner,keeper,idReserva idPerroAsociadoAlKeeper
-                    if($start!=null){
-                    if ($start < $finish) {
-                        foreach ($keeperList as $keeper) {
-                            //var_dump($keeper);
-                            if ((($keeper->getTypeUserKeeper()->getDateStart()) &&  ($keeper->getTypeUserKeeper()->getDateFinish())) != null) {
-                                if ((($start >=  $keeper->getTypeUserKeeper()->getDateStart() && $finish <= $keeper->getTypeUserKeeper()->getDateFinish())) ||
-                                    (($start <= $keeper->getTypeUserKeeper()->getDateStart() && $finish >= $keeper->getTypeUserKeeper()->getDateFinish()))
-                                ) {
+                    if ($start != null) {
+                        if ($start < $finish) {
+                            foreach ($keeperList as $keeper) {
+                                //var_dump($keeper);
+                                if ((($keeper->getTypeUserKeeper()->getDateStart()) &&  ($keeper->getTypeUserKeeper()->getDateFinish())) != null) {
+                                    if ((($start >=  $keeper->getTypeUserKeeper()->getDateStart() && $finish <= $keeper->getTypeUserKeeper()->getDateFinish())) ||
+                                        (($start <= $keeper->getTypeUserKeeper()->getDateStart() && $finish >= $keeper->getTypeUserKeeper()->getDateFinish()))
+                                    ) {
                     ?>
-                                <tr>
-                                    <td><?php echo $keeper->getTypeUserKeeper()->getName() ?></td>
-                                    <td><?php echo $keeper->getTypeUserKeeper()->getLastname() ?></td>
-                                    <td><?php echo $keeper->getTypeUserKeeper()->getPhoto() ?></td>
-                                    <td><?php echo $keeper->getTypeUserKeeper()->getDNI() ?></td>
-                                    <td><?php echo $keeper->getTypeUserKeeper()->getTuition() ?></td>
-                                    <td><?php echo $keeper->getTypeUserKeeper()->getSex() ?></td>
-                                    <td><?php echo $keeper->getTypeUserKeeper()->getAge() ?></td>
-                                    <td><?php echo $keeper->getTypeUserKeeper()->getId() ?></td>
+                                        <tr>
+                                            <td><?php echo $keeper->getTypeUserKeeper()->getName() ?></td>
+                                            <td><?php echo $keeper->getTypeUserKeeper()->getLastname() ?></td>
+                                            <td><?php echo $keeper->getTypeUserKeeper()->getPhoto() ?></td>
+                                            <td><?php echo $keeper->getTypeUserKeeper()->getDNI() ?></td>
+                                            <td><?php echo $keeper->getTypeUserKeeper()->getTuition() ?></td>
+                                            <td><?php echo $keeper->getTypeUserKeeper()->getSex() ?></td>
+                                            <td><?php echo $keeper->getTypeUserKeeper()->getAge() ?></td>
+                                            <!-- 
+                                        <td>< ?php echo $keeper->getTypeUserKeeper()->getId() ?></td>
+                                     -->
+                                            <td><?php echo $keeper->getTypeUserKeeper()->getSizePet() ?></td>
+                                            <td><?php echo $keeper->getTypeUserKeeper()->getDateStart() ?></td>
+                                            <td><?php echo $keeper->getTypeUserKeeper()->getDateFinish() ?></td>
 
-                                    <td><?php echo $keeper->getTypeUserKeeper()->getDateStart() ?></td>
-                                    <td><?php echo $keeper->getTypeUserKeeper()->getDateFinish() ?></td>
+                                            <form action="<?php echo FRONT_ROOT . "Reserv/ShowAddView" ?>" method="POST">
+                                                <input type="hidden" name="idKeeper" value="<?php echo $keeper->getId() ?>">
+                                                <td> <button type="submit" name="reservar" value="reservar">Reserve</button></td>
+                                            </form>
 
-                                    <form action="<?php echo FRONT_ROOT . "Reserv/ShowAddView" ?>" method="POST">
-                                        <input type="hidden" name="idKeeper" value="<?php echo $keeper->getId() ?>">
-                                        <td> <button type="submit" name="reservar" value="reservar">Reserve</button></td>
-                                    </form>
-
-                                </tr>
+                                        </tr>
                     <?php
-                                
+
+                                    }
                                 }
                             }
+                        } else {
+                            echo "<script> alert('Ingrese la fecha correctamente. La fecha START tiene que ser menor a la fecha FINISH'); </script>";
                         }
                     }
-                        else{
-                           echo "<script> alert('Ingrese la fecha correctamente. La fecha START tiene que ser menor a la fecha FINISH'); </script>";
-                       }
-                    }
-                
+
                     ?>
                 </tbody>
             </table>
