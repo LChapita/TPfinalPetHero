@@ -28,7 +28,10 @@ $keeper=$keeperSQL->GetByEmail($userMenu->getEmail());
 <main class="py-5">
     <section id="listado" class="mb-5">
         <div class="container">
-            <h2 class="mb-4">My Data</h2>
+        <section id="listado" class="bg-dark text-white"> <center>
+            <h2 class="mb-4 text-white"> My Data</h2> <h6 class="mb-4 text-white"> 
+all your personal data in our database</h6> </section id="listado" class="mb-5">
+</center>  
             <table class="table bg-light text-center">
                 <thead class="bg-dark text-white">
                     <th>Email</th>

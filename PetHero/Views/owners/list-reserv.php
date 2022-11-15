@@ -17,14 +17,14 @@ foreach($userArr as $user){
     $owner=new Owner();
     $owner->setId($user->getId());
 }
-
-var_dump($owner);
 ?>
 <main class="py-5">
     <section id="listado" class="mb-5">
         <div class="container">
-            <h2 class="mb-4">Reserv List</h2>
-            <h5 class="mb-4">If your reservation does not appear, it still requires confirmation from the keeper</h5>
+        <section id="listado" class="bg-dark text-white"> <center>
+            <h2 class="mb-4 text-white"> Reserv List</h2> <h6 class="mb-4 text-white"> If your reservation does not appear, it still requires confirmation from the keeper </h6> </section id="listado" class="mb-5">
+</center>   <table class="table bg-light text-center">
+        
             <table class="table bg-light text-center">
                 <thead class="bg-dark text-white">
                     <th>Id Reserva</th>
