@@ -176,4 +176,37 @@ class ReservSQL implements IReservSQL{
             throw $ex;
         }
     }
+
+    public function VerificReserv(Reserv $reserv,$id_Pet,$id_Keeper)
+    {
+        try {
+
+            //$reservList = array();
+            $existe = 0;
+            $query = "SELECT * FROM " . $this->tableName
+                . " WHERE id_Keeper=" . "'" . $id_Keeper . "' and id_Pet='".$id_Pet."'";
+            $this->connection = Connection::GetInstance();
+
+            $resultSet = $this->connection->Execute($query);
+
+            if ($resultSet != null) {
+                foreach ($resultSet as $row) {
+                    if ($row["id_Pet"]==$id_Pet) {
+                        if ($row["id_Keeper"]==$id_Keeper) {
+                            if ($row["dateStart"]==$reserv->getDateStart()) {
+                                if ($row['dateFinish']==$reserv->getDateFinish()) {
+                                     $existe=1;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                
+                
+            return ($existe);
+        } catch (Exception $ex) {
+            throw $ex;
+        }
+    }
 }

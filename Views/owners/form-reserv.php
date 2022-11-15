@@ -80,7 +80,9 @@ $keeper = $keeperSQL->GetById($idKeeper);
                             <select name="pet" class="form-control">
                                 <?php
                                 foreach ($petList as $pet) {
-                                    echo "<option value=" . $pet->getId() . " required>" . $pet->getName() . "</option>";
+                                    if($pet->getSizePet()==$keeper->getTypeUserKeeper()->getSizePet()){
+                                        echo "<option value=" . $pet->getId() . " required>" . $pet->getName() . "</option>";
+                                    }
                                 }
                                 ?>
                             </select>
@@ -126,20 +128,20 @@ $keeper = $keeperSQL->GetById($idKeeper);
                                     array_push($reservas,$i);
                                 }
                                 }
-                                var_dump($fechasKeeper);
-                                var_dump($reservas);
+                                //var_dump($fechasKeeper);
+                                //var_dump($reservas);
 
                                     $libres=array_diff($fechasKeeper,$reservas);//0,1,/5,6
 
                                     $aceptados=array();
-                                    echo "libres";
-                                    var_dump($libres);
+                                    //echo "libres";
+                                    //var_dump($libres);
                                     
                                     foreach($libres as $key=>$value){
                                         array_push($aceptados, $libres[$key]);
                                     }
-                                    echo "aceptados";
-                                    var_dump($aceptados);
+                                    //echo "aceptados";
+                                    //var_dump($aceptados);
 
                                     $otro=array();
                                     $unaVez=0;
@@ -154,7 +156,7 @@ $keeper = $keeperSQL->GetById($idKeeper);
                                             }
                                         }
 
-                                    var_dump($otro);
+                                    //var_dump($otro);
 
                                     if($otro!=null){
 
@@ -168,7 +170,7 @@ $keeper = $keeperSQL->GetById($idKeeper);
                                                 $unaVez = 1;
                                             }
                                         }
-                                        var_dump($otro);
+                                        //var_dump($otro);
                                         ?>
                                             <tbody>
                                                 <td>
@@ -197,7 +199,7 @@ $keeper = $keeperSQL->GetById($idKeeper);
                                                     array_push($otro, $acept);
                                             }
                                         }
-                                        var_dump($fechaAcumulada);
+                                        //var_dump($fechaAcumulada);
                                         $min=min($otro);
                                         $max=max($otro);
                                         ?>
@@ -229,5 +231,5 @@ $keeper = $keeperSQL->GetById($idKeeper);
     </section>
 </main>
 <?php
-clearstatcache();
+require_once(VIEWS_PATH."footer.php");
 ?>

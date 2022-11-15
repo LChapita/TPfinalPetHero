@@ -68,11 +68,17 @@ use mysqli;
             
             //$this->petDAO->Add($pet);
             //verificar
-            
-            $this->petSQL->Add($owner,$pet);
-            echo "<script>alert('se agrego correctamente')</script>";
+
+            if($this->petSQL->Verific($pet, $owner->getId())==0){
+                echo "<script>alert('Pet Added Successfully')</script>";
+                $this->petSQL->Add($owner,$pet);
+                $this->ShowAdd();
+            }else{
+                echo "<script>alert('The pet is Already Loaded')</script>";
+                $this->ShowAdd();
+            }
+            //$this->petSQL->Verific($pet,$owner->getId());
             //$this->ShowView();
-            $this->ShowAdd();
             
         }
         
