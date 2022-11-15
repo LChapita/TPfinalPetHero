@@ -12,7 +12,13 @@ use DAO\ReservDAO;
 use SQL\ReservSQL;
 
 require_once(VIEWS_PATH . "nav.php");
+$userArr=$_SESSION;
+foreach($userArr as $user){
+    $owner=new Owner();
+    $owner->setId($user->getId());
+}
 
+var_dump($owner);
 ?>
 <main class="py-5">
     <section id="listado" class="mb-5">
@@ -26,6 +32,7 @@ require_once(VIEWS_PATH . "nav.php");
                     <th>Id Keeper</th>
                     <th>Date Start</th>
                     <th>Date Finish</th>
+                    <th>Cupon</th>
 
                 </thead>
                 <tbody>
@@ -49,7 +56,12 @@ require_once(VIEWS_PATH . "nav.php");
                                 <td><?php echo $reserv->getIdKeeper(); ?></td>
                                 <td><?php echo $reserv->getDateStart(); ?></td>
                                 <td><?php echo $reserv->getDateFinish(); ?></td>
-
+                                
+                                <form action="<?php echo FRONT_ROOT . "Reserv/GenerateCoupon" ?>" method="POST">
+                                    <!-- datos del cupon -->
+                                    <td> <button type="submit" name="reservar" value="reservar">Generate Coupon</button></td>
+                                </form>
+                            
                             </tr>
 
                     <?php

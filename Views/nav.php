@@ -25,9 +25,6 @@
                <a class="nav-link" href="<?php echo FRONT_ROOT . "Reserv/ShowListView"  ?>">Reserv List</a>
           </li>
           <li class="nav-item">
-               <a class="nav-link" href="<?php echo FRONT_ROOT . "Owner/GenerateCuponPay" ?>">Generate Payment Coupon</a>
-          </li>
-          <li class="nav-item">
                <a class="nav-link" href="<?php echo FRONT_ROOT . "Home/Logout"  ?>">Logout</a>
           </li>
      </ul>
