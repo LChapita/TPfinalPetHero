@@ -26,7 +26,10 @@ require_once(VIEWS_PATH . "nav.php");
                     <th>Tuition</th>
                     <th>Sex</th>
                     <th>Age</th>
-                    <th>Id</th>
+                    <!--  
+                        <th>Id</th>
+                    -->
+                    <th>Size Pet</th>
                     <th>Date Start</th>
                     <th>Date Finish</th>
                     <th>Reserve</th>
@@ -55,53 +58,54 @@ require_once(VIEWS_PATH . "nav.php");
                     //$keeper = new Keeper();
                     //$keeperList = $keeperDAO->GetAllKeepers();
                     //
-                    $keeperSQL=new KeeperSQL();
+                    $keeperSQL = new KeeperSQL();
                     //$keeper = new Keeper();
-                    $keeperList =$keeperSQL->GetAll();
+                    $keeperList = $keeperSQL->GetAll();
                     //
                     //private $start; /* Se ingresa primer fecha por teclado*/
                     //private $finish;  /* Se ingresa segunda  fecha por teclado*/
                     //
                     ///owner,keeper,idReserva idPerroAsociadoAlKeeper
-                    if($start!=null){
-                    if ($start < $finish) {
-                        foreach ($keeperList as $keeper) {
-                            //var_dump($keeper);
-                            if ((($keeper->getTypeUserKeeper()->getDateStart()) &&  ($keeper->getTypeUserKeeper()->getDateFinish())) != null) {
-                                if ((($start >=  $keeper->getTypeUserKeeper()->getDateStart() && $finish <= $keeper->getTypeUserKeeper()->getDateFinish())) ||
-                                    (($start <= $keeper->getTypeUserKeeper()->getDateStart() && $finish >= $keeper->getTypeUserKeeper()->getDateFinish()))
-                                ) {
+                    if ($start != null) {
+                        if ($start < $finish) {
+                            foreach ($keeperList as $keeper) {
+                                //var_dump($keeper);
+                                if ((($keeper->getTypeUserKeeper()->getDateStart()) &&  ($keeper->getTypeUserKeeper()->getDateFinish())) != null) {
+                                    if ((($start >=  $keeper->getTypeUserKeeper()->getDateStart() && $finish <= $keeper->getTypeUserKeeper()->getDateFinish())) ||
+                                        (($start <= $keeper->getTypeUserKeeper()->getDateStart() && $finish >= $keeper->getTypeUserKeeper()->getDateFinish()))
+                                    ) {
                     ?>
-                                <tr>
-                                    <td><?php echo $keeper->getTypeUserKeeper()->getName() ?></td>
-                                    <td><?php echo $keeper->getTypeUserKeeper()->getLastname() ?></td>
-                                    <td><?php echo $keeper->getTypeUserKeeper()->getPhoto() ?></td>
-                                    <td><?php echo $keeper->getTypeUserKeeper()->getDNI() ?></td>
-                                    <td><?php echo $keeper->getTypeUserKeeper()->getTuition() ?></td>
-                                    <td><?php echo $keeper->getTypeUserKeeper()->getSex() ?></td>
-                                    <td><?php echo $keeper->getTypeUserKeeper()->getAge() ?></td>
-                                    <td><?php echo $keeper->getTypeUserKeeper()->getId() ?></td>
+                                        <tr>
+                                            <td><?php echo $keeper->getTypeUserKeeper()->getName() ?></td>
+                                            <td><?php echo $keeper->getTypeUserKeeper()->getLastname() ?></td>
+                                            <td><?php echo $keeper->getTypeUserKeeper()->getPhoto() ?></td>
+                                            <td><?php echo $keeper->getTypeUserKeeper()->getDNI() ?></td>
+                                            <td><?php echo $keeper->getTypeUserKeeper()->getTuition() ?></td>
+                                            <td><?php echo $keeper->getTypeUserKeeper()->getSex() ?></td>
+                                            <td><?php echo $keeper->getTypeUserKeeper()->getAge() ?></td>
+                                            <!-- 
+                                        <td>< ?php echo $keeper->getTypeUserKeeper()->getId() ?></td>
+                                     -->
+                                            <td><?php echo $keeper->getTypeUserKeeper()->getSizePet() ?></td>
+                                            <td><?php echo $keeper->getTypeUserKeeper()->getDateStart() ?></td>
+                                            <td><?php echo $keeper->getTypeUserKeeper()->getDateFinish() ?></td>
 
-                                    <td><?php echo $keeper->getTypeUserKeeper()->getDateStart() ?></td>
-                                    <td><?php echo $keeper->getTypeUserKeeper()->getDateFinish() ?></td>
+                                            <form action="<?php echo FRONT_ROOT . "Reserv/ShowAddView" ?>" method="POST">
+                                                <input type="hidden" name="idKeeper" value="<?php echo $keeper->getId() ?>">
+                                                <td> <button type="submit" name="reservar" value="reservar">Reserve</button></td>
+                                            </form>
 
-                                    <form action="<?php echo FRONT_ROOT . "Reserv/ShowAddView" ?>" method="POST">
-                                        <input type="hidden" name="idKeeper" value="<?php echo $keeper->getId() ?>">
-                                        <td> <button type="submit" name="reservar" value="reservar">Reserve</button></td>
-                                    </form>
-
-                                </tr>
+                                        </tr>
                     <?php
-                                
+
+                                    }
                                 }
                             }
+                        } else {
+                            echo "<script> alert('Ingrese la fecha correctamente. La fecha START tiene que ser menor a la fecha FINISH'); </script>";
                         }
                     }
-                        else{
-                           echo "<script> alert('Ingrese la fecha correctamente. La fecha START tiene que ser menor a la fecha FINISH'); </script>";
-                       }
-                    }
-                
+
                     ?>
                 </tbody>
             </table>

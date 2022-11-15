@@ -6,6 +6,7 @@
     use Models\Owner as Owner;
     use Models\Pet as Pet;
     use Models\User as User;
+use mysqli;
 
     class PetController
     {
@@ -20,10 +21,11 @@
         public function RegisterPet($name,$race,$vaccinationschendle,$photo,$video,$sizePet)
         {
             require_once(VIEWS_PATH . "validate-session.php");
+            
             $userArr = new User();
             
             $userArr = $_SESSION;
-        /*
+            /*
             foreach ($userArr as $user) {
                 
                 $owner= new Owner();
@@ -41,7 +43,7 @@
             }
             //var_dump($userArr);
             //var_dump($owner);
-        
+            
             
             $pet=new Pet();
             
@@ -62,14 +64,22 @@
             $pet->setOwnerID($owner->getId());
             
             $pet->setOwneR($owner);
-
+            
             
             //$this->petDAO->Add($pet);
-            $this->petSQL->Add($owner,$pet);
-            echo "<script>alert('se agrego correctamente')</script>";
+            //verificar
+
+            if($this->petSQL->Verific($pet, $owner->getId())==0){
+                echo "<script>alert('Pet Added Successfully')</script>";
+                $this->petSQL->Add($owner,$pet);
+                $this->ShowAdd();
+            }else{
+                echo "<script>alert('The pet is Already Loaded')</script>";
+                $this->ShowAdd();
+            }
+            //$this->petSQL->Verific($pet,$owner->getId());
             //$this->ShowView();
-            //$this->ShowAdd();
-            $this->GoMyProfile();
+            
         }
         
         public function ShowView($message = "") {
@@ -81,9 +91,6 @@
             require_once(VIEWS_PATH . "owners/add-pet.php");
             
             //require_once(VIEWS_PATH . "owners/pet-list.php");
-        }
-        public function GoMyProfile(){
-             require_once(VIEWS_PATH . "owners/menu-owner.php");
         }
     }
 

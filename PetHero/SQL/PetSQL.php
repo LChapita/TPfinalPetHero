@@ -99,6 +99,43 @@ class PetSQL implements IPetSQL{
             throw $ex;
         }
     }
+
+    public function Verific(Pet $pet,$idOwner)
+    {
+        try {
+            //$petList = array();
+            $existe=0;
+            $query = "SELECT * FROM " . $this->tableName
+                . " WHERE id_Owner=" . "'" . $idOwner . "'";
+
+            $this->connection = Connection::GetInstance();
+
+            $resultSet = $this->connection->Execute($query);
+
+            if($resultSet != null){
+                foreach ($resultSet as $row) {
+                    if($row['photo']==$pet->getPhoto()){
+                        if($row['name']==$pet->getName()){
+                            if($row["id_Owner"]==$pet->getOwnerID()){
+                                if ($row["race"] == $pet->getRace()) {
+                                    if($row["vaccinationSchedule"]==$pet->getVaccinationSchedule()){
+                                        if($row["sizePet"]==$pet->getSizePet()){
+                                           $existe = 1;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                   
+                }
+            }
+            return($existe);
+
+        } catch (Exception $ex) {
+            throw $ex;
+        }
+    }
 }
 
 ?>
