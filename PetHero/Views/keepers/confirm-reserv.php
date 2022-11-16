@@ -18,12 +18,14 @@ require_once(VIEWS_PATH . "keepers/nav-keeper.php");
 <main class="py-5">
     <section id="listado" class="mb-5">
         <div class="container">
-            <h2 class="mb-4">Confirm reservations</h2>
-            <h2 class="mb-4">List of own reservations:</h2>
+        <section id="listado" class="bg-dark text-white"> <center>
+            <h2 class="mb-4 text-white">  Confirm reservations</h2> <h4 class="mb-4 text-white">  List of own reservations:   </h4> </section id="listado" class="mb-5">
+</center>
+       
             <table class="table bg-light text-center">
                 <thead class="bg-dark text-white">
                     <th>Id Reserv</th>
-                    <th>Id Owner</th>
+                    <th>Id Pet</th>
                     <th>Id Keeper</th>
                     <th>Date Start</th>
                     <th>Date Finish</th>

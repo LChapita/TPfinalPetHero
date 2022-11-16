@@ -80,7 +80,7 @@
                         $this->InKeeper("Welcome", $keeper);
                     }else
                     {
-                        echo "<script> alert('error'); </script>";
+                        echo "<script> alert('Invalid Username or Passwords'); </script>";
                         $this->Index();
                     }
                 }

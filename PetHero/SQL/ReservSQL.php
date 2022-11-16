@@ -72,7 +72,7 @@ class ReservSQL implements IReservSQL{
         try{
             $reservList = array();
 
-            $query = "SELECT * FROM " . $this->tableName ."WHERE id_Pet=".$id;
+            $query = "SELECT * FROM " . $this->tableName ." WHERE id_Pet=".$id;
 
             $this->connection = Connection::GetInstance();
 
@@ -105,7 +105,7 @@ class ReservSQL implements IReservSQL{
         try {
             $reservList = array();
 
-            $query = "SELECT * FROM " . $this->tableName . "WHERE id_Reserv=" . $id_Reserv;
+            $query = "SELECT * FROM " . $this->tableName . " WHERE id_Reserv= ".$id_Reserv;
 
             $this->connection = Connection::GetInstance();
 
@@ -137,7 +137,7 @@ class ReservSQL implements IReservSQL{
             $reservList = array();
 
             $query = "SELECT * FROM " . $this->tableName
-            . " WHERE id_Keeper=" . "'" . $idKeeper . "'";
+            . " WHERE id_Keeper= " . "'" . $idKeeper . "'";
             $this->connection = Connection::GetInstance();
 
             $resultSet = $this->connection->Execute($query);
@@ -209,4 +209,40 @@ class ReservSQL implements IReservSQL{
             throw $ex;
         }
     }
+    public function GetPetByOwnerId($id_Owner)
+    {
+        try{
+             $reservList = array();
+
+            $query = "SELECT r.* FROM " . $this->tableName." r". " INNER JOIN pet p on p.id_Pet=r.id_Pet where p.id_Owner='".$id_Owner."'";
+             
+            /*select r.* from reserv r
+            inner join pet p
+            on p.id_Pet=r.id_Pet
+            where p.id_Owner=2;*/
+            
+            $this->connection = Connection::GetInstance();
+
+            $resultSet = $this->connection->Execute($query);
+
+            foreach ($resultSet as $row) {
+                $reserv = new Reserv();
+                $reserv->setIdReserv($row["id_Reserv"]);
+                $reserv->setIdPet($row["id_Pet"]);
+                $reserv->setIdKeeper($row["id_Keeper"]);
+
+                $reserv->setDateStart($row["dateStart"]);
+                $reserv->setDateFinish($row["dateFinish"]);
+
+                $reserv->setConfirm($row["confirm"]);
+
+                array_push($reservList, $reserv);
+            }
+            //var_dump($reservList);
+            return $reservList;
+        } catch (Exception $ex) {
+            throw $ex;
+        }
+    }
+
 }

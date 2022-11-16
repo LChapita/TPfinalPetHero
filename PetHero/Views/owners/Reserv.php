@@ -16,7 +16,9 @@ require_once(VIEWS_PATH . "nav.php");
 <main class="py-5">
     <section id="listado" class="mb-5">
         <div class="container">
-            <h2 class="mb-4">List of keepers to reserve</h2>
+        <section id="listado" class="bg-dark text-white"> <center>
+            <h2 class="mb-4 text-white">  List of keepers to reserve</h2> <h6 class="mb-4 text-white"> Keepers appear in them availability date range   </h6> </section id="listado" class="mb-5">
+</center>
             <table class="table bg-light text-center">
                 <thead class="bg-dark text-white">
                     <th>Name</th>
@@ -35,17 +37,18 @@ require_once(VIEWS_PATH . "nav.php");
                     <th>Reserve</th>
 
                 <tbody>
-                    <form method="post" action="">
+                    <form method="post" action="">     <center>     
                         <label>
-                            <h5>Add first Date: </5>
+                   
+                        <h5 class="mb-4 text-dark">Add first Date: </5>
                         </label>
                         <input type="date" name=start required>
                         <label>
-                            <h5>Add finish Date: </5>
+                        <h5 class="mb-4 text-dark">Add finish Date: </5>
                         </label>
                         <input type="date" name="finish" required>
                         <button type="submit" name="consultar" value="consultar">Consultar</button>
-                    </form>
+                     </center> </form>
                     <?php
 
                     error_reporting(E_ALL ^ E_NOTICE);

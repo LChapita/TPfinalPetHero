@@ -1,7 +1,9 @@
 <main class="d-flex align-items-center justify-content-center height-100">
     <div class="content">
         <header class="text-center">
-            <h2>Welcome to Pet Hero</h2>
+        <section id="listado" class=" bg-dark text-white"> <center>
+            <h2 class="mb-3 text-white">  Welcome To Pet Hero!</h1>  </section id="listado" class="mb-5">
+</center> 
         </header>
         <form action="<?php echo FRONT_ROOT . "Home/itsOwner" ?>" method="POST" class="login-form bg-dark-alpha p-5 bg-light">
             <!-- pasa el owner -->

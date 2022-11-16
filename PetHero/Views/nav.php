@@ -1,8 +1,8 @@
-<nav class="navbar navbar-expand-lg  navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg  navbar-dark bg-dark text-white">
      <span class="navbar-text">
           <strong>Pet Hero</strong>
      </span>
-     <ul class="navbar-nav ml-auto">
+     <ul class="navbar-nav ml-auto text-white">
           <li class="nav-item">
                <a class="nav-link" href="<?php echo FRONT_ROOT . "Owner/MyProfile"  ?>">My Profile</a>
           </li>
