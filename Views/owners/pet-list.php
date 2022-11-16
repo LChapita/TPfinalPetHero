@@ -14,7 +14,10 @@ require_once(VIEWS_PATH . "nav.php");
 <main class="py-5">
     <section class="mb-5">
         <div class="container">
-            <h2 class="mb-4">Pet List</h2>
+        <section id="listado" class="bg-dark text-white"> <center>
+            <h2 class="mb-4 text-white"> Pet List</h2> <h6 class="mb-4 text-white"> List of all your pets in our database!. </h6> </section id="listado" class="mb-5">
+</center>   <table class="table bg-light text-center">
+          
             <table class="table bg-light text-center">
                 <thead class="bg-dark text-white">
                     <th>Pet id</th>
