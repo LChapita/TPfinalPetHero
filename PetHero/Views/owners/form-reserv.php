@@ -39,7 +39,7 @@ $keeper = $keeperSQL->GetById($idKeeper);
 
 //var_dump($petList);
 //var_dump($idKeeper);
-?>
+?><center>
 <main>
     <section id="agregar" class="mb-7">
         <form action="<?php echo FRONT_ROOT . "Reserv/Add" ?>" method="post" style="background-color: #EAEDED;padding: 2rem !important;">
@@ -76,7 +76,7 @@ $keeper = $keeperSQL->GetById($idKeeper);
                                         <option value="0" required>UnConfirmed</option>
                                     </select>
                         -->
-
+                        <h4> Select your pet </h4>
                             <select name="pet" class="form-control">
                                 <?php
                                 foreach ($petList as $pet) {
@@ -229,7 +229,7 @@ $keeper = $keeperSQL->GetById($idKeeper);
                 </div>
         </form>
     </section>
-</main>
+</main></center>
 <?php
 require_once(VIEWS_PATH."footer.php");
 ?>
