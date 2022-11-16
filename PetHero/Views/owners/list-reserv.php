@@ -17,17 +17,27 @@ foreach ($userArr as $user) {
     $owner = new Owner();
     $owner->setId($user->getId());
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 6f8f18992e5cb6850303d7ac8e687ed238f44fa7
 ?>
 <main class="py-5">
     <section id="listado" class="mb-5">
         <div class="container">
+<<<<<<< HEAD
             <section id="listado" class="bg-dark text-white">
                 <center>
                     <h2 class="mb-4 text-white"> Reserv List</h2>
                     <h6 class="mb-4 text-white"> If your reservation does not appear, it still requires confirmation from the keeper </h6>
             </section id="listado" class="mb-5">
             </center>
+=======
+        <section id="listado" class="bg-dark text-white"> <center>
+            <h2 class="mb-4 text-white"> Reserv List</h2> <h6 class="mb-4 text-white"> If your reservation does not appear, it still requires confirmation from the keeper </h6> </section id="listado" class="mb-5">
+</center>   <table class="table bg-light text-center">
+        
+>>>>>>> 6f8f18992e5cb6850303d7ac8e687ed238f44fa7
             <table class="table bg-light text-center">
 
                 <table class="table bg-light text-center">
