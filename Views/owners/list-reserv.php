@@ -19,7 +19,7 @@ foreach ($userArr as $user) {
 }
 ?> 
 <main class="py-5">
-<center> <section id="listado" class="mb-5">
+<section id="listado" class="mb-5">
         <div class="container">
             <section id="listado" class="bg-dark text-white">
                 <center>
@@ -76,5 +76,5 @@ foreach ($userArr as $user) {
                     </tbody>
                 </table>
         </div>
-    </section></center>
+    </section>
 </main>

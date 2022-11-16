@@ -92,7 +92,9 @@
         }
         ///es Owner
         public function itsOwner($email){
-            $user = $this->ownerDAO->getByEmail($email);
+            //$user = $this->ownerDAO->getByEmail($email);
+            $user = $this->ownerSQL->GetByEmail($email);
+            
             $_SESSION["loggedUser"] = $user;
             //$user=$_SESSION["loggedUser"];
             
@@ -116,7 +118,8 @@
         }
         ///es Keeper
         public function itsKeeper($email){
-            $user = $this->keeperDAO->getByEmail($email);
+            //$user = $this->keeperDAO->getByEmail($email);
+            $user = $this->keeperSQL->GetByEmail($email);
             $_SESSION["loggedUser"] = $user;
 
             $keeper= new Keeper();

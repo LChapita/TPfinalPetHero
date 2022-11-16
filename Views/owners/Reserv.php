@@ -92,7 +92,7 @@ require_once(VIEWS_PATH . "nav.php");
                                             <td><?php echo $keeper->getTypeUserKeeper()->getSizePet() ?></td>
                                             <td><?php echo $keeper->getTypeUserKeeper()->getDateStart() ?></td>
                                             <td><?php echo $keeper->getTypeUserKeeper()->getDateFinish() ?></td>
-
+                                            
                                             <form action="<?php echo FRONT_ROOT . "Reserv/ShowAddView" ?>" method="POST">
                                                 <input type="hidden" name="idKeeper" value="<?php echo $keeper->getId() ?>">
                                                 <td> <button type="submit" name="reservar" value="reservar">Reserve</button></td>
