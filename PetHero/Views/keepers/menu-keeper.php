@@ -26,11 +26,13 @@ $keeper=$keeperSQL->GetByEmail($userMenu->getEmail());
 
 ?>
 <main class="py-5">
-    <section id="listado" class="mb-5">
+<section id="listado" class="mb-5">
+    <center> <a href="https://ibb.co/92W3M5w"><img src="https://i.ibb.co/L61hG7Q/Solo-Travel-Guide-2.png" alt="Solo-Travel-Guide-2" border="0"></a></center> 
         <div class="container">
-        <section id="listado" class="bg-dark text-white"> <center>
-            <h2 class="mb-4 text-white"> My Data</h2> <h6 class="mb-4 text-white"> 
-all your personal data in our database</h6> </section id="listado" class="mb-5">
+
+            <section id="listado" class="bg-dark text-white"> <center> 
+              </section id="listado" class="mb-5">
+              <br>
 </center>  
             <table class="table bg-light text-center">
                 <thead class="bg-dark text-white">
@@ -48,31 +50,33 @@ all your personal data in our database</h6> </section id="listado" class="mb-5">
                     <th>Name</th>
                     <th>Last Name</th>
                     <th>Photo</th>
-                    <th>DNi</th>
-                    <th>Tuition</th>
-                    <th>Sex</th>
-                    <th>Age</th>
-                </thead>
-                <tbody>
+                    <tbody>
                     <tr>
                         <td><?php echo $keeper->getTypeUserKeeper()->getName() ?></td>
                         <td><?php echo $keeper->getTypeUserKeeper()->getLastname() ?></td>
-                        <td><?php echo "<img src=".$keeper->getTypeUserKeeper()->getPhoto().">" ?></td>
+                        <td><?php echo "<img src=".$keeper->getTypeUserKeeper()->getPhoto().">" ?></td></tr>
+                        </tbody> 
+                    <thead class="bg-dark text-white">
+                    <th>DNi</th>
+                    <th>Tuition</th>
+                    <th>Sex</th>
+                    </thead>  <tr>
+                        <tbody>
                         <td><?php echo $keeper->getTypeUserKeeper()->getDNI() ?></td>
                         <td><?php echo $keeper->getTypeUserKeeper()->getTuition() ?></td>
                         <td><?php echo $keeper->getTypeUserKeeper()->getSex() ?></td>
-                        <td><?php echo $keeper->getTypeUserKeeper()->getAge() ?></td>
-                </tbody>
-
+                        
+                </tbody> 
                 <thead class="bg-dark text-white">
+                    <th>Age</th>
                     <th>Date Stays Started</th>
                     <th>Date Stays Finished</th>
                 </thead>
-                <tbody>
-                    <tr>
+                <tbody> <tr>
+                    <td><?php echo $keeper->getTypeUserKeeper()->getAge() ?></td> 
                         <td><?php echo $keeper->getTypeUserKeeper()->getDateStart() ?></td>
                         <td><?php echo $keeper->getTypeUserKeeper()->getDateFinish() ?></td>
-                </tbody>
+               </tr> </tbody>
             </table>
         </div>
     </section>

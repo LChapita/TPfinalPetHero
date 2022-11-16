@@ -27,6 +27,8 @@ class ReservController{
 
     public function ShowAddView($idKeeper)
     {
+        require_once(VIEWS_PATH . "validate-session.php");
+
         require_once(VIEWS_PATH . "owners/form-reserv.php");   
     }
 
@@ -63,12 +65,19 @@ class ReservController{
         //var_dump($reserv);
         //$this->reservDAO->Add($reserv);
         ///verificar
-        if($this->reservSQL->VerificReserv($reserv,$idPet,$idKeeper)==0){
-            echo "<script> alert('Reserva Realizada, Aguarde por la Confirmacion del Keeper'); </script>";
-            $this->reservSQL->Add($reserv);
-            require_once(VIEWS_PATH . "owners/menu-owner.php");
+        //var_dump($dateStart);
+        if(($dateStart && $dateFinish)!=0){
+
+            if($this->reservSQL->VerificReserv($reserv,$idPet,$idKeeper)==0){
+                echo "<script> alert('Reserva Realizada, Aguarde por la Confirmacion del Keeper'); </script>";
+                $this->reservSQL->Add($reserv);
+                require_once(VIEWS_PATH . "owners/menu-owner.php");
+            }else{
+                echo "<script> alert('Esta Reserva Esta en espera de que un Keeper la Acepte'); </script>";
+                require_once(VIEWS_PATH . "owners/menu-owner.php");
+            }
         }else{
-            echo "<script> alert('Esta Reserva Esta en espera de que un Keeper la Acepte'); </script>";
+            echo "<script> alert('No more available Dates from the Keeper'); </script>";
             require_once(VIEWS_PATH . "owners/menu-owner.php");
         }
 

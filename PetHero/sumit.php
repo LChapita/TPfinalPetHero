@@ -1,5 +1,7 @@
 <?php
-require "Config/Config.php";
+
+
+//require "Config/Config.php";
 /*
 var_dump($_FILES);
 
@@ -25,7 +27,7 @@ if (isset($_FILES["photo"])) {
 
 //echo "<td><img src=".VIEWS_PATH. 'keepers/photos/golden.jpg'.">" ;
 
-
+/*//
 error_reporting(E_ALL ^ E_NOTICE);
 $start = $_POST['start'];
 $finish = $_POST['finish'];
@@ -48,6 +50,7 @@ for ($i = $reservStart; $i <= $reservFinish; $i = date("Y-m-d", strtotime($i . "
 }
 
 echo "<br>";
+*/
 /*foreach($fechasKeeper as $value){
     echo "<br>".$value;
 }
@@ -57,7 +60,7 @@ foreach ($reservas as $value) {
 }
 echo "<br>";
 */
-
+/*
 $reservasKeepers=array();
 
 foreach($fechasKeeper as $valueK){
@@ -67,6 +70,7 @@ foreach($fechasKeeper as $valueK){
         }
     }
 }
+*/
 //echo "<br>".$reservStart;
 //echo $dateStart;
 //echo $dateFinish;
