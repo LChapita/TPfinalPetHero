@@ -40,10 +40,17 @@ $keeper = $keeperSQL->GetById($idKeeper);
 //var_dump($petList);
 //var_dump($idKeeper);
 ?><center>
+<<<<<<< HEAD
     <main>
         <section id="agregar" class="mb-7">
             <form action="<?php echo FRONT_ROOT . "Reserv/Add" ?>" method="post" style="background-color: #EAEDED;padding: 2rem !important;">
                 <!-- 
+=======
+<main>
+    <section id="agregar" class="mb-7">
+        <form action="<?php echo FRONT_ROOT . "Reserv/Add" ?>" method="post" style="background-color: #EAEDED;padding: 2rem !important;">
+            <!-- 
+>>>>>>> d12140b33cdac82db7cd71d6289d91b4e2e8aa10
 
             <label> Hola Owner Bienvenido</label><br>
             <table>
@@ -86,7 +93,44 @@ $keeper = $keeperSQL->GetById($idKeeper);
                                         <option value="1" required>Confirmed</option>
                                         <option value="0" required>UnConfirmed</option>
                                     </select>
+<<<<<<< HEAD
                                 -->
+=======
+                        -->
+                        <h4> Select your pet </h4>
+                            <select name="pet" class="form-control">
+                                <?php
+                                foreach ($petList as $pet) {
+                                    if($pet->getSizePet()==$keeper->getTypeUserKeeper()->getSizePet()){
+                                        echo "<option value=" . $pet->getId() . " required>" . $pet->getName() . "</option>";
+                                    }
+                                }
+                                ?>
+                            </select>
+                            <input type="hidden" name="idKeeper" value="<?php echo $idKeeper ?>">
+                            <?php
+                            $reservSQL = new ReservSQL();
+                            $reservList = $reservSQL->GetReservbyIdKeeper($idKeeper);
+                            //var_dump($reservList);
+                            //var_dump($reservList);
+                            //var_dump($keeper->getTypeUserKeeper()->getDateStart());
+                            //var_dump($keeper->getTypeUserKeeper()->getDateFinish());
+                            //var_dump($reservList);
+                            if ($reservList == null) {//este primero
+                            ?>
+                                <td>
+                                    <input type="date" name="dateStart" min="<?php echo $keeper->getTypeUserKeeper()->getDateStart(); ?>" max="<?php echo $keeper->getTypeUserKeeper()->getDateFinish(); ?>" placeholder="START" required>
+                                </td>
+                                <td>
+                                    <input type="date" name="dateFinish" min="<?php echo date('Y-m-d', strtotime($keeper->getTypeUserKeeper()->getDateStart() . "+1 day")); ?>" max="<?php echo $keeper->getTypeUserKeeper()->getDateFinish(); ?>" placeholder="FINISH" required>
+                                </td>
+
+                                <?php
+                            }
+                            elseif($reservList!=null){
+                                sort($reservList);
+                                $fechasKeeper=array();
+>>>>>>> d12140b33cdac82db7cd71d6289d91b4e2e8aa10
                                 
                                 <h4> Select your pet </h4>
                                 <select name="pet" class="form-control">
@@ -234,6 +278,7 @@ $keeper = $keeperSQL->GetById($idKeeper);
                                     if($libres==null){
                                         //var_dump($libres);
                                         ?>
+<<<<<<< HEAD
                                             <input type="hidden" name="dateStart" value="<?php echo 0 ?>" placeholder="START" required>
                                             <input type="hidden" name="dateFinish" value="<?php echo 0 ?>" placeholder="FINISH" required>
                                          <?php
@@ -255,6 +300,66 @@ $keeper = $keeperSQL->GetById($idKeeper);
         ?>
     </main>
 </center>
+=======
+                                            <tbody>
+                                                <td>
+                                                    <input type="date" name="dateStart" 
+                                                    min="<?php echo $min; ?>" 
+                                                    max="<?php echo $max; ?>" placeholder="START" required>
+                                                </td>
+                                                
+                                        <td>
+                                            <input type="date" name="dateFinish" 
+                                            min="<?php echo $min; ?>" 
+                                            max="<?php echo $max; ?>" placeholder="FINISH" required>
+                                        </td>
+                                    </tbody>
+                                    <?php
+                                    }else{
+                                        //echo "macaco";
+                                        error_reporting(E_ALL ^ E_NOTICE);
+                                        
+                                        $fechaFija=date("Y-m-d",strtotime($aceptados[0]."- 1 days"));
+                                        $fechaAcumulada=date("Y-m-d", strtotime($fechaFija));
+                                        
+                                        foreach($aceptados as $acept) {
+                                            $fechaAcumulada++;
+                                                if($acept==$fechaAcumulada){
+                                                    array_push($otro, $acept);
+                                            }
+                                        }
+                                        //var_dump($fechaAcumulada);
+                                        $min=min($otro);
+                                        $max=max($otro);
+                                        ?>
+                                            <tbody>
+                                                <td>
+                                                    <input type="date" name="dateStart" 
+                                                    min="<?php echo $min; ?>" 
+                                                    max="<?php echo $max; ?>" placeholder="START" required>
+                                                </td>
+                                                
+                                        <td>
+                                            <input type="date" name="dateFinish" 
+                                            min="<?php echo $min; ?>" 
+                                            max="<?php echo $max; ?>" placeholder="FINISH" required>
+                                        </td>
+                                    </tbody>
+                                    <?php
+                                    }
+                                    }
+                            }
+                            ?>
+                        </tr>
+                    </tbody>
+                </table>
+                <div>
+                    <input type="submit" class="btn" value="Add Stay" style="background-color:#DC8E47;color:white;" />
+                </div>
+        </form>
+    </section>
+</main></center>
+>>>>>>> d12140b33cdac82db7cd71d6289d91b4e2e8aa10
 <?php
 require_once(VIEWS_PATH . "footer.php");
 ?>
