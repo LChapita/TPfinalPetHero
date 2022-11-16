@@ -73,7 +73,6 @@
             height: 25;
             float: left;
         }
-
         .spandex2 {
             border: 1px solid black;
             width: 0px;
@@ -132,21 +131,21 @@
         <span class="spandex3">
 
             <span>
-                <h2>the pets</h2>
+                <h2>Pet Hero</h2>
             </span>
             <span>
-                <h1>payment coupon</h1>
+                <h1>Payment coupon</h1>
             </span>
             <table class="tabla">
                 <tr>
                     <td class="td1"><strong><?php echo "N° ".rand(); ?></strong></td>
-                    <td class="td2"><?php echo date("Y-m-d"); ?></td>
+                    <td> <h6> <?php echo date("Y-m-d"); ?></h6></td>
                 </tr>
             </table>
             <div>
                 <table class="tabla3">
                     <tr>
-                        <td>1er vencimiento</td>
+                        <td>1st  expiration</td>
                         <td class="mc" rowspan="3"><span class="spandex2"></span></td>
                         <td>importe</td>
                     </tr>
@@ -159,7 +158,7 @@
             <div>
                 <table class="tabla3">
                     <tr>
-                        <td>2do vencimiento - 10% recargo</td>
+                        <td>2nd expiration- 10% surcharge</td>
                         <td class="mc" rowspan="2"><span class="spandex2"></span>
                         <td>importe</td>
                     </tr>
@@ -172,14 +171,14 @@
 
             <table class="tabla2">
                 <tr>
-                    <td colspan="3" class="t">datos del owner</td>
+                    <td colspan="3" class="t">Owner's data</td>
                 </tr>
                 <tr>
-                    <td>name</td>
+                    <td>Name</td>
                     <td><?php echo $userOwner->getTypeUserOwner()->getName() ?></td>
                 </tr>
                 <tr>
-                    <td>surname</td>
+                    <td>Surname</td>
                     <td><?php echo $userOwner->getTypeUserOwner()->getSurName() ?></td>
                 </tr>
                 <tr>
@@ -190,54 +189,54 @@
             <hr class="spandex4" />
             <table class="tabla2">
                 <tr>
-                    <td colspan="3" class="t">datos de keeper</td>
+                    <td colspan="3" class="t">Keeper´s data</td>
                 </tr>
                 <tr>
                     <td>keeper</td>
                     <td><?php echo $userKeeper->getTypeUserKeeper()->getName() . " " . $userKeeper->getTypeUserKeeper()->getLastName() ?></td>
                 </tr>
                 <tr>
-                    <td>tuition</td>
+                    <td>Tuition</td>
                     <td><?php echo $userKeeper->getTypeUserKeeper()->getTuition() ?></td>
                 </tr>
             </table>
             <hr class="spandex4" />
             <table class="tabla2">
                 <tr>
-                    <td colspan="3" class="t">datos de pets</td>
+                    <td colspan="3" class="t">Pet´s Data</td>
                 </tr>
                 <tr>
-                    <td>name pet</td>
+                    <td>Pet´s name</td>
                     <td><?php echo $pet->getName() ?></td>
                 </tr>
                 <tr>
-                    <td>description 's pets</td>
+                    <td>Pet´s Race</td>
                     <td><?php echo $pet->getRace() ?></td>
                 </tr>
             </table>
             <hr class="spandex4" />
             <table class="tabla2">
                 <tr>
-                    <td colspan="2" class="t">datos contables</td>
+                    <td colspan="2" class="t">Details of payment</td>
                 </tr>
                 <tr>
-                    <td>price per pet size</td>
+                    <td>Price per pet size</td>
                     <td><?php echo "$" . $userKeeper->getTypeUserKeeper()->getPrice() ?></td>
                 </tr>
                 <tr>
-                    <td>number of days</td>
+                    <td>Number of days</td>
                     <td><?php echo $days; ?></td>
                 </tr>
                 <tr>
-                    <td>date start</td>
+                    <td>Date start</td>
                     <td><?php echo $reserv->getDateStart() ?></td>
                 </tr>
                 <tr>
-                    <td>date finish</td>
+                    <td>Date finish</td>
                     <td><?php echo $reserv->getDateFinish() ?></td>
                 </tr>
                 <tr>
-                    <td>amount payable</td>
+                    <td>Amount payable</td>
                     <td><?php echo "$" . $monto ?></td>
                 </tr>
             </table>

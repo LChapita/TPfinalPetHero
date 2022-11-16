@@ -28,7 +28,7 @@ require_once(VIEWS_PATH . "nav.php");
                          <th>Tuition</th>
                          <th>Sex</th>
                          <th>Age</th>
-                         <th>Id</th>
+                         <th>Size Pet</th>
                          <th>Date Start</th>
                          <th>Date Finish</th>
 
@@ -80,7 +80,7 @@ require_once(VIEWS_PATH . "nav.php");
                                              <td><?php echo $keeper->getTypeUserKeeper()->getTuition() ?></td>
                                              <td><?php echo $keeper->getTypeUserKeeper()->getSex() ?></td>
                                              <td><?php echo $keeper->getTypeUserKeeper()->getAge() ?></td>
-                                             <td><?php echo $keeper->getTypeUserKeeper()->getId() ?></td>
+                                             <td><?php echo $keeper->getTypeUserKeeper()->getSizePet() ?></td>
 
                                              <td><?php echo $keeper->getTypeUserKeeper()->getDateStart() ?></td>
                                              <td><?php echo $keeper->getTypeUserKeeper()->getDateFinish() ?></td>

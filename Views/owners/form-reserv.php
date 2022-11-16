@@ -39,7 +39,7 @@ $keeper = $keeperSQL->GetById($idKeeper);
 
 //var_dump($petList);
 //var_dump($idKeeper);
-?>
+?><center>
 <main>
     <section id="agregar" class="mb-7">
         <form action="<?php echo FRONT_ROOT . "Reserv/Add" ?>" method="post" style="background-color: #EAEDED;padding: 2rem !important;">
@@ -76,11 +76,13 @@ $keeper = $keeperSQL->GetById($idKeeper);
                                         <option value="0" required>UnConfirmed</option>
                                     </select>
                         -->
-
+                        <h4> Select your pet </h4>
                             <select name="pet" class="form-control">
                                 <?php
+                                $petsss=array();
                                 foreach ($petList as $pet) {
                                     if($pet->getSizePet()==$keeper->getTypeUserKeeper()->getSizePet()){
+                                        array_push($petsss,$pet);
                                         echo "<option value=" . $pet->getId() . " required>" . $pet->getName() . "</option>";
                                     }
                                 }
@@ -95,6 +97,10 @@ $keeper = $keeperSQL->GetById($idKeeper);
                             //var_dump($keeper->getTypeUserKeeper()->getDateStart());
                             //var_dump($keeper->getTypeUserKeeper()->getDateFinish());
                             //var_dump($reservList);
+
+                            if($petsss==null){
+                                echo "<script> alert('No tiene pets para este Keeper'); </script>";
+                            }else{
                             if ($reservList == null) {//este primero
                             ?>
                                 <td>
@@ -227,9 +233,12 @@ $keeper = $keeperSQL->GetById($idKeeper);
                 <div>
                     <input type="submit" class="btn" value="Add Stay" style="background-color:#DC8E47;color:white;" />
                 </div>
+            <?php
+            }
+            ?>
         </form>
     </section>
-</main>
+</main></center>
 <?php
 require_once(VIEWS_PATH."footer.php");
 ?>
