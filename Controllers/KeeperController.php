@@ -133,6 +133,40 @@ class KeeperController{
         $this->MenuKeeper();
 
     }
+    public function CreateReview($id_Keeper)
+    {
+        require_once(VIEWS_PATH . "validate-session.php");
+        require_once(VIEWS_PATH. "owners/review.php");
+    }
+
+    public function Reviews($id_Keeper, $review, $comments)
+    {
+        $keeper=new Keeper();
+        
+        if ($review== 'Terrible') {
+            $keeper->setReview(1);
+        } elseif($review == 'Bad'){
+            $keeper->setReview(2);
+        }elseif($review == 'Regular'){
+            $keeper->setReview(3);
+        }elseif($review == 'Good'){
+            $keeper->setReview(4);
+        }elseif($review == 'Excelent'){
+            $keeper->setReview(5);
+        }
+        //$keeper->setReview($review);
+        $keeper->setComment($comments);
+        $keeper->setId($id_Keeper);
+
+    
+
+        $this->keeperSQL->NewReview($keeper);
+        echo "<script> alert('Your Review has been Published'); </script>";
+        require_once(VIEWS_PATH . "owners/keeper-list.php");
+    }
+
+
+
 
     public function GoHome()
     {

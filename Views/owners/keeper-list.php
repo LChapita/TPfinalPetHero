@@ -36,6 +36,7 @@ require_once(VIEWS_PATH . "nav.php");
                     <th>Size Pet</th>
                     <th>Date Start</th>
                     <th>Date Finish</th>
+                    <th>Review</th>
                 </thead>
                 <tbody>
                     <?php
@@ -51,20 +52,22 @@ require_once(VIEWS_PATH . "nav.php");
                         <tr>
                             <td><?php echo $keeper->getTypeUserKeeper()->getName() ?></td>
                             <td><?php echo $keeper->getTypeUserKeeper()->getLastname() ?></td>
-                            <td><?php echo $keeper->getTypeUserKeeper()->getPhoto() ?></td>
+                            <td><img src="<?php echo $keeper->getTypeUserKeeper()->getPhoto() ?>" width="70" height="70"></td>
                             <td><?php echo $keeper->getTypeUserKeeper()->getDNI() ?></td>
                             <td><?php echo $keeper->getTypeUserKeeper()->getTuition() ?></td>
                             <td><?php echo $keeper->getTypeUserKeeper()->GetSex() ?></td>
                             <td><?php echo $keeper->getTypeUserKeeper()->getAge() ?></td>
-                            <!-- 
-                            <td>< ?php echo $keeper->getTypeUserKeeper()->getId() ?></td>
-                            -->
-                            <td>
-                                <?php echo $keeper->getTypeUserKeeper()->getSizePet() ?>
-                            </td>
+                            <!--<td>< ?php echo $keeper->getTypeUserKeeper()->getId() ?></td>-->
+                            <td><?php echo $keeper->getTypeUserKeeper()->getSizePet() ?></td>
                             <td><?php echo $keeper->getTypeUserKeeper()->getDateStart() ?></td>
                             <td><?php echo $keeper->getTypeUserKeeper()->getDateFinish() ?></td>
+                            <td>
+                                <form action="<?php echo FRONT_ROOT . "Keeper/CreateReview" ?>" method="POST">
+                                <input type="hidden" name="id_Keeper" value="<?php echo $keeper->getId(); ?>">
+                                <button type="submit" name="confirmar" value="confirmar">Review</button>
 
+                            </form>
+                        </td>
                         </tr>
 
                     <?php

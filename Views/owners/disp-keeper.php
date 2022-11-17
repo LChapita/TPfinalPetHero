@@ -16,9 +16,12 @@ require_once(VIEWS_PATH . "nav.php");
 <main class="py-5">
      <section id="listado" class="mb-5">
           <div class="container">
-          <section id="listado" class="bg-dark text-white"> <center>
-            <h2 class="mb-4 text-white">  Keepers available between 2 dates</h2> <h6 class="mb-4 text-white"> Keepers appear in them availability date range   </h6> </section id="listado" class="mb-5">
-</center>
+               <section id="listado" class="bg-dark text-white">
+                    <center>
+                         <h2 class="mb-4 text-white"> Keepers available between 2 dates</h2>
+                         <h6 class="mb-4 text-white"> Keepers appear in them availability date range </h6>
+               </section id="listado" class="mb-5">
+               </center>
                <table class="table bg-light text-center">
                     <thead class="bg-dark text-white">
                          <th>Name</th>
@@ -34,17 +37,19 @@ require_once(VIEWS_PATH . "nav.php");
 
 
                     <tbody>
-                         <form method="post" action=""><center>
-                              <label>
-                                   <h5 class="mb-4 text-dark">Add first Date: </5>
-                              </label>
-                              <input type="date" name=start required>
-                              <label>
-                                   <h5 class="mb-4 text-dark">Add finish Date: </5>
-                              </label>
-                              <input type="date" name="finish" required>
-                              <button type="submit" name="consultar" value="consultar">Consultar</button>
-                              </center></form>
+                         <form method="post" action="">
+                              <center>
+                                   <label>
+                                        <h5 class="mb-4 text-dark">Add first Date: </5>
+                                   </label>
+                                   <input type="date" name=start required>
+                                   <label>
+                                        <h5 class="mb-4 text-dark">Add finish Date: </5>
+                                   </label>
+                                   <input type="date" name="finish" required>
+                                   <button type="submit" name="consultar" value="consultar">Consultar</button>
+                              </center>
+                         </form>
                          <?php
 
                          error_reporting(E_ALL ^ E_NOTICE);
@@ -61,42 +66,41 @@ require_once(VIEWS_PATH . "nav.php");
                          //private $finish;  /* Se ingresa segunda  fecha por teclado*/
                          //
                          ///owner,keeper,idReserva idPerroAsociadoAlKeeper
-                         if($start!=null){
-                         if($start<$finish){
-                         foreach ($keeperList as $keeper) {
-                              //var_dump($keeper);
-                              if ((($keeper->getTypeUserKeeper()->getDateStart()) &&  ($keeper->getTypeUserKeeper()->getDateFinish())) != null) {
-                                   if ((($start >=  $keeper->getTypeUserKeeper()->getDateStart() && $finish <= $keeper->getTypeUserKeeper()->getDateFinish())) ||
-                                                  (($start <= $keeper->getTypeUserKeeper()->getDateStart() && $finish >= $keeper->getTypeUserKeeper()->getDateFinish())) ||
-                                                  ($start < $keeper->getTypeUserKeeper()->getDateStart() && $finish < $keeper->getTypeUserKeeper()->getDateFinish()))
-                                    {
+                         if ($start != null) {
+                              if ($start < $finish) {
+                                   foreach ($keeperList as $keeper) {
+                                        //var_dump($keeper);
+                                        if ((($keeper->getTypeUserKeeper()->getDateStart()) &&  ($keeper->getTypeUserKeeper()->getDateFinish())) != null) {
+                                             if ((($start >=  $keeper->getTypeUserKeeper()->getDateStart() && $finish <= $keeper->getTypeUserKeeper()->getDateFinish())) ||
+                                                  (($start <= $keeper->getTypeUserKeeper()->getDateStart() && $finish >= $keeper->getTypeUserKeeper()->getDateFinish()))
+                                             ) {
 
                          ?>
-                                        <tr>
-                                             <td><?php echo $keeper->getTypeUserKeeper()->getName() ?></td>
-                                             <td><?php echo $keeper->getTypeUserKeeper()->getLastname() ?></td>
-                                             <td><?php echo $keeper->getTypeUserKeeper()->getPhoto() ?></td>
-                                             <td><?php echo $keeper->getTypeUserKeeper()->getDNI() ?></td>
-                                             <td><?php echo $keeper->getTypeUserKeeper()->getTuition() ?></td>
-                                             <td><?php echo $keeper->getTypeUserKeeper()->getSex() ?></td>
-                                             <td><?php echo $keeper->getTypeUserKeeper()->getAge() ?></td>
-                                             <td><?php echo $keeper->getTypeUserKeeper()->getSizePet() ?></td>
+                                                  <tr>
+                                                       <td><?php echo $keeper->getTypeUserKeeper()->getName() ?></td>
+                                                       <td><?php echo $keeper->getTypeUserKeeper()->getLastname() ?></td>
+                                                       <td><img src="<?php echo $keeper->getTypeUserKeeper()->getPhoto() ?>" width="70" height="70"></td>
 
-                                             <td><?php echo $keeper->getTypeUserKeeper()->getDateStart() ?></td>
-                                             <td><?php echo $keeper->getTypeUserKeeper()->getDateFinish() ?></td>
+                                                       <td><?php echo $keeper->getTypeUserKeeper()->getDNI() ?></td>
+                                                       <td><?php echo $keeper->getTypeUserKeeper()->getTuition() ?></td>
+                                                       <td><?php echo $keeper->getTypeUserKeeper()->getSex() ?></td>
+                                                       <td><?php echo $keeper->getTypeUserKeeper()->getAge() ?></td>
+                                                       <td><?php echo $keeper->getTypeUserKeeper()->getSizePet() ?></td>
+
+                                                       <td><?php echo $keeper->getTypeUserKeeper()->getDateStart() ?></td>
+                                                       <td><?php echo $keeper->getTypeUserKeeper()->getDateFinish() ?></td>
 
 
 
-                                        </tr>
+                                                  </tr>
                          <?php
+                                             }
+                                        }
                                    }
+                              } else {
+                                   echo "<script> alert('Enter the date correctly. The START date must be less than the FINISH date'); </script>";
                               }
                          }
-                    }else
-                    {
-                         echo "<script> alert('Enter the date correctly. The START date must be less than the FINISH date'); </script>";
-                    }
-               }
                          ?>
                     </tbody>
                </table>

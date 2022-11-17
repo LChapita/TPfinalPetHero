@@ -1,6 +1,4 @@
-<?php
 
-?>
 
 <head>
     <style>
@@ -85,7 +83,7 @@
             margin: 2px;
             border: 3px solid rgb(152, 207, 177);
             width: 360px;
-            height: 500px;
+            height: 535px;
         }
 
         h3 {
@@ -127,10 +125,8 @@
 </head>
 
 <main>
-
-
     <body>
-        <form>
+        <form action="<?php echo FRONT_ROOT . "Reserv/ShowPay" ?>" method="POST">
 
             <span class="spandex3">
 
@@ -250,9 +246,15 @@
                         <td>Amount payable</td>
                         <td><?php echo "$" . $monto ?></td>
                     </tr>
+                    <tr>
+
+                        <td>PAY COUPON</td>
+                        <td>
+                            <input type="hidden" name="monto" value="<?php echo $monto ?>">
+                            <button type="submit" name="button" class="btn btn-primary ml-auto d-block">Pay</button>
+                        </td>
+                    </tr>
                 </table>
-                <hr class="bd" />
-                <button type="submit" name="pago">Pagar</button>
             </span>
         </form>
     </body>

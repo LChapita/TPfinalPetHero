@@ -14,60 +14,64 @@ require_once(VIEWS_PATH . "nav.php");
 <main class="py-5">
     <section class="mb-5">
         <div class="container">
-        <section id="listado" class="bg-dark text-white"> <center>
-            <h2 class="mb-4 text-white"> Pet List</h2> <h6 class="mb-4 text-white"> List of all your pets in our database!. </h6> </section id="listado" class="mb-5">
-</center>   <table class="table bg-light text-center">
-          
+            <section id="listado" class="bg-dark text-white">
+                <center>
+                    <h2 class="mb-4 text-white"> Pet List</h2>
+                    <h6 class="mb-4 text-white"> List of all your pets in our database!. </h6>
+            </section id="listado" class="mb-5">
+            </center>
             <table class="table bg-light text-center">
-                <thead class="bg-dark text-white">
-                    <th>Pet id</th>
-                    <th>Owner</th>
-                    <th>Name Pet</th>
-                    <th>Race</th>
-                    <th>Vaccination</th>
-                    <th>Photo</th>
-                    <th>Videos</th>
-                    <th>Size Pet</th>
-                </thead>
-                <tbody>
-                    <?php
 
-                    //$petDAO = new petDAO();
-                    //$petList = $petDAO->GetAllPets();
-                    $petSQL=new PetSQL();
-                    $petList=$petSQL->GetAll();
-                    
-                    $userArr = $_SESSION;
-                    foreach ($userArr as $user) {
-                        $owner = new Owner();
-                        //$owner->setId($user->getTypeUserOwner()->getId());
-                        $owner->setId($user->getId());
-                    }
-                    
-                    //var_dump($owner);
-                    
-                    foreach ($petList as $pet) {
-                        //var_dump($pet);
-                        if ($pet->getOwnerID() == $owner->getId()) {
+                <table class="table bg-light text-center">
+                    <thead class="bg-dark text-white">
+                        <th>Pet id</th>
+                        <th>Owner</th>
+                        <th>Name Pet</th>
+                        <th>Race</th>
+                        <th>Vaccination</th>
+                        <th>Photo</th>
+                        <th>Videos</th>
+                        <th>Size Pet</th>
+                    </thead>
+                    <tbody>
+                        <?php
 
-                    ?>
-                            <tr>
-                                <td><?php echo $pet->getId() ?></td>
-                                <td><?php echo $pet->getOwnerID() ?></td>
-                                <td><?php echo $pet->getName() ?></td>
-                                <td><?php echo $pet->getRace() ?></td>
-                                <td><a href="<?php echo $pet->getVaccinationSchedule() ?>">Vaccination</a></td>
-                                <td><a href="<?php echo $pet->getPhoto() ?>">Photo</a></td>
-                                <td><a href="<?php echo $pet->getVideo() ?>">Video</a></td>
-                                <td><?php echo $pet->getSizePet() ?></td>
-                            </tr>
+                        //$petDAO = new petDAO();
+                        //$petList = $petDAO->GetAllPets();
+                        $petSQL = new PetSQL();
+                        $petList = $petSQL->GetAll();
 
-                    <?php
+                        $userArr = $_SESSION;
+                        foreach ($userArr as $user) {
+                            $owner = new Owner();
+                            //$owner->setId($user->getTypeUserOwner()->getId());
+                            $owner->setId($user->getId());
                         }
-                    }
-                    ?>
-                </tbody>
-            </table>
+
+                        //var_dump($owner);
+
+                        foreach ($petList as $pet) {
+                            //var_dump($pet);
+                            if ($pet->getOwnerID() == $owner->getId()) {
+
+                        ?>
+                                <tr>
+                                    <td><?php echo $pet->getId() ?></td>
+                                    <td><?php echo $pet->getOwnerID() ?></td>
+                                    <td><?php echo $pet->getName() ?></td>
+                                    <td><?php echo $pet->getRace() ?></td>
+                                    <td><img src="<?php echo $pet->getVaccinationSchedule() ?>" width="150" height="150"></td>
+                                    <td><img src="<?php echo $pet->getPhoto() ?>" width="150" height="150"></td>
+                                    <td><a href="<?php echo $pet->getVideo() ?>">Video</a></td>
+                                    <td><?php echo $pet->getSizePet() ?></td>
+                                </tr>
+
+                        <?php
+                            }
+                        }
+                        ?>
+                    </tbody>
+                </table>
         </div>
     </section>
     <!-- 
@@ -107,5 +111,5 @@ require_once(VIEWS_PATH . "nav.php");
 
 <?php
 
-require_once(VIEWS_PATH."footer.php");
+require_once(VIEWS_PATH . "footer.php");
 ?>

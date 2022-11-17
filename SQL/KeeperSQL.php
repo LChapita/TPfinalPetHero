@@ -199,5 +199,22 @@ class KeeperSQL implements IKeeperSQL{
             throw $ex;
         }
     }
+
+    public function NewReview(Keeper $keeper){
+        try {
+            $query = "CALL Review_Add(?,?,?)";
+
+            $parameters["id_Keeper"] = $keeper->getId();
+            $parameters["comment"]=$keeper->getComment();
+            $parameters["review"] = $keeper->getReview();
+
+            $this->connection = Connection::GetInstance();
+
+            $this->connection->ExecuteNonQuery($query, $parameters, QueryType::StoredProcedure);
+        } catch (Exception $ex) {
+            throw $ex;
+        }
+
+    }
 }
 ?>

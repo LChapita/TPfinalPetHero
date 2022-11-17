@@ -70,6 +70,9 @@ class OwnerController{
         require_once(VIEWS_PATH . "validate-session.php");
         require_once(VIEWS_PATH."owners/menu-owner.php");
     }
+    
+
+
     public function GoHome()
     {
         header('Location:' . FRONT_ROOT . 'Home/GoFirstPage');

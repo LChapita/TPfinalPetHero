@@ -239,20 +239,20 @@ $keeper = $keeperSQL->GetById($idKeeper);
                                          <?php
                                         }}
                                             ?>
-                                        </section>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <div>
-                                <input type="submit" class="btn" value="Add Stay" style="background-color:#DC8E47;color:white;" />
-                            </div>
                         </form>
                         <?php
 }
-                                }
+}
 
 
-        ?>
+?>
+</section>
+</tr>
+</tbody>
+</table>
+<div>
+<input type="submit" class="btn" value="Add Stay" style="background-color:#DC8E47;color:white;" />
+</div>
     </main>
 </center>
 <?php

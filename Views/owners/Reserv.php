@@ -16,9 +16,12 @@ require_once(VIEWS_PATH . "nav.php");
 <main class="py-5">
     <section id="listado" class="mb-5">
         <div class="container">
-        <section id="listado" class="bg-dark text-white"> <center>
-            <h2 class="mb-4 text-white">  List of keepers to reserve</h2> <h6 class="mb-4 text-white"> Keepers appear in them availability date range   </h6> </section id="listado" class="mb-5">
-</center>
+            <section id="listado" class="bg-dark text-white">
+                <center>
+                    <h2 class="mb-4 text-white"> List of keepers to reserve</h2>
+                    <h6 class="mb-4 text-white"> Keepers appear in them availability date range </h6>
+            </section id="listado" class="mb-5">
+            </center>
             <table class="table bg-light text-center">
                 <thead class="bg-dark text-white">
                     <th>Name</th>
@@ -37,18 +40,20 @@ require_once(VIEWS_PATH . "nav.php");
                     <th>Reserve</th>
 
                 <tbody>
-                    <form method="post" action="">     <center>     
-                        <label>
-                   
-                        <h5 class="mb-4 text-dark">Add first Date: </5>
-                        </label>
-                        <input type="date" name=start required>
-                        <label>
-                        <h5 class="mb-4 text-dark">Add finish Date: </5>
-                        </label>
-                        <input type="date" name="finish" required>
-                        <button type="submit" name="consultar" value="consultar">Consultar</button>
-                     </center> </form>
+                    <form method="post" action="">
+                        <center>
+                            <label>
+
+                                <h5 class="mb-4 text-dark">Add first Date: </5>
+                            </label>
+                            <input type="date" name=start required>
+                            <label>
+                                <h5 class="mb-4 text-dark">Add finish Date: </5>
+                            </label>
+                            <input type="date" name="finish" required>
+                            <button type="submit" name="consultar" value="consultar">Consultar</button>
+                        </center>
+                    </form>
                     <?php
 
                     error_reporting(E_ALL ^ E_NOTICE);
@@ -81,7 +86,7 @@ require_once(VIEWS_PATH . "nav.php");
                                         <tr>
                                             <td><?php echo $keeper->getTypeUserKeeper()->getName() ?></td>
                                             <td><?php echo $keeper->getTypeUserKeeper()->getLastname() ?></td>
-                                            <td><?php echo $keeper->getTypeUserKeeper()->getPhoto() ?></td>
+                                            <td><img src="<?php echo $keeper->getTypeUserKeeper()->getPhoto() ?>" width="70" height="70"></td>
                                             <td><?php echo $keeper->getTypeUserKeeper()->getDNI() ?></td>
                                             <td><?php echo $keeper->getTypeUserKeeper()->getTuition() ?></td>
                                             <td><?php echo $keeper->getTypeUserKeeper()->getSex() ?></td>
@@ -92,7 +97,7 @@ require_once(VIEWS_PATH . "nav.php");
                                             <td><?php echo $keeper->getTypeUserKeeper()->getSizePet() ?></td>
                                             <td><?php echo $keeper->getTypeUserKeeper()->getDateStart() ?></td>
                                             <td><?php echo $keeper->getTypeUserKeeper()->getDateFinish() ?></td>
-                                            
+
                                             <form action="<?php echo FRONT_ROOT . "Reserv/ShowAddView" ?>" method="POST">
                                                 <input type="hidden" name="idKeeper" value="<?php echo $keeper->getId() ?>">
                                                 <td> <button type="submit" name="reservar" value="reservar">Reserve</button></td>
