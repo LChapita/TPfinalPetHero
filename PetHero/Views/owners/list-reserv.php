@@ -19,11 +19,7 @@ foreach ($userArr as $user) {
 }
 ?> 
 <main class="py-5">
-<<<<<<< HEAD
 <section id="listado" class="mb-5">
-=======
-<center> <section id="listado" class="mb-5">
->>>>>>> d12140b33cdac82db7cd71d6289d91b4e2e8aa10
         <div class="container">
             <section id="listado" class="bg-dark text-white">
                 <center>
@@ -80,5 +76,5 @@ foreach ($userArr as $user) {
                     </tbody>
                 </table>
         </div>
-    </section></center>
+    </section>
 </main>

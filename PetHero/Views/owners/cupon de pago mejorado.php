@@ -1,6 +1,4 @@
-<?php
 
-?>
 
 <head>
     <style>
@@ -73,6 +71,7 @@
             height: 25;
             float: left;
         }
+
         .spandex2 {
             border: 1px solid black;
             width: 0px;
@@ -84,7 +83,7 @@
             margin: 2px;
             border: 3px solid rgb(152, 207, 177);
             width: 360px;
-            height: 500px;
+            height: 535px;
         }
 
         h3 {
@@ -126,12 +125,9 @@
 </head>
 
 <main>
-
-
     <body>
-        <form>
+        <form action="<?php echo FRONT_ROOT . "Reserv/ShowPay" ?>" method="POST">
 
-<<<<<<< HEAD
             <span class="spandex3">
 
                 <span>
@@ -151,30 +147,6 @@
                         <td>
                             <h7><?php echo date("Y-m-d"); ?></h7>
                         </td>
-=======
-            <span>
-                <h2>Pet Hero</h2>
-            </span>
-            <span>
-                <h1>Payment coupon</h1>
-            </span>
-            <table class="tabla">
-                <tr>
-                    <td class="td1"><strong><?php echo "N° ".rand(); ?></strong></td>
-                    <td> <h6> <?php echo date("Y-m-d"); ?></h6></td>
-                </tr>
-            </table>
-            <div>
-                <table class="tabla3">
-                    <tr>
-                        <td>1st  expiration</td>
-                        <td class="mc" rowspan="3"><span class="spandex2"></span></td>
-                        <td>importe</td>
-                    </tr>
-                    <tr>
-                        <td><strong><?php echo date("Y-m-d", strtotime("+ 15 days")); ?></strong></td>
-                        <td><strong><?php echo "$" . $monto ?></strong></td>
->>>>>>> d12140b33cdac82db7cd71d6289d91b4e2e8aa10
                     </tr>
                 </table>
                 <div>
@@ -206,13 +178,7 @@
 
                 <table class="tabla2">
                     <tr>
-<<<<<<< HEAD
                         <td colspan="3" class="t">Owner's data</td>
-=======
-                        <td>2nd expiration- 10% surcharge</td>
-                        <td class="mc" rowspan="2"><span class="spandex2"></span>
-                        <td>importe</td>
->>>>>>> d12140b33cdac82db7cd71d6289d91b4e2e8aa10
                     </tr>
                     <tr>
                         <td>Name</td>
@@ -227,7 +193,6 @@
                         <td><?php echo $userOwner->getTypeUserOwner()->getDNI() ?></td>
                     </tr>
                 </table>
-<<<<<<< HEAD
                 <hr class="spandex4" />
                 <table class="tabla2">
                     <tr>
@@ -281,87 +246,16 @@
                         <td>Amount payable</td>
                         <td><?php echo "$" . $monto ?></td>
                     </tr>
+                    <tr>
+
+                        <td>PAY COUPON</td>
+                        <td>
+                            <input type="hidden" name="monto" value="<?php echo $monto ?>">
+                            <button type="submit" name="button" class="btn btn-primary ml-auto d-block">Pay</button>
+                        </td>
+                    </tr>
                 </table>
-                <hr class="bd" />
-                <button type="submit" name="pago">Pagar</button>
             </span>
         </form>
-=======
-            </div>
-
-            <table class="tabla2">
-                <tr>
-                    <td colspan="3" class="t">Owner's data</td>
-                </tr>
-                <tr>
-                    <td>Name</td>
-                    <td><?php echo $userOwner->getTypeUserOwner()->getName() ?></td>
-                </tr>
-                <tr>
-                    <td>Surname</td>
-                    <td><?php echo $userOwner->getTypeUserOwner()->getSurName() ?></td>
-                </tr>
-                <tr>
-                    <td>DNI</td>
-                    <td><?php echo $userOwner->getTypeUserOwner()->getDNI() ?></td>
-                </tr>
-            </table>
-            <hr class="spandex4" />
-            <table class="tabla2">
-                <tr>
-                    <td colspan="3" class="t">Keeper´s data</td>
-                </tr>
-                <tr>
-                    <td>keeper</td>
-                    <td><?php echo $userKeeper->getTypeUserKeeper()->getName() . " " . $userKeeper->getTypeUserKeeper()->getLastName() ?></td>
-                </tr>
-                <tr>
-                    <td>Tuition</td>
-                    <td><?php echo $userKeeper->getTypeUserKeeper()->getTuition() ?></td>
-                </tr>
-            </table>
-            <hr class="spandex4" />
-            <table class="tabla2">
-                <tr>
-                    <td colspan="3" class="t">Pet´s Data</td>
-                </tr>
-                <tr>
-                    <td>Pet´s name</td>
-                    <td><?php echo $pet->getName() ?></td>
-                </tr>
-                <tr>
-                    <td>Pet´s Race</td>
-                    <td><?php echo $pet->getRace() ?></td>
-                </tr>
-            </table>
-            <hr class="spandex4" />
-            <table class="tabla2">
-                <tr>
-                    <td colspan="2" class="t">Details of payment</td>
-                </tr>
-                <tr>
-                    <td>Price per pet size</td>
-                    <td><?php echo "$" . $userKeeper->getTypeUserKeeper()->getPrice() ?></td>
-                </tr>
-                <tr>
-                    <td>Number of days</td>
-                    <td><?php echo $days; ?></td>
-                </tr>
-                <tr>
-                    <td>Date start</td>
-                    <td><?php echo $reserv->getDateStart() ?></td>
-                </tr>
-                <tr>
-                    <td>Date finish</td>
-                    <td><?php echo $reserv->getDateFinish() ?></td>
-                </tr>
-                <tr>
-                    <td>Amount payable</td>
-                    <td><?php echo "$" . $monto ?></td>
-                </tr>
-            </table>
-            <hr class="bd" />
-        </span>
->>>>>>> d12140b33cdac82db7cd71d6289d91b4e2e8aa10
     </body>
 </main>

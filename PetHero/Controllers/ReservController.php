@@ -132,5 +132,16 @@ class ReservController{
         //var_dump($monto);
         require_once(VIEWS_PATH . "owners/cupon de pago mejorado.php");
     }
+    public function ShowPay($monto){
+        $montPay=$monto;
+        
+        require_once(VIEWS_PATH . "owners/pago.php");
+    }
+    public function Simulated(){
+        echo "<script> alert('Coupon paid Successfully'); </script>";
+        echo "<script> alert('You will be directed to your Profile'); </script>";
+        require_once(VIEWS_PATH . "owners/menu-owner.php");
+    }
+    
 }
 ?>

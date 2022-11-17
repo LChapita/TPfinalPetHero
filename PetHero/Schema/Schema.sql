@@ -25,6 +25,8 @@ create table keeper(
     price float not NULL,
     sex varchar(10) not NULL,
     age int not NULL,
+    review int,
+    comment varchar(100),
     dateStart DATE,
     dateFinish DATE
 )Engine=InnoDB;
@@ -206,6 +208,22 @@ BEGIN
 END$$
 DELIMITER ;
 
+
+DROP procedure IF EXISTS `Review_Add`;
+
+DELIMITER $$
+
+CREATE PROCEDURE Review_Add(IN id_Keeper INT,IN review varchar(50))
+BEGIN
+    UPDATE keeper k
+    SET k.review = review 
+    WHERE k.id_Keeper = id_Keeper ;
+	
+END$$
+
+
+DELIMITER ;
+
 call Reserv_Confirm(false,3);
 
 select * from owner;
@@ -222,3 +240,12 @@ delete from reserv where idReserv=3;
 ##DROP table keeper;
 ##DROP table pet;
 ##drop table reserv;
+
+
+alter table keeper
+add column review int;
+
+alter table keeper
+add column comment varchar(100);
+
+ALTER TABLE keeper DROP COLUMN review;
