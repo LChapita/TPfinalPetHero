@@ -55,6 +55,16 @@ CREATE TABLE reserv
 	constraint FK_keeper_reserv foreign key(id_Keeper) references keeper(id_Keeper)
 )Engine=InnoDB;
 
+create table review(
+    id_Review int PRIMARY key auto_increment,
+    review int,
+    comment varchar(100),
+    id_Owner int ,
+    id_Keeper int, 
+    constraint FK_owner_review foreign key(id_Owner) references owner(id_Owner),
+    constraint FK_keeper_review foreign key(id_Keeper) references keeper(id_Keeper)
+)Engine=InnoDB;
+
 DROP procedure IF EXISTS `Owner_Add`;
 
 DELIMITER $$
@@ -213,12 +223,12 @@ DROP procedure IF EXISTS `Review_Add`;
 
 DELIMITER $$
 
-CREATE PROCEDURE Review_Add(IN id_Keeper INT,IN review varchar(50))
+CREATE PROCEDURE Review_Add(IN id_Review INT,IN comment varchar(50),in review int,in id_Owner int,in id_Keeper int)
 BEGIN
-    UPDATE keeper k
-    SET k.review = review 
-    WHERE k.id_Keeper = id_Keeper ;
-	
+    INSERT INTO review
+        (review.id_Review, review.comment, review.review, review.id_Owner,review.id_Keeper)
+    VALUES
+        (id_Review,comment,review,id_Owner,id_Keeper);
 END$$
 
 

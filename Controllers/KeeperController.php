@@ -6,6 +6,8 @@ use Models\Keeper as Keeper;
 use Models\User as User;
 use SQL\KeeperSQL as KeeperSQL;
 use DAO\KeeperDAO as KeeperDAO;
+use Models\Review;
+use SQL\ReviewSQL as ReviewSQL;
 
 class KeeperController{
     private $keeperSQL;
@@ -133,40 +135,46 @@ class KeeperController{
         $this->MenuKeeper();
 
     }
-    public function CreateReview($id_Keeper)
+    public function CreateReview($id_Keeper,$id_Owner)
     {
         require_once(VIEWS_PATH . "validate-session.php");
+        
         require_once(VIEWS_PATH. "owners/review.php");
     }
 
-    public function Reviews($id_Keeper, $review, $comments)
+    public function Reviews($id_Keeper,$id_Owner, $review, $comments)
     {
-        $keeper=new Keeper();
+        $reviewOwnerAtKeeper=new Review();
         
         if ($review== 'Terrible') {
-            $keeper->setReview(1);
+            $reviewOwnerAtKeeper->setReview(1);
         } elseif($review == 'Bad'){
-            $keeper->setReview(2);
+            $reviewOwnerAtKeeper->setReview(2);
         }elseif($review == 'Regular'){
-            $keeper->setReview(3);
+            $reviewOwnerAtKeeper->setReview(3);
         }elseif($review == 'Good'){
-            $keeper->setReview(4);
+            $reviewOwnerAtKeeper->setReview(4);
         }elseif($review == 'Excelent'){
-            $keeper->setReview(5);
+            $reviewOwnerAtKeeper->setReview(5);
         }
-        //$keeper->setReview($review);
-        $keeper->setComment($comments);
-        $keeper->setId($id_Keeper);
+        
+        $reviewOwnerAtKeeper->setComment($comments);
 
-    
-
-        $this->keeperSQL->NewReview($keeper);
+        $reviewOwnerAtKeeper->setId_Keeper($id_Keeper);
+        $reviewOwnerAtKeeper->setId_Owner($id_Owner);
+        
+        $reviewSQL=new ReviewSQL();
+        
+        $reviewSQL->Add($reviewOwnerAtKeeper);
         echo "<script> alert('Your Review has been Published'); </script>";
         require_once(VIEWS_PATH . "owners/keeper-list.php");
     }
 
 
-
+    public function ShowReviews(){
+        require_once(VIEWS_PATH . "validate-session.php");
+        require_once(VIEWS_PATH . "keepers/review-list.php");
+    }
 
     public function GoHome()
     {

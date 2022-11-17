@@ -23,9 +23,6 @@ class Keeper{
     private $dateS;
     private $dateF;
     
-    private $review;
-    private $comment;
-    
     public function setName($name)
     {
         $this->name = $name;
@@ -146,24 +143,6 @@ class Keeper{
         $this->sizePet = $sizePet;
     }
 
-
-    public function getReview()
-    {
-        return $this->review;
-    }
-    public function setReview($review)
-    {
-        $this->review = $review;
-    }
- 
-    public function getComment()
-    {
-        return $this->comment;
-    }
-    public function setComment($comment)
-    {
-        $this->comment = $comment;
-    }
 }
 
 ?>
