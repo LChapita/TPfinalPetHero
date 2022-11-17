@@ -242,7 +242,6 @@ $keeper = $keeperSQL->GetById($idKeeper);
                         </form>
                         <?php
 }
-}
 
 
 ?>
@@ -251,10 +250,11 @@ $keeper = $keeperSQL->GetById($idKeeper);
 </tbody>
 </table>
 <div>
-<input type="submit" class="btn" value="Add Stay" style="background-color:#DC8E47;color:white;" />
+    <input type="submit" class="btn" value="Add Stay" style="background-color:#DC8E47;color:white;" />
 </div>
-    </main>
+</main>
 </center>
 <?php
+}
 require_once(VIEWS_PATH . "footer.php");
 ?>
