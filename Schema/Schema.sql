@@ -18,15 +18,13 @@ create table keeper(
 	
     name varchar(50) not NULL,
     lastaname varchar(50) not NULL,
-    photo varchar(1000) not NULL,
+    photo text(65535) not NULL,
     DNI int not NULL,
     tuition int not NULL,
     sizePet varchar(20) not NULL,
     price float not NULL,
     sex varchar(10) not NULL,
     age int not NULL,
-    review int,
-    comment varchar(100),
     dateStart DATE,
     dateFinish DATE
 )Engine=InnoDB;

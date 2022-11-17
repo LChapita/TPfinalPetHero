@@ -54,7 +54,7 @@ $keeper=$keeperSQL->GetByEmail($userMenu->getEmail());
                     <tr>
                         <td><?php echo $keeper->getTypeUserKeeper()->getName() ?></td>
                         <td><?php echo $keeper->getTypeUserKeeper()->getLastname() ?></td>
-                        <td><?php echo "<img src=".$keeper->getTypeUserKeeper()->getPhoto().">" ?></td></tr>
+                        <td><img src="<?php echo $keeper->getTypeUserKeeper()->getPhoto()?>" width="200" height="200"></td></tr>
                         </tbody> 
                     <thead class="bg-dark text-white">
                     <th>DNi</th>
