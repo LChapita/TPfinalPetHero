@@ -26,13 +26,14 @@ $owner = $ownerSQL->GetByEmail($userMenu->getEmail());
 ?>
 <main class="py-5">
     <section id="listado" class="mb-5">
+    <center> <a href="https://ibb.co/92W3M5w"><img src="https://i.ibb.co/L61hG7Q/Solo-Travel-Guide-2.png" alt="Solo-Travel-Guide-2" border="0"></a></center> 
         <div class="container">
 
-            <section id="listado" class="bg-dark text-white"> <center>
-            <h2 class="mb-4 text-white"> My Data</h2> <h6 class="mb-4 text-white"> 
-all your personal data in our database</h6> </section id="listado" class="mb-5">
+            <section id="listado" class="bg-dark text-white"> <center> 
+              </section id="listado" class="mb-5">
 </center>   <table class="table bg-light text-center">
             <table class="table bg-light text-center">
+                
                 <thead class="bg-dark text-white">
                     <th>Email</th>
                     <th>Password</th>

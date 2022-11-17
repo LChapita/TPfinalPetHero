@@ -25,7 +25,7 @@ require_once(VIEWS_PATH . "keepers/nav-keeper.php");
             <table class="table bg-light text-center">
                 <thead class="bg-dark text-white">
                     <th>Id Reserv</th>
-                    <th>Id Owner</th>
+                    <th>Id Pet</th>
                     <th>Id Keeper</th>
                     <th>Date Start</th>
                     <th>Date Finish</th>

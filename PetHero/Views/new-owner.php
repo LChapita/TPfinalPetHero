@@ -11,7 +11,7 @@ require_once('nav-new-user.php');
             <form action="<?php echo FRONT_ROOT . "Owner/RegisterOwner"  ?>" method="POST" class="bg-light-alpha p-5">
                 <div class="row">
                     <div class="col-lg-5">
-                        <div class="form-group bg-dark text-white center>
+                        <div class="form-group bg-dark text-white center">
                             <input type="hidden" name="email" value="<?php echo $this->aux->getEmail() ?>">
                             <input type="hidden" name="password" value="<?php echo $this->aux->getPassword() ?>">
                             <label for="">Name</label>

@@ -23,8 +23,6 @@ class Keeper{
     private $dateS;
     private $dateF;
     
-    private $numbersofpets;
-    
     public function setName($name)
     {
         $this->name = $name;
@@ -60,14 +58,9 @@ class Keeper{
         $this->keeper=$keeper;
     }
     
-    
-
     public function setDate($date){
         $this->date=$date;
     }    
-    public function setNumbersofpets($numbersofpets){
-        $this->numbersofpets=$numbersofpets;
-    }
 
     
 
@@ -121,10 +114,6 @@ class Keeper{
     {
         return $this->date;
     }
-    public function getNumbersofpets()
-    {
-        return $this->numbersofpets;
-    }
 
 
     public function getDateStart()
@@ -153,6 +142,7 @@ class Keeper{
     {
         $this->sizePet = $sizePet;
     }
+
 }
 
 ?>

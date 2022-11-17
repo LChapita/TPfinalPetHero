@@ -6,6 +6,8 @@ use Models\Keeper as Keeper;
 use Models\User as User;
 use SQL\KeeperSQL as KeeperSQL;
 use DAO\KeeperDAO as KeeperDAO;
+use Models\Review;
+use SQL\ReviewSQL as ReviewSQL;
 
 class KeeperController{
     private $keeperSQL;
@@ -132,6 +134,46 @@ class KeeperController{
         $this->keeperSQL->AddStays($userIn->getId(),$dateS,$dateF);
         $this->MenuKeeper();
 
+    }
+    public function CreateReview($id_Keeper,$id_Owner)
+    {
+        require_once(VIEWS_PATH . "validate-session.php");
+        
+        require_once(VIEWS_PATH. "owners/review.php");
+    }
+
+    public function Reviews($id_Keeper,$id_Owner, $review, $comments)
+    {
+        $reviewOwnerAtKeeper=new Review();
+        
+        if ($review== 'Terrible') {
+            $reviewOwnerAtKeeper->setReview(1);
+        } elseif($review == 'Bad'){
+            $reviewOwnerAtKeeper->setReview(2);
+        }elseif($review == 'Regular'){
+            $reviewOwnerAtKeeper->setReview(3);
+        }elseif($review == 'Good'){
+            $reviewOwnerAtKeeper->setReview(4);
+        }elseif($review == 'Excelent'){
+            $reviewOwnerAtKeeper->setReview(5);
+        }
+        
+        $reviewOwnerAtKeeper->setComment($comments);
+
+        $reviewOwnerAtKeeper->setId_Keeper($id_Keeper);
+        $reviewOwnerAtKeeper->setId_Owner($id_Owner);
+        
+        $reviewSQL=new ReviewSQL();
+        
+        $reviewSQL->Add($reviewOwnerAtKeeper);
+        echo "<script> alert('Your Review has been Published'); </script>";
+        require_once(VIEWS_PATH . "owners/keeper-list.php");
+    }
+
+
+    public function ShowReviews(){
+        require_once(VIEWS_PATH . "validate-session.php");
+        require_once(VIEWS_PATH . "keepers/review-list.php");
     }
 
     public function GoHome()
