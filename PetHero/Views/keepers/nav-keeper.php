@@ -7,6 +7,9 @@
             <a class="nav-link" href="<?php echo FRONT_ROOT . "Keeper/MenuKeeper"  ?>">My Profile</a>
         </li>
         <li class="nav-item">
+            <a class="nav-link" href="<?php echo FRONT_ROOT . "Keeper/ShowReviews"  ?>">My Reviews</a>
+        </li>
+        <li class="nav-item">
             <a class="nav-link" href="<?php echo FRONT_ROOT . "Keeper/WelcomeKeeper"  ?>">My Stays</a>
         </li>
         <li class="nav-item">

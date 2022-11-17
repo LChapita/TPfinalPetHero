@@ -6,9 +6,16 @@ use DAO\KeeperDAO;
 use DAO\userDAO;
 use Models\User;
 use Models\Keeper;
+use Models\Owner;
 use SQL\KeeperSQL;
 
 require_once(VIEWS_PATH . "nav.php");
+
+$userO = $_SESSION;
+$owner = new Owner();
+foreach ($userO as $user) {
+    $owner->setId($user->getId());
+}
 
 ?>
 <main class="py-5">
@@ -63,11 +70,12 @@ require_once(VIEWS_PATH . "nav.php");
                             <td><?php echo $keeper->getTypeUserKeeper()->getDateFinish() ?></td>
                             <td>
                                 <form action="<?php echo FRONT_ROOT . "Keeper/CreateReview" ?>" method="POST">
-                                <input type="hidden" name="id_Keeper" value="<?php echo $keeper->getId(); ?>">
-                                <button type="submit" name="confirmar" value="confirmar">Review</button>
+                                    <input type="hidden" name="id_Keeper" value="<?php echo $keeper->getId(); ?>">
+                                    <input type="hidden" name="id_Owner" value="<?php echo $owner->getId(); ?>">
+                                    <button type="submit" name="confirmar" class="btn btn-dark btn-block btn-lg">Review</button>
 
-                            </form>
-                        </td>
+                                </form>
+                            </td>
                         </tr>
 
                     <?php

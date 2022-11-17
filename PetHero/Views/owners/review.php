@@ -1,3 +1,4 @@
+
 <main class="d-flex align-items-center justify-content-center height-100">
     <center>
         <div class="content">
@@ -8,8 +9,9 @@
                 </section id="listado" class="mb-5">
             </header>
             <form action="<?php echo FRONT_ROOT . "Keeper/Reviews" ?>" class="login-form bg-dark-alpha p-5 bg-light">
-                <input type="hidden" name="email" value="<?php echo $id_Keeper ?>">
-
+                <input type="hidden" name="id_Keeper" value="<?php echo $id_Keeper ?>">
+                <input type="hidden" name="id_Owner " value="<?php echo $id_Owner ?>">
+                
                 <input type="radio" name="review" value="Terrible">Terrible
                 <input type="radio" name="review" value="Bad">Bad
                 <input type="radio" name="review" value="Regular" checked>Regular
