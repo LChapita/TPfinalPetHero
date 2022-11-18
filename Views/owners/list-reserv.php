@@ -17,9 +17,9 @@ foreach ($userArr as $user) {
     $owner = new Owner();
     $owner->setId($user->getId());
 }
-?> 
+?>
 <main class="py-5">
-<section id="listado" class="mb-5">
+    <section id="listado" class="mb-5">
         <div class="container">
             <section id="listado" class="bg-dark text-white">
                 <center>
@@ -51,7 +51,7 @@ foreach ($userArr as $user) {
                         //var_dump($reservList);
                         foreach ($reservList as $reserv) {
                             //var_dump($reserv);
-                            if ($reserv->getConfirm() == 1) {
+                            if (($reserv->getConfirm() && $reserv->getPaid()) == 1) {
 
                         ?>
                                 <tr>
@@ -60,15 +60,26 @@ foreach ($userArr as $user) {
                                     <td><?php echo $reserv->getIdKeeper(); ?></td>
                                     <td><?php echo $reserv->getDateStart(); ?></td>
                                     <td><?php echo $reserv->getDateFinish(); ?></td>
+                                    <td><?php echo "PAID"; ?></td>
 
+
+                                </tr>
+
+                            <?php
+                            } elseif ($reserv->getConfirm()==1 && $reserv->getPaid()==0) {
+                            ?>
+                                <tr>
+                                    <td><?php echo $reserv->getIdReserv(); ?></td>
+                                    <td><?php echo $reserv->getIdPet(); ?></td>
+                                    <td><?php echo $reserv->getIdKeeper(); ?></td>
+                                    <td><?php echo $reserv->getDateStart(); ?></td>
+                                    <td><?php echo $reserv->getDateFinish(); ?></td>
                                     <form action="<?php echo FRONT_ROOT . "Reserv/GenerateCoupon" ?>" method="POST">
                                         <!-- datos del cupon -->
                                         <input type="hidden" name="id_Reserv" value="<?php echo $reserv->getIdReserv(); ?>">
                                         <td> <button type="submit" name="reservar" value="reservar">Generate Coupon</button></td>
                                     </form>
-
                                 </tr>
-
                         <?php
                             }
                         }

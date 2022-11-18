@@ -1,5 +1,3 @@
-
-
 <head>
     <style>
         .tabla {
@@ -125,6 +123,7 @@
 </head>
 
 <main>
+
     <body>
         <form action="<?php echo FRONT_ROOT . "Reserv/ShowPay" ?>" method="POST">
 
@@ -251,6 +250,7 @@
                         <td>PAY COUPON</td>
                         <td>
                             <input type="hidden" name="monto" value="<?php echo $monto ?>">
+                            <input type="hidden" name="id_Reserv" value="<?php echo $reservId ?>">
                             <button type="submit" name="button" class="btn btn-primary ml-auto d-block">Pay</button>
                         </td>
                     </tr>

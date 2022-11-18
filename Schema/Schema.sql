@@ -49,6 +49,7 @@ CREATE TABLE reserv
     dateStart DATE,
     dateFinish DATE,
     confirm BOOLEAN,
+    paid boolean,
     constraint FK_pet_reserv foreign key(id_Pet) references pet(id_Pet),
 	constraint FK_keeper_reserv foreign key(id_Keeper) references keeper(id_Keeper)
 )Engine=InnoDB;
@@ -217,6 +218,20 @@ END$$
 DELIMITER ;
 
 
+DELIMITER ;
+
+DROP procedure IF EXISTS `Reserv_Paid`;
+
+DELIMITER $$
+CREATE PROCEDURE Reserv_Paid(in paid int,in id_Reserv int)
+BEGIN
+	UPDATE reserv r 
+    SET r.paid= paid 
+    where r.id_Reserv= id_Reserv
+    ;
+END$$
+DELIMITER ;
+
 DROP procedure IF EXISTS `Review_Add`;
 
 DELIMITER $$
@@ -244,11 +259,11 @@ delete from reserv where idReserv=3;
 
 
 
-##drop table owner;
-##DROP table keeper;
-##DROP table pet;
-##drop table reserv;
-
+drop table owner;
+DROP table keeper;
+DROP table pet;
+drop table reserv;
+drop table review;
 
 alter table keeper
 add column review int;
