@@ -6,7 +6,7 @@ namespace Controllers;
 use SQL\OwnerSQL as OwnerSQL;
 use Models\Owner as Owner;
 use Models\User as User;
-
+use SQL\ReservSQL;
 use DAO\PetDAO as PetDAO;
 
 class OwnerController{
@@ -42,11 +42,13 @@ class OwnerController{
     
     public function ShowAllKeepers($message = "")
     {
+        require_once(VIEWS_PATH . "validate-session.php");
         require_once(VIEWS_PATH . "owners/keeper-list.php");
     }
 
     public function RegisterOwner($email, $password, $name, $lastname, $dni)
     {
+        require_once(VIEWS_PATH . "validate-session.php");
         $user = new User();
         $user->setEmail($email);
         $user->setPassword($password);
@@ -71,7 +73,10 @@ class OwnerController{
         require_once(VIEWS_PATH."owners/menu-owner.php");
     }
     
-
+    public function ConfirmAndPaid(){
+        require_once(VIEWS_PATH . "validate-session.php");
+        require_once(VIEWS_PATH . "owners/list-paid.php");
+    }
 
     public function GoHome()
     {

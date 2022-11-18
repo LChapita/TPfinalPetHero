@@ -12,6 +12,7 @@ class Reserv{
     private $dateFinish;
 
     private $confirm=null;
+    private $paid=null;
     
     public function getIdReserv()
     {
@@ -68,6 +69,15 @@ class Reserv{
     {
         $this->confirm = $confirm;
 
+    }
+ 
+    public function getPaid()
+    {
+        return $this->paid;
+    }
+    public function setPaid($paid)
+    {
+        $this->paid = $paid;
     }
 }
 ?>

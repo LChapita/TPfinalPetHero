@@ -10,8 +10,7 @@ use Models\Owner;
 use SQL\KeeperSQL;
 use SQL\OwnerSQL;
 use SQL\ReviewSQL;
-
-require_once(VIEWS_PATH . "nav.php");
+require_once("nav-keeper.php");
 
 $userK = $_SESSION;
 $keeper = new Keeper();

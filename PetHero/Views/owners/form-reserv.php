@@ -75,7 +75,7 @@ $keeper = $keeperSQL->GetById($idKeeper);
                                 //var_dump($reservList);
                                 
                                 if ($petsss == null) {
-                                    echo "<script> alert('No tiene pets para este Keeper'); </script>";
+                                    echo "<script> alert('You have no Pets for this Keeper'); </script>";
                                     require_once(VIEWS_PATH . "owners/menu-owner.php");
                                 } else{
                                     ?>

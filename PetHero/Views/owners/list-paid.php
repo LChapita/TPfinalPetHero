@@ -9,9 +9,9 @@ use Models\Keeper;
 use Models\Owner;
 use Models\Reserv as Reserv;
 use DAO\ReservDAO;
-use SQL\ReservSQL;
+use SQL\ReservSQL as ReservSQL;
 
-require_once(VIEWS_PATH . "keepers/nav-keeper.php");
+require_once(VIEWS_PATH . "nav.php");
 
 ?>
 
@@ -22,7 +22,7 @@ require_once(VIEWS_PATH . "keepers/nav-keeper.php");
                 <center>
                     <h2 class="mb-4 text-white"> List of own reservations:</h2>
                     <h6 class="mb-4 text-white">
-                        Here you can see your list of reservations that you have confirmed </h6>
+                        Here you can see your list of reservations that has been paid and confirmed</h6>
             </section id="listado" class="mb-5">
             </center>
 
@@ -30,7 +30,7 @@ require_once(VIEWS_PATH . "keepers/nav-keeper.php");
             <table class="table bg-light text-center">
                 <thead class="bg-dark text-white">
                     <th>Id Reserva</th>
-                    <th>Id Owner</th>
+                    <th>Id Pet</th>
                     <th>Id Keeper</th>
                     <th>Date Start</th>
                     <th>Date Finish</th>
@@ -51,17 +51,18 @@ require_once(VIEWS_PATH . "keepers/nav-keeper.php");
                     //$ReservDAO = new ReservDAO();
                     //$reserv = new Reserv();
                     //$reservList = $ReservDAO->GetAll();
-                    $ReservSQL = new ReservSQL();
-                    $reserv = new Reserv();
-                    $reservList = $this->reservSQL->GetAll();
 
+
+                    $reservSQL = new ReservSQL();
+                    $reserv = new Reserv();
+                    $reservList = $reservSQL->GetPetByOwnerId($user->getId());
 
                     //var_dump($reservList);
 
                     foreach ($reservList as $reserv) {
-                        if ($userMenu->getId() == $reserv->getIdKeeper()) {
-                            if ($reserv->getConfirm() != null) {
-                    ?>
+                        if(($reserv->getConfirm() && $reserv->getPaid())==1){
+                           
+                                    ?>
                                 <tr>
                                     <td><?php echo $reserv->getIdReserv(); ?></td>
                                     <td><?php echo $reserv->getIdPet(); ?></td>
@@ -77,19 +78,22 @@ require_once(VIEWS_PATH . "keepers/nav-keeper.php");
                                         }
                                         ?>
                                     </td>
-                                    <td><?php
-                                        if ($reserv->getPaid() == null) {
-                                            echo "Not Paid";
-                                        } else {
+                                    <td>
+                                        <?php
+                                        if ($reserv->getPaid() == 1) {
                                             echo "Paid";
+                                        } else {
+                                            echo "Not Paid";
                                         }
-                                        ?></td>
+                                        ?>
+                                    </td>
                                 </tr>
-
-                    <?php
-                            }
+                                
+                                <?php
+                            
                         }
                     }
+                    
                     ?>
                 </tbody>
             </table>

@@ -37,6 +37,7 @@ class KeeperController{
 
     public function RegisterKeeper($email, $password, $name, $lastname, $photo, $dni, $tuition,$sizePet ,$price,$sex, $age)
     {
+        require_once(VIEWS_PATH . "validate-session.php");
         $user = new User();
 
         $user->setEmail($email);
@@ -85,6 +86,7 @@ class KeeperController{
 
     public function ShowAllKeepers($message = "")
     {
+        require_once(VIEWS_PATH . "validate-session.php");
         require_once(VIEWS_PATH . "keeper-list.php");
     }
     
@@ -96,11 +98,13 @@ class KeeperController{
     }
     
     public function WelcomeKeeper(){
+        require_once(VIEWS_PATH . "validate-session.php");
         $this->ShowAddStays();
     }
 
     public function RegisterStays($dateS,$dateF)
     {
+        require_once(VIEWS_PATH . "validate-session.php");
         $userIn=new User();
         
         $userArr = $_SESSION;
@@ -144,6 +148,7 @@ class KeeperController{
 
     public function Reviews($id_Keeper,$id_Owner, $review, $comments)
     {
+        require_once(VIEWS_PATH . "validate-session.php");
         $reviewOwnerAtKeeper=new Review();
         
         if ($review== 'Terrible') {

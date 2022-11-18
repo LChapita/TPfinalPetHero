@@ -54,6 +54,7 @@ class ReservSQL implements IReservSQL{
                 $reserv->setDateFinish($row["dateFinish"]);
 
                 $reserv->setConfirm($row["confirm"]);
+                $reserv->setPaid($row["paid"]);
                 
                 array_push($reservList, $reserv);
                 }
@@ -176,7 +177,21 @@ class ReservSQL implements IReservSQL{
             throw $ex;
         }
     }
+    public function Paid(Reserv $reserv, $id_Reserv)
+    {
+        try {
+            $query = "CALL Reserv_Paid(?,?)";
 
+            $parameters["paid"] = $reserv->getPaid();
+            $parameters["id_Reserv"] = $id_Reserv;
+
+            $this->connection = Connection::GetInstance();
+
+            $this->connection->ExecuteNonQuery($query, $parameters, QueryType::StoredProcedure);
+        } catch (Exception $ex) {
+            throw $ex;
+        }
+    }
     public function VerificReserv(Reserv $reserv,$id_Pet,$id_Keeper)
     {
         try {
@@ -235,6 +250,7 @@ class ReservSQL implements IReservSQL{
                 $reserv->setDateFinish($row["dateFinish"]);
 
                 $reserv->setConfirm($row["confirm"]);
+                $reserv->setPaid($row["paid"]);
 
                 array_push($reservList, $reserv);
             }

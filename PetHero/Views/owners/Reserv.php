@@ -110,7 +110,7 @@ require_once(VIEWS_PATH . "nav.php");
                                 }
                             }
                         } else {
-                            echo "<script> alert('Ingrese la fecha correctamente. La fecha START tiene que ser menor a la fecha FINISH'); </script>";
+                            echo "<script> alert('Enter the date correctly. The START date must be less than the FINISH date.'); </script>";
                         }
                     }
 
