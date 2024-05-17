@@ -11,7 +11,7 @@
                <form action="<?php echo FRONT_ROOT . "Home/EnterUser" ?>" method="POST" class="login-form bg-dark-alpha p-5 bg-light">
                     <div class="form-group">
                          <label for="">Email</label>
-                         <input type="text" name="userName" class="form-control form-control-lg" placeholder="Enter User" required>
+                         <input type="text" name="email" class="form-control form-control-lg" placeholder="Enter User" required>
                     </div>
                     <div class="form-group">
                          <label for="">Contraseña</label>

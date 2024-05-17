@@ -22,7 +22,7 @@ require_once('nav-new-user.php');
                                 <option value="Keeper" required>Keeper</option>
                             </select>
                         </div>
-                        <button type="submit" name="button" class="btn btn-dark ml-auto d-block">Agregar</button> 
+                        <button type="submit" class="btn btn-dark ml-auto d-block">Agregar</button> 
                     </div>   
                     
             </form> </center> 
