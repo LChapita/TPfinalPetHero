@@ -34,13 +34,13 @@ class OwnerController{
         $this->owner = $owner;
     }
 
-    public function Show($message = "")
+    public function Show()
     {
         require_once(VIEWS_PATH . "validate-session.php");
         require_once(VIEWS_PATH . "owners/pet-list.php");
     }
     
-    public function ShowAllKeepers($message = "")
+    public function ShowAllKeepers()
     {
         require_once(VIEWS_PATH . "validate-session.php");
         require_once(VIEWS_PATH . "owners/keeper-list.php");

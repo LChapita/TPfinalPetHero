@@ -84,7 +84,7 @@ class KeeperController{
         $this->GoHome();
     }
 
-    public function ShowAllKeepers($message = "")
+    public function ShowAllKeepers()
     {
         require_once(VIEWS_PATH . "validate-session.php");
         require_once(VIEWS_PATH . "keeper-list.php");

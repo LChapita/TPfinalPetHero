@@ -37,7 +37,7 @@
             $this->isKeeper=new User();
         }
 
-        public function Index($message = "")
+        public function Index()
         {
             require_once(VIEWS_PATH."home.php");
         }
@@ -109,7 +109,7 @@
             $this->InLogin("Welcome",$owner);
         }
         ///logueado y menu owner
-        public function InLogin($message = "",$owner) {
+        public function InLogin($owner) {
             require_once(VIEWS_PATH . "validate-session.php");
             
             $dueño=new OwnerController();
@@ -140,7 +140,7 @@
         }
 
         /// login de keeper
-        public function InKeeper($message = "",$keeper) {
+        public function InKeeper($keeper) {
             require_once(VIEWS_PATH . "validate-session.php");
             $keeperM=new KeeperController();
             $keeperM->setKeeperC($keeper);

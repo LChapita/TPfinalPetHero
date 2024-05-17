@@ -11,8 +11,8 @@
             
         }
         
-        public function NewUser($email,$password){
-            if($_REQUEST["typeuser"]=="Owner"){
+        public function NewUser($email,$password,$typeuser){
+            if($typeuser=="Owner"){
                 $this->aux->setEmail($email);
                 $this->aux->setPassword($password);
                 $this->NewUserOwner();
@@ -41,11 +41,11 @@
             header('Location:'.FRONT_ROOT. 'Home/GoFirstPage');
         }
 
-        public function ConsultKeeper($message = "")
+        public function ConsultKeeper()
         {
             require_once(VIEWS_PATH . "owners\disp-keeper.php");
         }
-        public function ReservtKeeper($message = "")
+        public function ReservtKeeper()
         {
             require_once(VIEWS_PATH . "owners\Reserv.php");
         }

@@ -56,7 +56,7 @@ class ReservController{
 
         require_once(VIEWS_PATH . "keepers/history-reserv.php");
     }
-    public function Add($idPet,$idKeeper,$dateStart,$dateFinish){
+    public function Add($idPet,$idKeeper,$dateStart,$dateFinish,$idOwner){
         
         ///falta ver bien esto
         $reserv=new Reserv();
@@ -91,7 +91,7 @@ class ReservController{
 
     }
 
-    public function Confirm($id_Reserv,$confim)
+    public function Confirm($id_Reserv,$confirm)
     {
         ///falta ver bien esto
         $reserv = new Reserv();
@@ -110,7 +110,7 @@ class ReservController{
         $keeperSQL->MenuKeeper();
     }
 
-    public function GenerateCoupon($id_Reserv){
+    public function GenerateCoupon($id_Reserv,$reservar){
         require_once(VIEWS_PATH . "validate-session.php");
         $reserv=$this->reservSQL->GetReservbyId($id_Reserv);
 

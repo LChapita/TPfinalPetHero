@@ -82,11 +82,11 @@ use mysqli;
             
         }
         
-        public function ShowView($message = "") {
+        public function ShowView() {
             require_once(VIEWS_PATH . "validate-session.php");
             require_once(VIEWS_PATH . "owners/pet-list.php");
         }
-        public function ShowAdd($message = "") {
+        public function ShowAdd() {
             require_once(VIEWS_PATH . "validate-session.php");
             require_once(VIEWS_PATH . "owners/add-pet.php");
             
