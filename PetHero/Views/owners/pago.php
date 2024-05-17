@@ -39,7 +39,7 @@
             <form action="<?php echo FRONT_ROOT . "Reserv/Simulated" ?>" method="POST">
             <center>
                     <input type="hidden" name="id" value="<?php echo $reservIdp; ?>">
-                    <button type="submit" name="button" class="btn btn-primary ml-auto">Pay</button>
+                    <button type="submit" class="btn btn-primary ml-auto">Pay</button>
                 </center>
             </form>
         </div>

@@ -37,7 +37,7 @@ require_once(VIEWS_PATH . "nav.php");
 
 
                     <tbody>
-                         <form method="post" action="">
+                         <form method="post">
                               <center>
                                    <label>
                                         <h5 class="mb-4 text-dark">Add first Date: </5>
@@ -47,14 +47,16 @@ require_once(VIEWS_PATH . "nav.php");
                                         <h5 class="mb-4 text-dark">Add finish Date: </5>
                                    </label>
                                    <input type="date" name="finish" required>
-                                   <button type="submit" name="consultar" value="consultar">Consultar</button>
+                                   <button type="submit" >Consultar</button>
                               </center>
                          </form>
                          <?php
 
                          error_reporting(E_ALL ^ E_NOTICE);
-                         $start = $_POST['start'];
-                         $finish = $_POST['finish'];
+                         $start = isset($_POST['start']) ? $_POST['start'] : '';
+                         $finish = isset($_POST['finish']) ? $_POST['finish'] : '';
+
+
 
 
 
@@ -101,6 +103,7 @@ require_once(VIEWS_PATH . "nav.php");
                                    echo "<script> alert('Enter the date correctly. The START date must be less than the FINISH date'); </script>";
                               }
                          }
+                         unset($start);
                          ?>
                     </tbody>
                </table>
