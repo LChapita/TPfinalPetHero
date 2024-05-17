@@ -18,10 +18,13 @@ require_once(VIEWS_PATH . "keepers/nav-keeper.php");
 <main class="py-5">
     <section id="listado" class="mb-5">
         <div class="container">
-        <section id="listado" class="bg-dark text-white"> <center>
-            <h2 class="mb-4 text-white">  Confirm reservations</h2> <h4 class="mb-4 text-white">  List of own reservations:   </h4> </section id="listado" class="mb-5">
-</center>
-       
+            <section id="listado" class="bg-dark text-white">
+                <center>
+                    <h2 class="mb-4 text-white"> Confirm reservations</h2>
+                    <h4 class="mb-4 text-white"> List of own reservations: </h4>
+            </section id="listado" class="mb-5">
+            </center>
+
             <table class="table bg-light text-center">
                 <thead class="bg-dark text-white">
                     <th>Id Reserv</th>
@@ -53,31 +56,31 @@ require_once(VIEWS_PATH . "keepers/nav-keeper.php");
 
 
                     //var_dump($reservList);
-                    
+
                     foreach ($reservList as $reserv) {
                         if ($userMenu->getId() == $reserv->getIdKeeper()) {
-                            if($reserv->getConfirm()==null){
+                            if ($reserv->getConfirm() == null) {
                     ?>
 
-                            <tr>
-                                <td><?php echo $reserv->getIdReserv(); ?></td>
-                                <td><?php echo $reserv->getIdPet(); ?></td>
-                                <td><?php echo $reserv->getIdKeeper(); ?></td>
-                                <td><?php echo $reserv->getDateStart(); ?></td>
-                                <td><?php echo $reserv->getDateFinish(); ?></td>
+                                <tr>
+                                    <td><?php echo $reserv->getIdReserv(); ?></td>
+                                    <td><?php echo $reserv->getIdPet(); ?></td>
+                                    <td><?php echo $reserv->getIdKeeper(); ?></td>
+                                    <td><?php echo $reserv->getDateStart(); ?></td>
+                                    <td><?php echo $reserv->getDateFinish(); ?></td>
 
-                                <form action="<?php echo FRONT_ROOT . "Reserv/Confirm" ?>" method="POST">
-                                <td>
-                                    
-                                    <input type="hidden" name="id_Reserv" value="<?php echo $reserv->getIdReserv(); ?>">
-                                    <select name="confirm" class="form-control">
-                                        <option value="1" required>Confirmed</option>
-                                        <option value="0" required>UnConfirmed</option>
-                                    </select>
-                                </td>
-                                    <td> <button type="submit" name="confirmar" value="confirmar">Confirm</button></td>
-                                </form>
-                            </tr>
+                                    <form action="<?php echo FRONT_ROOT . "Reserv/Confirm" ?>" method="POST">
+                                        <td>
+
+                                            <input type="hidden" name="id_Reserv" value="<?php echo $reserv->getIdReserv(); ?>">
+                                            <select name="confirm" class="form-control">
+                                                <option value="1" required>Confirmed</option>
+                                                <option value="0" required>UnConfirmed</option>
+                                            </select>
+                                        </td>
+                                        <td> <button type="submit">Confirm</button></td>
+                                    </form>
+                                </tr>
 
                     <?php
                             }
